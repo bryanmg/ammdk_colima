@@ -8,8 +8,18 @@ Each student has his own growth path whose representate a single path that need 
 
 
 This project is created to help the teacher to manage his shcools and that students growth paths. Which problems solve?
-* Manage teacher's schools.
+* Manage teacher's students.
 * Manage students growth paths.
-* Manage learning resources.
-* Manage attendance of students.
-* Manage official events and documentation.
+* Manage learning resources to the students.
+* Manage attendance record of students.
+* Manage official events and required documentation.
+
+
+Main models puporsed:
+* Users. To manage Teacher and students information
+* Growth Paths. This resource has all history of reviews from teacher to the students such as writed reviews or advices, asigned learning resources and upgrades in belts
+* Attendance.
+* Groups.
+* Events. There are many types of events and each one has specifiq requirements (some of them can require special document to registration)
+* Documents.
+* Learning Resources. Susch as videos, images, documents, writed descriptions etc.
