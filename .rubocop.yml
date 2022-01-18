@@ -101,6 +101,9 @@ Style/SymbolArray:
 Layout/LineLength:
   Max: 198
 
+Metrics/BlockLength:
+  Max: 43
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
