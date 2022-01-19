@@ -9,6 +9,8 @@ class User < ApplicationRecord
     dan7: "7° Dan", dan8: "8° Dan", dan9: "9° Dan"
   }
 
-  enum :role, { sabonim: "sabonim", student: "student" }, scopes: false, default: "student"
+  enum :role, { teacher: "teacher", student: "student" }, scopes: false, default: "student"
   enum :belt, belts, scopes: false, default: nil
+
+  validates :email, :name, :birth_date, presence: true
 end

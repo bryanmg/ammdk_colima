@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_232339) do
+ActiveRecord::Schema.define(version: 2022_01_19_201730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_attendances_on_group_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "file_path"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.time "from_time"
+    t.time "to_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_232339) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.integer "role"
+    t.string "role"
     t.string "belt"
     t.date "birth_date"
     t.index ["belt"], name: "index_users_on_belt"
@@ -33,4 +59,6 @@ ActiveRecord::Schema.define(version: 2022_01_14_232339) do
     t.index ["role"], name: "index_users_on_role"
   end
 
+  add_foreign_key "attendances", "groups"
+  add_foreign_key "attendances", "users"
 end
