@@ -1,0 +1,25 @@
+<div id="<%= dom_id user %>">
+  <p>
+    <strong>Name:</strong>
+    <%= user.name %>
+  </p>
+
+  <p>
+    <strong>Belt:</strong>
+    <%= user.belt %>
+  </p>
+
+  <p>
+    <strong>Birth date:</strong>
+    <%= user.birth_date %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= user.email %>
+  </p>
+</div>
+
+---------
+<% content_for :user %>
+
