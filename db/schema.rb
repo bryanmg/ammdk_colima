@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2022_01_23_185631) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.integer "role"
+    t.string "role"
     t.integer "belt"
     t.date "birth_date"
     t.index ["belt"], name: "index_users_on_belt"
