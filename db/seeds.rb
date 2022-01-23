@@ -3,7 +3,7 @@ User.insert_all([
                     email: "admin@gmail.com",
                     encrypted_password: "123456",
                     name: "Jhon Doe",
-                    role: "teacher",
+                    role: "sabonim",
                     belt: :dan4,
                     birth_date: "12/12/1995",
                     created_at: DateTime.new,
