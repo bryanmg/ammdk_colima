@@ -15,10 +15,10 @@ class GroupsController < ApplicationController
   def edit; end
 
   def create
-    @group = Group.new(group_params)
+    @group = @user.groups.build(group_params)
 
     if @group.save
-      redirect_to user_groups_url(user_id: @user.id, id: @group.id), notice: "Group was successfully created."
+      redirect_to user_groups_url(@user, @group), notice: "Group was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to user_groups_url(user_id: @user.id, id: @group.id), notice: "Group was successfully updated."
+      redirect_to user_groups_url(@user, @group), notice: "Group was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

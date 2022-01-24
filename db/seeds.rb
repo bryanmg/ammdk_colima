@@ -31,8 +31,11 @@ User.insert_all([
                   }
                 ])
 
+user = User.first
+
 Group.insert_all([
                    {
+                     user_id: user.id,
                      name: "Principiate",
                      from_time: "16:00",
                      to_time: "17:00",
@@ -40,6 +43,7 @@ Group.insert_all([
                      updated_at: DateTime.new
                    },
                    {
+                     user_id: user.id,
                      name: "Intermediate",
                      from_time: "17:00",
                      to_time: "18:00",
@@ -47,6 +51,7 @@ Group.insert_all([
                      updated_at: DateTime.new
                    },
                    {
+                     user_id: user.id,
                      name: "Advanced",
                      from_time: "18:00",
                      to_time: "20:00",
@@ -54,6 +59,7 @@ Group.insert_all([
                      updated_at: DateTime.new
                    },
                    {
+                     user_id: user.id,
                      name: "Testing",
                      from_time: "09:00",
                      to_time: "15:00",
