@@ -98,6 +98,9 @@ Style/StringLiteralsInInterpolation:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
+Metrics/BlockLength: 
+  Max: 40
+
 Layout/LineLength:
   Max: 198
 

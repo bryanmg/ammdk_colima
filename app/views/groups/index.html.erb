@@ -6,7 +6,7 @@
   <% @groups.each do |group| %>
     <%= render group %>
     <p>
-      <%= link_to "Show this group", user_group_url(user_id: @user.id, id: group.id) %>
+      <%= link_to "Show this group", user_group_url(@user, group) %>
     </p>
   <% end %>
 </div>
