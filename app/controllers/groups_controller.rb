@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :set_user
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,34 +17,32 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to group_url(@group), notice: "Group was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @group.save
+      redirect_to user_groups_url(user_id: @user.id, id: @group.id), notice: "Group was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to group_url(@group), notice: "Group was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @group.update(group_params)
+      redirect_to user_groups_url(user_id: @user.id, id: @group.id), notice: "Group was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @group.destroy
 
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
-    end
+    redirect_to user_groups_url, notice: "Group was successfully destroyed."
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def set_group
     @group = Group.find(params[:id])
