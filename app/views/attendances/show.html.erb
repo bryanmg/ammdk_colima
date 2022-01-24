@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @attendance %>
 
 <div>
-  <%= link_to "Edit this attendance", edit_attendance_path(@attendance) %> |
-  <%= link_to "Back to attendances", attendances_path %>
+  <%= link_to "Edit this attendance", edit_user_group_attendance_url(@user, @group, @attendance) %> |
+  <%= link_to "Back to attendances", user_group_attendances_url(@user, @group) %>
 
-  <%= button_to "Destroy this attendance", @attendance, method: :delete %>
+  <%= button_to "Destroy this attendance", @user, @group, @attendance, method: :delete %>
 </div>

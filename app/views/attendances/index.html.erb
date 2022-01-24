@@ -6,9 +6,9 @@
   <% @attendances.each do |attendance| %>
     <%= render attendance %>
     <p>
-      <%= link_to "Show this attendance", attendance %>
+      <%= link_to "Show this attendance", user_group_attendances_url(@user, @group, attendance) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New attendance", new_attendance_path %>
+<%= link_to "New attendance", new_user_group_attendance_url(@user, @group) %>

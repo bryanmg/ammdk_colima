@@ -1,4 +1,5 @@
 class AttendancesController < ApplicationController
+  before_action :set_user, :set_group
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,46 +17,43 @@ class AttendancesController < ApplicationController
   def create
     @attendance = Attendance.new(attendance_params)
 
-    respond_to do |format|
-      if @attendance.save
-        format.html { redirect_to attendance_url(@attendance), notice: "Attendance was successfully created." }
-        format.json { render :show, status: :created, location: @attendance }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @attendance.errors, status: :unprocessable_entity }
-      end
+    if @attendance.save
+      redirect_to user_group_attendances_url(@user, @group, @attendance),
+                  notice: "Attendance was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @attendance.update(attendance_params)
-        format.html { redirect_to attendance_url(@attendance), notice: "Attendance was successfully updated." }
-        format.json { render :show, status: :ok, location: @attendance }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @attendance.errors, status: :unprocessable_entity }
-      end
+    if @attendance.update(attendance_params)
+      redirect_to user_group_attendance_url(@user, @group, @attendance),
+                  notice: "Attendance was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @attendance.destroy
 
-    respond_to do |format|
-      format.html { redirect_to attendances_url, notice: "Attendance was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to user_group_attendances_url(@user, @group), notice: "Attendance was successfully destroyed."
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find params[:user_id]
+  end
+
+  def set_group
+    @group = Group.find params[:group_id]
+  end
+
   def set_attendance
     @attendance = Attendance.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def attendance_params
     params.require(:attendance).permit(:user_id, :group_id, :date)
   end

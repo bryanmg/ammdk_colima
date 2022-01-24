@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get "/", to: "dashboard#index"
 
   resources :users do
-    resources :groups
-    resources :attendances
     resources :documents
+    resources :groups do
+      resources :attendances
+    end
   end
 end
