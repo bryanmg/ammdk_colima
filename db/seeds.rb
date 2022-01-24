@@ -31,4 +31,36 @@ User.insert_all([
                   }
                 ])
 
+Group.insert_all([
+                   {
+                     name: "Principiate",
+                     from_time: "16:00",
+                     to_time: "17:00",
+                     created_at: DateTime.new,
+                     updated_at: DateTime.new
+                   },
+                   {
+                     name: "Intermediate",
+                     from_time: "17:00",
+                     to_time: "18:00",
+                     created_at: DateTime.new,
+                     updated_at: DateTime.new
+                   },
+                   {
+                     name: "Advanced",
+                     from_time: "18:00",
+                     to_time: "20:00",
+                     created_at: DateTime.new,
+                     updated_at: DateTime.new
+                   },
+                   {
+                     name: "Testing",
+                     from_time: "09:00",
+                     to_time: "15:00",
+                     created_at: DateTime.new,
+                     updated_at: DateTime.new
+                   }
+                 ])
+
 p "Seed... Created #{User.count} users"
+p "Seed... Created #{Group.count} groups"
