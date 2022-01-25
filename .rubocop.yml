@@ -99,10 +99,12 @@ Style/SymbolArray:
   EnforcedStyle: brackets
 
 Metrics/BlockLength: 
-  Max: 40
+  Exclude:
+    - db/schema.rb
 
 Layout/LineLength:
-  Max: 198
+  Exclude:
+    - config/initializers/devise.rb
 
 Style/FrozenStringLiteralComment:
   Enabled: false
