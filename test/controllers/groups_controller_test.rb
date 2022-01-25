@@ -3,11 +3,12 @@ require "test_helper"
 class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
-    @groupsss = groups(:one)
-    @user.groups.build(
-      { from_time: @groupsss.from_time, name: @groupsss.name, to_time: @groupsss.to_time }
-    ).save
-    @group = @user.groups.last
+    @fixture_group = groups(:one)
+    @group = @user.groups.create!(
+      from_time: @fixture_group.from_time,
+      name: @fixture_group.name,
+      to_time: @fixture_group.to_time
+    )
   end
 
   test "should get index" do
@@ -49,7 +50,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update group" do
     params = {
-      group: { from_time: @group.from_time, name: @group.name, to_time: @group.to_time }
+      group: { from_time: groups(:two).from_time, name: groups(:one).name }
     }
     patch user_group_url(@user, @group), params: params
 
