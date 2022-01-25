@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :groups
     resources :attendances
+    resources :documents
   end
-  resources :documents
 end
