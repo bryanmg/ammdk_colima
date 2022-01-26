@@ -1,14 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Attendances</h1>
+<h1 class="subtitle">Attendances</h1>
 
 <div id="attendances">
   <% @attendances.each do |attendance| %>
     <%= render attendance %>
     <p>
-      <%= link_to "Show this attendance", user_group_attendances_url(@user, @group, attendance) %>
+      <%= link_to "Show this attendance", user_group_attendance_url(@user, @group, attendance) %>
     </p>
+    <br />
   <% end %>
 </div>
 
 <%= link_to "New attendance", new_user_group_attendance_url(@user, @group) %>
+
+<br />
+
+<%= link_to "Return to groups", user_groups_url(@user) %>

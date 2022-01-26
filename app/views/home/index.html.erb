@@ -1,0 +1,12 @@
+<h1 class="title">Bienvenido a Asoc. Mex. M.D.K sede Colima</h1>
+
+<br/>
+
+<div class="buttons">
+
+<% if user_signed_in? %>
+  <%= link_to "Groups", user_groups_path(current_user), :class => 'button is-link is-light' %>
+<% else %>
+  <%= link_to "Groups", new_user_session_path, :class => 'button is-link is-light' %>
+<% end %>
+</div>
