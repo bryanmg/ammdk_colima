@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root "dashboard#index"
-  get "/", to: "dashboard#index"
+  root to: "home#index"
+  get "/", to: "home#index"
 
   resources :users do
     resources :groups
