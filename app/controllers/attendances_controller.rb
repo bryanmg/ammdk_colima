@@ -1,5 +1,5 @@
 class AttendancesController < ApplicationController
-  before_action :set_user, :set_group
+  before_action :set_user, :set_group, :authenticate_user!
   before_action :set_attendance, only: [:show, :edit, :update, :destroy]
 
   def index

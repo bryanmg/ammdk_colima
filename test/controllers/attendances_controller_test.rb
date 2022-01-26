@@ -1,14 +1,16 @@
 require "test_helper"
 
 class AttendancesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @attendance = attendances(:one)
     @user = users(:one)
-    @fixture_group = groups(:one)
+    sign_in users(:one) # require devise auth
     @group = @user.groups.create!(
-      from_time: @fixture_group.from_time,
-      name: @fixture_group.name,
-      to_time: @fixture_group.to_time
+      from_time: groups(:one).from_time,
+      name: groups(:one).name,
+      to_time: groups(:one).to_time
     )
   end
 
@@ -47,7 +49,7 @@ class AttendancesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update attendance" do
     @new_attendance = attendances(:two)
-    params = { 
+    params = {
       attendance: {
         date: @new_attendance.date, group_id: @new_attendance.group_id, user_id: @new_attendance.user_id
       }
