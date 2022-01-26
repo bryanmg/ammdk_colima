@@ -1,0 +1,10 @@
+<h1>Editing group</h1>
+
+<%= render "form", user: @user, group: @group %>
+
+<br>
+
+<div>
+  <%= link_to "Show this group", user_id: @user.id, id: @group %> |
+  <%= link_to "Back to groups", user_groups_url %>
+</div>
