@@ -98,8 +98,13 @@ Style/StringLiteralsInInterpolation:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
+Metrics/BlockLength: 
+  Exclude:
+    - db/schema.rb
+
 Layout/LineLength:
-  Max: 198
+  Exclude:
+    - config/initializers/devise.rb
 
 Style/FrozenStringLiteralComment:
   Enabled: false

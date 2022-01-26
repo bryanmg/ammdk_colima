@@ -1,0 +1,9 @@
+one:
+  name: Begginers group
+  from_time: "16:30:00"
+  to_time: "18:00:00"
+
+two:
+  name: Intermediate grop
+  from_time: "18:00:00"
+  to_time: "20:00:00"
