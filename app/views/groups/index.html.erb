@@ -1,4 +1,4 @@
-<h1>Groups</h1>
+<h1 class="subtitle">Groups</h1>
 
 <div id="groups">
   <% @groups.each do |group| %>
@@ -6,6 +6,7 @@
     <p>
       <%= link_to "Show this group", user_group_url(@user, group) %>
     </p>
+    <br />
   <% end %>
 </div>
 
