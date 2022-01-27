@@ -1,7 +1,7 @@
 User.insert_all([
                   {
                     email: "admin@gmail.com",
-                    encrypted_password: "123456",
+                    encrypted_password: User.new.send(:password_digest, '123456'),
                     name: "Jhon Doe",
                     role: "teacher",
                     belt: :dan4,
@@ -11,7 +11,7 @@ User.insert_all([
                   },
                   {
                     email: "student1@gmail.com",
-                    encrypted_password: "123456",
+                    encrypted_password: User.new.send(:password_digest, '123456'),
                     name: "Student 1",
                     role: "student",
                     belt: :kup10,
@@ -21,7 +21,7 @@ User.insert_all([
                   },
                   {
                     email: "student2@gmail.com",
-                    encrypted_password: "123456",
+                    encrypted_password: User.new.send(:password_digest, '123456'),
                     name: "Student 2",
                     role: "student",
                     belt: :kup8,
