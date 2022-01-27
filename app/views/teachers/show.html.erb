@@ -1,0 +1,19 @@
+<h1 class="subtitle">Teacher dashboard</h1>
+
+<h2 class="subtitle">My groups</h2>
+<%= render 'groups', groups: @groups %>
+
+<br />
+
+<h2 class="subtitle">My students</h2>
+<%= render 'teachers/students/index', students: @students %>
+
+<% if @in_progres_group %>
+  <%= button_to "Currently on clases, take attendance!", attendanced_url(@in_progress_group.id) %>
+<% end %>
+
+<br />
+
+<%= link_to "Register new user", new_teacher_url, user: @user %>
+<br />
+<%= link_to "Edit my profile", edit_teacher_url(@user) %>
