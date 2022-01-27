@@ -1,6 +1,6 @@
 <h1 class="subtitle" >Editing my profile</h1>
 
-<%= render "form", new_user: @user, user: @user %>
+<%= render 'form', new_user: @user, user: @user, url: teacher_url(@user), method: :patch %>
 
 <br>
 

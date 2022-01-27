@@ -1,0 +1,27 @@
+<div id="teacher_groups">
+
+  <% if @groups %>
+
+    <% @groups.each do |group| %>
+      <p>
+        <strong>Name:</strong>
+        <%= group.name %>
+      </p>
+
+      <p>    
+        <strong>from:</strong> <%= group.from_time.strftime('%k:%M:%S') %>
+        <strong>to:</strong> <%= group.to_time.strftime('%k:%M:%S') %>
+      </p>
+      <p>
+        <%= link_to "Show this group", teacher_group_url(@user, group) %>
+      </p>
+      <br />
+    <% end %>
+
+  <% else %>
+    <span>You dont have groups yet...</span>
+  <% end %>
+
+  <%= link_to "Create group", new_teacher_group_url(@user) %>
+</div>
+

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :users do
+  resources :teachers, except: [:index] do
     resources :groups
     resources :attendances
     resources :documents

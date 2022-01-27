@@ -6,12 +6,12 @@
 
   <p>
     <strong>From time:</strong>
-    <%= group.from_time %>
+    <%= group.from_time.strftime('%k:%M:%S') %>
   </p>
 
   <p>
     <strong>To time:</strong>
-    <%= group.to_time %>
+    <%= group.to_time.strftime('%k:%M:%S') %>
   </p>
 
   <p>

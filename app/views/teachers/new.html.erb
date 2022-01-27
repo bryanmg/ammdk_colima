@@ -1,7 +1,6 @@
 <h1 class="title" >New user</h1>
 
-<%= render "form", new_user: @new_user, user: @user %>
-
+<%= render 'form', new_user: @new_user, user: @user, url: teachers_url(@user), method: :post %>
 <br>
 
 <div>
