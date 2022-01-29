@@ -4,6 +4,6 @@ class Group < ApplicationRecord
 
   validates :from_time, :to_time, presence: true
 
-  has_many :group_members, dependent: :destroy, class_name: "GroupMember"
-  has_many :members, through: :group_members, class_name: "User"
+  has_many :group_members, dependent: :destroy
+  has_many :users, through: :group_members
 end

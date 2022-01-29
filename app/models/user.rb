@@ -7,5 +7,5 @@ class User < ApplicationRecord
   validates :email, :name, :birth_date, presence: true
 
   has_many :groups, dependent: :destroy
-  has_many :group_members, through: :group, dependent: :destroy
+  has_many :group_members, through: :groups, dependent: :destroy
 end
