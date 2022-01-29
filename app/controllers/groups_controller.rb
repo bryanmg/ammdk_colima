@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
   def edit; end
 
   def create
-    @group = @user.groups.build(group_params)
+    @group = @user.groups.new(group_params)
 
     if @group.save
       redirect_to user_groups_url(@user, @group), notice: "Group was successfully created."
@@ -49,6 +49,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :from_time, :to_time)
+    params.require(:group).permit(:name, :from_time, :to_time, days_of_the_week: {})
   end
 end

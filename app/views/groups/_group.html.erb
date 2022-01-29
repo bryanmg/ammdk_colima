@@ -14,4 +14,10 @@
     <%= group.to_time %>
   </p>
 
+  <p>
+    <strong>Days of the week:</strong>
+    <%= group.days_of_the_week.select { |k, d| d == true }.keys %>
+  </p>
+
+
 </div>

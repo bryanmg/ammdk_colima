@@ -27,6 +27,21 @@
   </div>
 
   <div>
+    <%= form.label :days_of_the_week, style: "display: block" %>
+    
+    <%= form.fields_for :days_of_the_week do |field| %>
+      sunday: <%= field.check_box :sunday? %>
+      monday: <%= field.check_box :monday? %>
+      tuesday: <%= field.check_box :tuesday? %>
+      wednesday: <%= field.check_box :wednesday? %>
+      thursday: <%= field.check_box :thursday? %>
+      friday: <%= field.check_box :friday? %>
+      saturday: <%= field.check_box :saturday? %>
+    <% end %>
+  </div>
+
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
