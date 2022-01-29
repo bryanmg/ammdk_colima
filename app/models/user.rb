@@ -6,6 +6,6 @@ class User < ApplicationRecord
   enum :belt, BELTS, scopes: false, default: nil
   validates :email, :name, :birth_date, presence: true
 
-  has_many :group, dependent: :destroy
+  has_many :groups, dependent: :destroy
   has_many :group_members, through: :group, dependent: :destroy
 end

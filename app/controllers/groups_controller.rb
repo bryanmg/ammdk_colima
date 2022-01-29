@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
   def edit; end
 
   def create
-    @group = @user.group.new(group_params)
+    @group = @user.groups.new(group_params)
 
     if @group.save
       redirect_to user_groups_url(@user, @group), notice: "Group was successfully created."

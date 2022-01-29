@@ -6,7 +6,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     sign_in users(:one) # require devise auth
-    @group = @user.group.create(
+    @group = @user.groups.create(
       from_time: groups(:one).from_time,
       name: groups(:one).name,
       to_time: groups(:one).to_time,
