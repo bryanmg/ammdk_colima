@@ -6,10 +6,11 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     sign_in users(:one) # require devise auth
-    @group = @user.groups.create!(
+    @group = @user.group.create(
       from_time: groups(:one).from_time,
       name: groups(:one).name,
-      to_time: groups(:one).to_time
+      to_time: groups(:one).to_time,
+      days_of_the_week: { monday?: true }
     )
   end
 
@@ -61,7 +62,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy group" do
     assert_difference("Group.count", -1) do
-      delete user_group_url(@user, @group)
+      delete user_group_path(@user, @group)
     end
 
     assert_redirected_to user_groups_url(@user)
