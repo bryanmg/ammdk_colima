@@ -76,5 +76,9 @@ Group.insert_all([
                    }
                  ])
 
+group = Group.first
+user = User.last
+GroupMember.insert_all([{ user_id: user.id, group_id: group.id }])
+
 p "Seed... Created #{User.count} users"
 p "Seed... Created #{Group.count} groups"

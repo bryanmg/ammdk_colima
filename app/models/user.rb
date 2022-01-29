@@ -4,8 +4,8 @@ class User < ApplicationRecord
 
   enum :role, { teacher: "teacher", student: "student" }, scopes: false, default: "student"
   enum :belt, BELTS, scopes: false, default: nil
-
-  has_many :groups, dependent: :destroy
-
   validates :email, :name, :birth_date, presence: true
+
+  has_many :group, dependent: :destroy
+  has_many :group_members, through: :group, dependent: :destroy
 end
