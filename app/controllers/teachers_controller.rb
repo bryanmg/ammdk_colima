@@ -1,16 +1,20 @@
 class TeachersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_user, except: [:new]
+  before_action :authenticate_user!, :set_user
 
   def show
     @groups = @user.groups.all
-    # TODO: All students of this profesor
-    @students = nil
+    @total_of_students = @user.group_members.count
     # TODO: Add days of the weey to this query
-    @in_progress_group = Group
-                         .where("from_time <= ?", Time.new)
-                         .where("to_time >= ?", Time.new)
-                         .last
+    @in_progress_group = @user.groups
+                              .where("from_time <= ?", Time.new)
+                              .where("to_time >= ?", Time.new).last
+  end
+
+  def show_students
+    @students = User.find(
+      [@user.group_members.map(&:user_id)]
+    )
+    render "teachers/students/index"
   end
 
   def new

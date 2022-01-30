@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :teachers, except: [:index] do
+    get "/students", to: "teachers#show_students", as: "students"
     resources :groups
     resources :attendances
     resources :documents

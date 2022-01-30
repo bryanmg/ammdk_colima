@@ -37,8 +37,10 @@
     <%= form.label :role, style: "display: block" %>
     <%= form.select :role, ["teacher", "student"], value: new_user.name,  default: "student" %>
   </div>
-
+  
+  <%# TODO: Add field asign students to group %>
   <%# TODO: Add field for students table %>
+  <br/>
 
   <div>
     <%= form.submit %>
