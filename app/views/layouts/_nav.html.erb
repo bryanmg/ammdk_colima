@@ -1,0 +1,21 @@
+<div class="hero-head">
+  <header class="navbar is-success">
+    <div class="container">
+      <div id="navbarMenuHeroC" class="navbar-menu">
+        <div class="navbar-end">
+          <span class="navbar-item">
+            <% if user_signed_in? %>
+              <p class="mr-5">
+                Hola
+                <strong> <%= current_user.name %></strong>.
+              </p>
+              <%= button_to "Logout", destroy_user_session_path, :method => :delete, :class => 'button is-success is-inverted' %>
+            <% else %>
+              <%= link_to "Login", new_user_session_path, :class => 'button is-success is-inverted'  %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
