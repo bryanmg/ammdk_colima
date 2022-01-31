@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :attendances
     resources :documents
   end
+
+  resources :students, except: [:index, :create, :destroy]
 end

@@ -77,8 +77,26 @@ Group.insert_all([
                  ])
 
 group = Group.first
-user = User.last
-GroupMember.insert_all([{ user_id: user.id, group_id: group.id }])
+students = User.where(role: ["student"]).select(:id)
+
+GroupMember.create([
+                     students.map { |student| { user_id: student.id, group_id: group.id } }
+                   ])
+
+StudentInformation.create([
+                            students.map do |student|
+                              {
+                                ocupation: "Preparatory student",
+                                civil_status: "Single",
+                                tutor_name: "Clark Devlin",
+                                cellphone: "3121230011",
+                                health_insurance: "1234567890",
+                                user_id: student.id
+                              }
+                            end
+                          ])
 
 p "Seed... Created #{User.count} users"
 p "Seed... Created #{Group.count} groups"
+p "Seed... Created #{GroupMember.count} member lists"
+p "Seed... Created #{StudentInformation.count} student information"
