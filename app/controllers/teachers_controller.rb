@@ -10,13 +10,6 @@ class TeachersController < ApplicationController
                               .where("to_time >= ?", Time.new).last
   end
 
-  def show_students
-    @students = User.find(
-      [@user.group_members.map(&:user_id)]
-    )
-    render "teachers/students/index"
-  end
-
   def new
     @new_user = User.new
   end
