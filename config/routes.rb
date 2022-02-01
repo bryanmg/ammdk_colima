@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :users do
+  resources :teachers, except: [:index] do
+    scope module: :teachers do
+      resources :students, only: [:index]
+    end
     resources :groups
     resources :attendances
     resources :documents
