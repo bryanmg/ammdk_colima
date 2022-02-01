@@ -4,6 +4,7 @@ class TeachersController < ApplicationController
   def show
     @groups = @user.groups.all
     @total_of_students = @user.group_members.count
+    @total_of_learning_resources = @user.learning_resources.count
     # TODO: Add days of the weey to this query
     @in_progress_group = @user.groups
                               .where("from_time <= ?", Time.new)

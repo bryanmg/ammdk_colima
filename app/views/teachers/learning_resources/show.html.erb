@@ -3,8 +3,8 @@
 <%= render @teachers_learning_resource %>
 
 <div>
-  <%= link_to "Edit this learning resource", edit_teachers_learning_resource_path(@teachers_learning_resource) %> |
-  <%= link_to "Back to learning resources", teachers_learning_resources_path %>
+  <%= link_to "Edit this learning resource", edit_teacher_learning_resource_path(@user, @teachers_learning_resource) %> |
+  <%= link_to "Back to learning resources", teacher_learning_resources_path(@user) %>
 
-  <%= button_to "Destroy this learning resource", @teachers_learning_resource, method: :delete %>
+  <%= button_to "Destroy this learning resource", teacher_learning_resource_path(@user, @teachers_learning_resource), method: :delete %>
 </div>

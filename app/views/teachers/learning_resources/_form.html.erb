@@ -1,10 +1,10 @@
-<%= form_with(model: teachers_learning_resource) do |form| %>
-  <% if teachers_learning_resource.errors.any? %>
+<%= form_with(model: learning_resource, url: url) do |form| %>
+  <% if learning_resource.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(teachers_learning_resource.errors.count, "error") %> prohibited this teachers_learning_resource from being saved:</h2>
+      <h2><%= pluralize(learning_resource.errors.count, "error") %> prohibited this teachers_learning_resource from being saved:</h2>
 
       <ul>
-        <% teachers_learning_resource.errors.each do |error| %>
+        <% learning_resource.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :belt, style: "display: block" %>
-    <%= form.number_field :belt %>
+    <%= form.select :belt, BELTS %>
   </div>
 
   <div>

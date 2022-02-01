@@ -3,7 +3,7 @@ class Teachers::LearningResourcesController < ApplicationController
   before_action :set_teachers_learning_resource, only: %i[ show edit update destroy ]
 
   def index
-    @teacher_learning_resources = @user.learning_resources.all
+    @teacher_learning_resources = @user.learning_resources
   end
 
   def show
@@ -17,18 +17,18 @@ class Teachers::LearningResourcesController < ApplicationController
   end
 
   def create
-    @teachers_learning_resource = @user.learning_resources.new(teachers_learning_resource_params)
+    @teachers_learning_resource = @user.learning_resources.new(learning_resource_params)
 
     if @teachers_learning_resource.save
-      redirect_to teachers_learning_resource_url(@teachers_learning_resource), notice: "Learning resource was successfully created."
+      redirect_to teacher_learning_resources_url(@user), notice: "Learning resource was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    if @teachers_learning_resource.update(teachers_learning_resource_params)
-      redirect_to teachers_learning_resource_url(@teachers_learning_resource), notice: "Learning resource was successfully updated."
+    if @teachers_learning_resource.update(learning_resource_params)
+      redirect_to teacher_learning_resources_url(@teachers_learning_resource), notice: "Learning resource was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class Teachers::LearningResourcesController < ApplicationController
   def destroy
     @teachers_learning_resource.destroy
 
-    redirect_to teachers_learning_resources_url, notice: "Learning resource was successfully destroyed."
+    redirect_to teacher_learning_resources_url(@user), notice: "Learning resource was successfully destroyed."
   end
 
   private
@@ -51,7 +51,7 @@ class Teachers::LearningResourcesController < ApplicationController
       @teachers_learning_resource = LearningResource.find(params[:id])
     end
 
-    def teachers_learning_resource_params
-      params.require(:teachers_learning_resource).permit(:name, :description, :belt, :resource)
+    def learning_resource_params
+      params.require(:learning_resource).permit(:name, :description, :belt, :resource)
     end
 end
