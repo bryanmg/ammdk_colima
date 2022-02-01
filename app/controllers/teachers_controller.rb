@@ -24,14 +24,12 @@ class TeachersController < ApplicationController
   def edit; end
 
   def create
-    @new_user = User.new(user_params)
+    @new_user = User.new(user_params.merge(password: new_user_temp_password))
     # TODO: Add support to create students user
-    temp_password = @new_user.birth_date.strftime('%d%m%y')
-    @new_user.password = temp_password
 
     if @new_user.save
       redirect_to teacher_path(@user),
-                  notice: "#{@new_user.role.capitalize} was successfully created with password #{temp_password}."
+                  notice: "#{@new_user.role.capitalize} was created with password #{new_user_temp_password}."
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,15 +51,15 @@ class TeachersController < ApplicationController
   private
 
   def set_user
-    user_id = if params.key?("id")
-                params[:id]
-              else
-                current_user.id
-              end
+    user_id = params[:id] || current_user.id
     @user = User.find(user_id)
   end
 
   def user_params
     params.require(:user).permit(:email, :password, :name, :role, :birth_date, :belt)
+  end
+
+  def new_user_temp_password
+    Date.parse(user_params[:birth_date]).strftime('%d%m%y')
   end
 end
