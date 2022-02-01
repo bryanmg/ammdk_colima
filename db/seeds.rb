@@ -96,7 +96,17 @@ StudentInformation.create([
                             end
                           ])
 
+LearningResource.create([
+                          { name: "Kicho Palya", description: "Sibolize 'the seed' of the student", belt: 10,
+                            user_id: user.id },
+                          { name: "Palgue Sayan", description: "I don't know what simbolize", belt: 7,
+                            user_id: user.id },
+                          { name: "Balzek", description: "I don't know what does that mean", belt: 11,
+                            user_id: user.id }
+                        ])
+
 p "Seed... Created #{User.count} users"
 p "Seed... Created #{Group.count} groups"
 p "Seed... Created #{GroupMember.count} member lists"
 p "Seed... Created #{StudentInformation.count} student information"
+p "Seed... Created #{LearningResource.count} learning resources"

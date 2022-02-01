@@ -43,6 +43,7 @@ Metrics/CyclomaticComplexity:
 Metrics/MethodLength:
   Exclude:
     - 'bin/bundle'
+    - 'db/migrate/20220201060938_create_active_storage_tables.active_storage.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -55,6 +56,10 @@ Style/ClassAndModuleChildren:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/20220201060938_create_active_storage_tables.active_storage.rb'
 
 Style/ExpandPathArguments:
   Exclude:
