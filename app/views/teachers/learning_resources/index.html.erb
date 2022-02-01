@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Learning resources</h1>
+
+<div id="teachers_learning_resources">
+  <% @teachers_learning_resources.each do |teachers_learning_resource| %>
+    <%= render teachers_learning_resource %>
+    <p>
+      <%= link_to "Show this learning resource", teachers_learning_resource %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New learning resource", new_teachers_learning_resource_path %>

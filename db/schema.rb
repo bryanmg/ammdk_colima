@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_30_194117) do
+ActiveRecord::Schema.define(version: 2022_02_01_021954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2022_01_30_194117) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "days_of_the_week"
     t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "learning_resources", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.integer "belt"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_learning_resources_on_user_id"
   end
 
   create_table "student_informations", force: :cascade do |t|
@@ -66,5 +76,6 @@ ActiveRecord::Schema.define(version: 2022_01_30_194117) do
   end
 
   add_foreign_key "groups", "users"
+  add_foreign_key "learning_resources", "users"
   add_foreign_key "student_informations", "users"
 end
