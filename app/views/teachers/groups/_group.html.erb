@@ -5,19 +5,20 @@
   </p>
 
   <p>
-    <strong>From time:</strong>
+    <strong>From </strong>
     <%= group.from_time.strftime('%k:%M:%S') %>
-  </p>
-
-  <p>
-    <strong>To time:</strong>
+    <strong>To </strong>
     <%= group.to_time.strftime('%k:%M:%S') %>
   </p>
 
   <p>
-    <strong>Days of the week:</strong>
-    <%= group.days_of_the_week.select { |k, d| d == true }.keys %>
+    <strong>Days of the week</strong>
+    <%= render "teachers/groups/days_of_the_week", days_of_the_week: group.days_of_the_week %>
   </p>
 
+  <p>
+    <strong>Total of students</strong>
+    <%= group.group_members.count  %>
+  </p>
 
 </div>
