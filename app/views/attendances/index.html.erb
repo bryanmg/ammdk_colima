@@ -3,16 +3,19 @@
 
 <div id="attendances">
   <% if @attendances.present? %>
+    <p>
+      <strong>Student name:</strong>
+    </p>
+    <br />
     <% @attendances.each do |attendance| %>
       <%= render attendance %>
-      <br />
     <% end %>
   <% else %>
     <span>Not attendance taked for this date</span>
   <% end %>
 </div>
 
+<br />
 <%= link_to "Back", teacher_group_url(@user, @group) %>
 
-<br />
 
