@@ -1,0 +1,40 @@
+<h1 class="subtitle">Teacher dashboard</h1>
+
+<h2 class="subtitle">My groups</h2>
+<%= render 'groups', groups: @groups %>
+
+<br />
+
+<% if @in_progress_group.present? %>
+  <%= button_to "#{@in_progress_group.name} group on clases, take attendance!", root_path, method: :get %>
+<% end %>
+
+<br />
+
+<h2 class="subtitle">Students</h2>
+<% if @total_of_students %>
+  <span><%= @total_of_students %> Registered students</span>
+  <br />
+  <%= link_to "See all students", teacher_students_url(@user) %>
+<% else %>
+  <span>You dont have students yet...</span>
+<% end %>
+
+<br />
+<br />
+
+<h2 class="subtitle">Learning Resources</h2>
+<% if @total_of_learning_resources %>
+  <span><%= @total_of_learning_resources %> Created resources</span>
+  <br />
+  <%= link_to "See all resources", teacher_learning_resources_url(@user) %>
+<% else %>
+  <span>You dont have learning resources yet...</span>
+<% end %>
+
+<br />
+<br />
+
+<%= link_to "Register new user", new_teacher_url, user: @user %>
+<br />
+<%= link_to "Edit my profile", edit_teacher_url(@user) %>

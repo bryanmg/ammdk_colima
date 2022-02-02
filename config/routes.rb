@@ -2,12 +2,19 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: "home#index"
-  get "/", to: "home#index"
 
-  resources :users do
+  resources :teachers, except: [:index] do
+    scope module: :teachers do
+      resources :students, only: [:index]
+      resources :learning_resources
+    end
+    resources :groups
+    resources :attendances
     resources :documents
     resources :groups do
       resources :attendances
     end
   end
+
+  resources :students, except: [:index, :create, :destroy]
 end

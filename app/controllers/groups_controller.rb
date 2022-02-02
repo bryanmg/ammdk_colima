@@ -4,21 +4,27 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    redirect_to teacher_groups_url(@user)
   end
 
-  def show; end
+  def show
+    render "teachers/groups/show"
+  end
 
   def new
     @group = Group.new
+    render "teachers/groups/new"
   end
 
-  def edit; end
+  def edit
+    render "teachers/groups/edit"
+  end
 
   def create
-    @group = @user.groups.build(group_params)
+    @group = @user.groups.new(group_params)
 
     if @group.save
-      redirect_to user_groups_url(@user, @group), notice: "Group was successfully created."
+      redirect_to teacher_url(@user), notice: "Group was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +32,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to user_groups_url(@user, @group), notice: "Group was successfully updated."
+      redirect_to teacher_groups_url(@user, @group), notice: "Group was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,13 +41,13 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
 
-    redirect_to user_groups_url, notice: "Group was successfully destroyed."
+    redirect_to teacher_url(@user), notice: "Group was successfully destroyed."
   end
 
   private
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:teacher_id])
   end
 
   def set_group
@@ -49,6 +55,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :from_time, :to_time)
+    params.require(:group).permit(:name, :from_time, :to_time, days_of_the_week: {})
   end
 end

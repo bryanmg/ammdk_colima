@@ -1,0 +1,23 @@
+<div id="<%= dom_id group %>">
+  <p>
+    <strong>Name:</strong>
+    <%= group.name %>
+  </p>
+
+  <p>
+    <strong>From time:</strong>
+    <%= group.from_time.strftime('%k:%M:%S') %>
+  </p>
+
+  <p>
+    <strong>To time:</strong>
+    <%= group.to_time.strftime('%k:%M:%S') %>
+  </p>
+
+  <p>
+    <strong>Days of the week:</strong>
+    <%= group.days_of_the_week.select { |k, d| d == true }.keys %>
+  </p>
+
+
+</div>

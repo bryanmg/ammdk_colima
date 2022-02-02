@@ -1,0 +1,46 @@
+<div id="<%= dom_id user %>">
+
+  <p>
+    <strong>Name:</strong>
+    <%= user.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= user.email %>
+  </p>
+
+  <p>
+    <strong>Belt:</strong>
+    <%= user.belt %>
+  </p>
+
+  <p>
+    <strong>Ocupation:</strong>
+    <%= user.student_information&.ocupation %>
+  </p>
+
+  <p>
+    <strong>Civil status:</strong>
+    <%= user.student_information&.civil_status %>
+  </p>
+
+  <br/>
+  <h2 class="subtitle">Data of the responsible legal</h2>
+
+  <p>
+    <strong>Tutor:</strong>
+    <%= user.student_information&.tutor_name %>
+  </p>
+
+  <p>
+    <strong>Call to:</strong>
+    <%= user.student_information&.cellphone %>
+  </p>
+
+  <p>
+    <strong>Social security number:</strong>
+    <%= user.student_information&.health_insurance %>
+  </p>
+
+</div>

@@ -1,4 +1,4 @@
-<%= form_with(model: [@user, group]) do |form| %>
+<%= form_with(model: [@user, group], url: teacher_groups_url(@user, group)) do |form| %>
   <% if group.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -25,6 +25,21 @@
     <%= form.label :to_time, style: "display: block" %>
     <%= form.time_field :to_time %>
   </div>
+
+  <div>
+    <%= form.label :days_of_the_week, style: "display: block" %>
+    
+    <%= form.fields_for :days_of_the_week do |field| %>
+      sunday: <%= field.check_box :sunday? %>
+      monday: <%= field.check_box :monday? %>
+      tuesday: <%= field.check_box :tuesday? %>
+      wednesday: <%= field.check_box :wednesday? %>
+      thursday: <%= field.check_box :thursday? %>
+      friday: <%= field.check_box :friday? %>
+      saturday: <%= field.check_box :saturday? %>
+    <% end %>
+  </div>
+
 
   <div>
     <%= form.submit %>
