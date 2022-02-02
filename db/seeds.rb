@@ -28,6 +28,36 @@ User.insert_all([
                     birth_date: "12/12/2010",
                     created_at: DateTime.new,
                     updated_at: DateTime.new
+                  },
+                  {
+                    email: "student3@gmail.com",
+                    encrypted_password: User.new.send(:password_digest, '123456'),
+                    name: "Student number three",
+                    role: "student",
+                    belt: :kup8,
+                    birth_date: "12/12/2010",
+                    created_at: DateTime.new,
+                    updated_at: DateTime.new
+                  },
+                  {
+                    email: "student4@gmail.com",
+                    encrypted_password: User.new.send(:password_digest, '123456'),
+                    name: "Student number four",
+                    role: "student",
+                    belt: :kup8,
+                    birth_date: "12/12/2010",
+                    created_at: DateTime.new,
+                    updated_at: DateTime.new
+                  },
+                  {
+                    email: "student5@gmail.com",
+                    encrypted_password: User.new.send(:password_digest, '123456'),
+                    name: "Student number_five",
+                    role: "student",
+                    belt: :kup8,
+                    birth_date: "12/12/2010",
+                    created_at: DateTime.new,
+                    updated_at: DateTime.new
                   }
                 ])
 
@@ -105,8 +135,21 @@ LearningResource.create([
                             user_id: user.id }
                         ])
 
+Attendance.create([
+                    students.map { |student| { user: student, group: group, date: Date.new, present: false } }
+                  ])
+
+3.times do
+  Attendance.create([
+                      students.map do |student|
+                        { user: student, group: group, date: Date.new, present: true }
+                      end
+                    ])
+end
+
 p "Seed... Created #{User.count} users"
 p "Seed... Created #{Group.count} groups"
 p "Seed... Created #{GroupMember.count} member lists"
 p "Seed... Created #{StudentInformation.count} student information"
 p "Seed... Created #{LearningResource.count} learning resources"
+p "Seed... Created #{Attendance.count} attendances"
