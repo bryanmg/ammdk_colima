@@ -1,8 +1,5 @@
 <%= render @attendance %>
 
 <div>
-  <%= link_to "Edit this attendance", edit_user_group_attendance_url(@user, @group, @attendance) %> |
-  <%= link_to "Back to attendances", user_group_attendances_url(@user, @group) %>
-
-  <%= button_to "Destroy this attendance", user_group_attendance_url(@user, @group, @attendance), method: :delete %>
+  <%= link_to "Back to groups", teacher_group_url(@user, @group) %>
 </div>

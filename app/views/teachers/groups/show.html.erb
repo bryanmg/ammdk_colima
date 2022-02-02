@@ -1,7 +1,22 @@
+<h2 class="title"><%= @group.name %></h2>
 <%= render "teachers/groups/group", group:@group %>
 
 <div>
-  <%= link_to "Edit this group", edit_teacher_group_path(@user, @group) %> |
+  <%= link_to "Take attendance", new_teacher_group_attendance_url(@user, @group) %>
+  <br>
+  <br>
+  <%= form_with(method: :get, url: teacher_group_attendances_url(@user, @group)) do |form| %>
+    <div>
+      <%= form.label "Select date", style: "display: block" %>
+      <%= form.date_field :date %>
+    </div>
+    <%= form.submit "View attendance record"%>
+  
+    
+  <% end %>
+
+  <%= link_to "Edit this group", edit_teacher_group_path(@user, @group) %>
+  <br>
   <%= link_to "Back to groups", teacher_url(@user) %>
 
   <%= button_to "Destroy this group", teacher_group_url(@user, @group), method: :delete %>

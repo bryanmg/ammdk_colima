@@ -1,17 +1,22 @@
 <div id="<%= dom_id attendance %>">
   <p>
     <strong>User:</strong>
-    <%= attendance.user_id %>
+    <%= attendance.user.name %>
+  </p>
+
+  <p>
+    <strong>present:</strong>
+    <%= attendance.present %>
   </p>
 
   <p>
     <strong>Group:</strong>
-    <%= attendance.group_id %>
+    <%= attendance.group.name %>
   </p>
 
   <p>
     <strong>Date:</strong>
-    <%= attendance.date %>
+    <%= attendance.date.strftime('%d-%m-%Y') %>
   </p>
 
 </div>

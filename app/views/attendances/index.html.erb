@@ -1,19 +1,18 @@
-<p style="color: green"><%= notice %></p>
 
-<h1 class="subtitle">Attendances</h1>
+<h1 class="subtitle">Attendances of the group <%= @group.name%> for date <%= params[:date]%></h1>
 
 <div id="attendances">
-  <% @attendances.each do |attendance| %>
-    <%= render attendance %>
-    <p>
-      <%= link_to "Show this attendance", user_group_attendance_url(@user, @group, attendance) %>
-    </p>
-    <br />
+  <% if @attendances.present? %>
+    <% @attendances.each do |attendance| %>
+      <%= render attendance %>
+      <br />
+    <% end %>
+  <% else %>
+    <span>Not attendance taked for this date</span>
   <% end %>
 </div>
 
-<%= link_to "New attendance", new_user_group_attendance_url(@user, @group) %>
+<%= link_to "Back", teacher_group_url(@user, @group) %>
 
 <br />
 
-<%= link_to "Return to groups", user_groups_url(@user) %>

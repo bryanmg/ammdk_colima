@@ -1,9 +1,8 @@
 <h1 class="subtitle">New attendance</h1>
 
 <%= render "form", attendance: @attendance %>
-
 <br>
 
 <div>
-  <%= link_to "Back to attendances", user_group_attendances_url(@user, @group) %>
+  <%= link_to "Back to group", teacher_group_url(@user, @group) %>
 </div>

@@ -1,9 +1,14 @@
 class AttendancesController < ApplicationController
   before_action :set_user, :set_group, :authenticate_user!
-  before_action :set_attendance, only: [:show, :edit, :update, :destroy]
+  before_action :set_attendance, only: [:show]
 
   def index
-    @attendances = Attendance.all
+    if params[:date].present?
+      @attendances = @group.attendances.where(date: params[:date])
+      redirect_to teacher_group_url(@user, @group), alert: "Not attendances for this day." if @attendances.count.zero?
+    else
+      redirect_to teacher_group_url(@user, @group), alert: "Must specify date."
+    end
   end
 
   def show; end
@@ -12,38 +17,31 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new
   end
 
-  def edit; end
-
   def create
-    @attendance = Attendance.new(attendance_params)
+    exist = { group: @group, date: Date.today }
+    return redirect_to_group(alert: "Attendance was taked for this group.") if Attendance.where(exist).present?
 
-    if @attendance.save
-      redirect_to user_group_attendances_url(@user, @group, @attendance),
-                  notice: "Attendance was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+    attendances = []
+    attendance_params[:attendances].each { |_key, item| attendances << make_attendance_field(item) }
 
-  def update
-    if @attendance.update(attendance_params)
-      redirect_to user_group_attendance_url(@user, @group, @attendance),
-                  notice: "Attendance was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
+    return redirect_to_group(notice: "Attendance was successfully created.") if Attendance.create!(attendances)
 
-  def destroy
-    @attendance.destroy
-
-    redirect_to user_group_attendances_url(@user, @group), notice: "Attendance was successfully destroyed."
+    render :new, status: :unprocessable_entity
   end
 
   private
 
+  def redirect_to_group(params)
+    redirect_to teacher_group_url(@user, @group), params
+  end
+
+  def make_attendance_field(entry)
+    { group_id: @group.id, user_id: entry[:user_id], date: Date.today,
+      present: ActiveRecord::Type::Boolean.new.cast(entry[:present]) }
+  end
+
   def set_user
-    @user = User.find params[:user_id]
+    @user = User.find params[:teacher_id]
   end
 
   def set_group
@@ -55,6 +53,6 @@ class AttendancesController < ApplicationController
   end
 
   def attendance_params
-    params.require(:attendance).permit(:user_id, :group_id, :date)
+    params.require(:attendance).permit(:group_id, attendances: {})
   end
 end

@@ -6,7 +6,7 @@
 <br />
 
 <% if @in_progress_group.present? %>
-  <%= button_to "#{@in_progress_group.name} group on clases, take attendance!", root_path, method: :get %>
+  <%= button_to "#{@in_progress_group.name} group on clases, take attendance!", new_teacher_group_attendance_url(@user, @in_progress_group), method: :get %>
 <% end %>
 
 <br />
