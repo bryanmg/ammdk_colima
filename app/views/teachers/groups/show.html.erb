@@ -1,8 +1,13 @@
-<%= render "teachers/groups/group", group:@group %>
+<div class="container">
+  <br/>
+  <h1 class="title">Group: <%= @group.name %></h1>
 
-<div>
-  <%= link_to "Edit this group", edit_teacher_group_path(@user, @group) %> |
-  <%= link_to "Back to groups", teacher_url(@user) %>
+  <%= render "teachers/groups/group", group:@group %>
 
-  <%= button_to "Destroy this group", teacher_group_url(@user, @group), method: :delete %>
+  <div>
+    <%= link_to "Edit this group", edit_teacher_group_path(@user, @group) %>
+    <%= link_to "Back", teacher_url(@user) %>
+
+    <%= button_to "Destroy", teacher_group_url(@user, @group), method: :delete %>
+  </div>
 </div>
