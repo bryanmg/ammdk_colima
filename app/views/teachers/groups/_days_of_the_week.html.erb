@@ -1,0 +1,12 @@
+<div id="days of the week" class="">
+  <% days_of_the_week.each do |day| %>
+    <% if day[1] %>
+      <span class="tag is-info">
+        <i class="fas fa-check mr-2"></i> 
+        <%= day[0] %>
+      </span>
+    <% else %>
+      <span class="tag is-ligth"><%= day[0] %></span>
+    <% end %>
+  <% end %>
+</div>

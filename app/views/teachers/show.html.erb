@@ -1,40 +1,88 @@
-<h1 class="subtitle">Teacher dashboard</h1>
+<div class="container">
+  <h1 class="title">Dashboard</h1>
 
-<h2 class="subtitle">My groups</h2>
-<%= render 'groups', groups: @groups %>
+  <% if @in_progress_group.present? %>
+    <div class="content">
+      <div class="notification is-info">
+        <button class="delete"></button>
+        <%= link_to "#{@in_progress_group.name} group on clases, take attendance!", new_teacher_group_attendance_url(@user, @in_progress_group) %>
+      </div>
+    </div>
+  <% end %>
 
-<br />
+  <div class="content">
+    <div class="columns ">
+    
+      <div class="column">
+        <div class="box content is-medium">
+          <div class="media">
+            <div class="media-left">
+              <span class="title"><%= @total_of_students %></span>
+            </div>
+            <div class="media-content">
+              <i class="fas fa-users"></i>
+              <%= link_to "Students", teacher_students_url(@user), class: "has-text-grey-darker"%>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<% if @in_progress_group.present? %>
-  <%= button_to "#{@in_progress_group.name} group on clases, take attendance!", new_teacher_group_attendance_url(@user, @in_progress_group), method: :get %>
-<% end %>
+      <div class="column">
+        <div class="box content is-medium">
+          <div class="media">
+            <div class="media-left">
+              <span class="title"><%= @user.groups.count %></span>
+            </div>
+            <div class="media-content">
+              <i class="fas fa-user-clock"></i>
+              <%= link_to "Groups", teacher_groups_url(@user), class: "has-text-grey-darker" %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<br />
+      <div class="column">
+        <div class="box content is-medium">
+          <div class="media">
+            <div class="media-left">
+              <span class="title">##</span>
+            </div>
+            <div class="media-content">
+              <i class="fas fa-chalkboard-teacher"></i>
+              Learning resources
+            </div>
+            <div class="media-content">
+            </div>
+          </div>
+        </div>
+      </div>
 
-<h2 class="subtitle">Students</h2>
-<% if @total_of_students %>
-  <span><%= @total_of_students %> Registered students</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="columns is-mobile">
+      <div class="column">
+        <div class="buttons are-medium">
+          <%= link_to "Create group", new_teacher_group_url(@user), class: "button is-info is-outlined" %>
+          <%= link_to "Register User", new_teacher_url, user: @user, class: "button is-info is-outlined" %>
+          <%= link_to "Edit my profile", edit_teacher_url(@user), class: "button is-info is-outlined" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="subtitle">My groups</h2>
+  <%= render 'groups', groups: @groups %>
+
+  <h2 class="subtitle">Learning Resources</h2>
+  <% if @total_of_learning_resources %>
+    <span><%= @total_of_learning_resources %> Created resources</span>
+    <br />
+    <%= link_to "See all resources", teacher_learning_resources_url(@user) %>
+  <% else %>
+    <span>You dont have learning resources yet...</span>
+  <% end %>
+
   <br />
-  <%= link_to "See all students", teacher_students_url(@user) %>
-<% else %>
-  <span>You dont have students yet...</span>
-<% end %>
-
-<br />
-<br />
-
-<h2 class="subtitle">Learning Resources</h2>
-<% if @total_of_learning_resources %>
-  <span><%= @total_of_learning_resources %> Created resources</span>
-  <br />
-  <%= link_to "See all resources", teacher_learning_resources_url(@user) %>
-<% else %>
-  <span>You dont have learning resources yet...</span>
-<% end %>
-
-<br />
-<br />
-
-<%= link_to "Register new user", new_teacher_url, user: @user %>
-<br />
-<%= link_to "Edit my profile", edit_teacher_url(@user) %>
+</div>
