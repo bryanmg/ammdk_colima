@@ -14,5 +14,11 @@ module Teachers
 
       assert_response :success
     end
+
+    test "should get show" do
+      get teacher_student_url(@user, users(:two))
+
+      assert_response :success
+    end
   end
 end
