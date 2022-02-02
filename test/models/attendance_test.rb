@@ -22,8 +22,8 @@ class AttendanceTest < ActiveSupport::TestCase
     assert_includes attendance.errors.messages[:date], "can't be blank"
   end
 
-  test "is valid with user group and date" do
-    attendance = Attendance.new(user: users(:one), group: groups(:one), date: Date.new)
+  test "is valid with user group date and present" do
+    attendance = Attendance.new(user: users(:one), group: groups(:one), date: Date.new, present: true)
 
     assert attendance.valid?
     assert attendance.save

@@ -2,8 +2,10 @@ one:
   user: one
   group: one
   date: 2022-01-18
+  present: true
 
 two:
   user: two
   group: two
   date: 2022-01-18
+  present: true
