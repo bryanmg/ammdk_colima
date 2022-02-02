@@ -24,9 +24,10 @@ class TeachersController < ApplicationController
         StudentInformation.create(student_information_params.merge(user: @user))
         GroupMember.create(user: @new_user, group_id: params[:user][:group])
       end
-      return redirect_to teacher_path(@user),
-                         notice: "#{@new_user.role.capitalize} was created with password #{new_user_temp_password}."
     end
+
+    return redirect_to_teacher if @new_user.save
+
     render :new, status: :unprocessable_entity
   end
 
@@ -57,11 +58,16 @@ class TeachersController < ApplicationController
   end
 
   def student_information_params
-    params.require(:user).require(:student_information).permit(:ocupation, :civil_status, :tutor_name, :cellphone,
-                                                               :health_insurance)
+    params.require(:user).permit(student_information: [:ocupation, :civil_status, :tutor_name, :cellphone,
+                                                       :health_insurance])[:student_information]
   end
 
   def new_user_temp_password
     Date.parse(user_params[:birth_date]).strftime('%d%m%y')
+  end
+
+  def redirect_to_teacher
+    redirect_to teacher_path(@user),
+                notice: "#{@new_user.role.capitalize} created with password #{new_user_temp_password}."
   end
 end
