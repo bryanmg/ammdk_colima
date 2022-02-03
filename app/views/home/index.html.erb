@@ -11,7 +11,15 @@
           <i class="fas fa-sign-in-alt"></i>
         </span>
         <span>
-          <%= link_to "Inicia sesión", new_user_session_path  %>
+          <% if user_signed_in?
+              if current_user.teacher?%>
+                <%= link_to "Go to my dashboard", teacher_path(current_user) %>
+              <% else  %>
+                <%= link_to "Go to my dashboard", student_path(current_user) %>
+              <% end  %>
+          <% else  %>
+            <%= link_to "Inicia sesión", new_user_session_path %>
+          <% end  %>
           para continuar
         </span>
       </span>
