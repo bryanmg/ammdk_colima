@@ -5,11 +5,14 @@
     <%= render "teachers/learning_resources/learning_resource", learning_resource: learning_resource%>
     <p>
       <%= link_to "Show this learning resource", teacher_learning_resource_path(@user, learning_resource) %>
+      <br>
     </p>
     <br>
   <% end %>
 </div>
 
+<%= link_to "Assign learning resource", new_teacher_students_learning_resource_url(@user) %>
+<br>
 <%= link_to "New learning resource", new_teacher_learning_resource_path(@user) %>
 <br>
 <%= link_to "Back to dashboard", teacher_url(@user) %>
