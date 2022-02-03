@@ -1,78 +1,37 @@
-<%= form_with(model: new_user, url: url, method: method) do |form| %>
+<%= form_with(model: teacher, url: url, method: method) do |form| %>
 
-  <% if new_user.errors.any? %>
+  <% if teacher.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(new_user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+      <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this user from being saved:</h2>
       <ul>
-        <% new_user.errors.each do |error| %>
+        <% teacher.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
-
     </div>
   <% end %>
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, value: new_user.name, required: true %>
+    <%= form.text_field :name, value: teacher.name, required: true %>
   </div>
 
   <div>
     <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, value: new_user.email %>
+    <%= form.email_field :email, value: teacher.email %>
   </div>
 
   <div>
     <%= form.label :belt, style: "display: block" %>
-    <%= form.select :belt, BELTS.keys, value: new_user.belt%>
+    <%= form.select :belt, BELTS.keys, value: teacher.belt%>
   </div>
 
   <div>
     <%= form.label :birth_date, style: "display: block" %>
-    <%= form.date_field :birth_date, value: new_user.birth_date %>
+    <%= form.date_field :birth_date, value: teacher.birth_date %>
   </div>
 
-  <div>
-    <%= form.label :role, style: "display: block" %>
-    <%= form.select :role, ["teacher", "student"], value: new_user.name,  default: "student" %>
-  </div>
-
-  <div>
-    <%= form.label :group, style: "display: block" %>
-    <%= form.select :group, current_user.groups.all.pluck(:name, :id) %>
-  </div>
-
-  <span class="subtitle">Student information</span>
-  <%= form.fields_for :student_information do |field| %>
-    <div>
-      <%= field.label :ocupation, style: "display: block" %>
-      <%= field.text_field :ocupation, value: new_user.student_information&.ocupation%>
-    </div>
-
-    <div>
-      <%= field.label :civil_status, style: "display: block" %>
-      <%= field.text_field :civil_status, value: new_user.student_information&.civil_status %>
-    </div>
-
-    <div>
-      <%= field.label :tutor_name, style: "display: block" %>
-      <%= field.text_field :tutor_name, value: new_user.student_information&.tutor_name %>
-    </div>
-
-    <div>
-      <%= field.label :cellphone, style: "display: block" %>
-      <%= field.text_field :cellphone, value: new_user.student_information&.cellphone %>
-    </div>
-
-    <div>
-      <%= field.label :health_insurance, style: "display: block" %>
-      <%= field.text_field :health_insurance, value: new_user.student_information&.health_insurance %>
-    </div>
-  
-  <% end %>
   <br/>
-
   <div>
     <%= form.submit %>
   </div>

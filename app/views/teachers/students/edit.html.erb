@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="subtitle" >Editing student</h1>
+
+  <%= render 'form', user: @user, student: @student, url: teacher_student_url(@user, @student), method: :patch %>
+  <br>
+
+  <%= link_to "Back to students", teacher_students_url(@user) %>
+</div>

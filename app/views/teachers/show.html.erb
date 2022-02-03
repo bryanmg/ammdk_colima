@@ -65,8 +65,9 @@
       <div class="column">
         <div class="buttons are-medium">
           <%= link_to "Create group", new_teacher_group_url(@user), class: "button is-info is-outlined" %>
+          <%= link_to "Register student", new_teacher_student_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "View students", teacher_students_url(@user), class: "button is-info is-outlined" %>
-          <%= link_to "Register User", new_teacher_url, user: @user, class: "button is-info is-outlined" %>
+          <%= link_to "Register teacher", new_teacher_url, user: @user, class: "button is-info is-outlined" %>
           <%= link_to "Edit my profile", edit_teacher_url(@user), class: "button is-info is-outlined" %>
         </div>
       </div>
