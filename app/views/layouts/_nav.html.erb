@@ -7,7 +7,7 @@
             <% if user_signed_in? %>
               <p class="mr-5">
                 Hola
-                <strong> <%= current_user.name %></strong>.
+                <strong> <%= current_user.name %></strong>
               </p>
               <%= button_to "Logout", destroy_user_session_path, :method => :delete, :class => 'button is-success is-inverted' %>
             <% else %>

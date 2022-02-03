@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :groups do
       resources :attendances, except: [:edit, :update, :destroy]
     end
+    resources :students_learning_resources, only: [:new, :create]
   end
 
   resources :students, except: [:index, :create, :destroy]
