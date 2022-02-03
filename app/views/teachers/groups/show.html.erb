@@ -10,7 +10,7 @@
     <%= form_with(method: :get, url: teacher_group_attendances_url(@user, @group)) do |form| %>
       <div>
         <%= form.label "Select date", style: "display: block" %>
-        <%= form.date_field :date %>
+        <%= form.date_field :date, required: true%>
       </div>
       <%= form.submit "View attendance record"%>
     <% end %>

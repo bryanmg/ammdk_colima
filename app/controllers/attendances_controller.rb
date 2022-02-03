@@ -3,12 +3,8 @@ class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show]
 
   def index
-    if params[:date].present?
-      @attendances = @group.attendances.where(date: params[:date])
-      redirect_to teacher_group_url(@user, @group), alert: "Not attendances for this day." if @attendances.count.zero?
-    else
-      redirect_to teacher_group_url(@user, @group), alert: "Must specify date."
-    end
+    @attendances = @group.attendances.where(date: params[:date])
+    return redirect_to_group alert: "Not attendances for this day." if @attendances.count.zero?
   end
 
   def show; end
@@ -18,8 +14,7 @@ class AttendancesController < ApplicationController
   end
 
   def create
-    exist = { group: @group, date: Date.today }
-    return redirect_to_group(alert: "Attendance was taked for this group.") if Attendance.where(exist).present?
+    return redirect_to_group(alert: "Attendance was taked for this group.") if attendance_already_taked
 
     attendances = []
     attendance_params[:attendances].each { |_key, item| attendances << make_attendance_field(item) }
@@ -30,6 +25,11 @@ class AttendancesController < ApplicationController
   end
 
   private
+
+  def attendance_already_taked
+    attendance_data = { group: @group, date: Date.today }
+    Attendance.where(attendance_data).present?
+  end
 
   def redirect_to_group(params)
     redirect_to teacher_group_url(@user, @group), params
