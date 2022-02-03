@@ -1,0 +1,16 @@
+<%= form_with(model: students_learning_resource, url: teacher_students_learning_resources_url(@user)) do |form| %>
+ 
+  <div>
+    <%= form.label "Assign to", style: "display: block" %>
+    <%= form.select :user_id, @members.pluck(:name, :id) %>
+  </div>
+
+  <div>
+    <%= form.label :learning_resource_id, style: "display: block" %>
+    <%= form.select :learning_resource_id, @learning_resource.pluck(:name, :id)%>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

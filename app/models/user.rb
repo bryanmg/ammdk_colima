@@ -11,4 +11,5 @@ class User < ApplicationRecord
 
   has_one :student_information
   has_many :learning_resources, dependent: :destroy
+  has_many :students_learning_resources, dependent: :destroy
 end
