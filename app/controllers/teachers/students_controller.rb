@@ -1,13 +1,47 @@
 module Teachers
   class StudentsController < ApplicationController
     before_action :authenticate_user!, :set_user
-    before_action :set_student, only: [:show]
+    before_action :set_student, only: [:show, :edit, :update, :destroy]
 
     def index
       @students = User.find(@user.group_members.map(&:user_id))
     end
 
     def show; end
+
+    def new
+      @student = User.new
+    end
+
+    def edit; end
+
+    def create
+      ActiveRecord::Base.transaction do
+        @student = User.create(user_params.merge(password: new_user_temp_password, role: "student"))
+        StudentInformation.create(student_information_params.merge(user_id: @student.id))
+        GroupMember.create(group_id: params[:user][:group], user: @student)
+      end
+
+      return redirect_to_index if @student.save
+
+      render :new, status: :unprocessable_entity
+    end
+
+    def update
+      ActiveRecord::Base.transaction do
+        @student.update(user_params)
+        @student.student_information&.update(student_information_params)
+        @student.group_members.update(group_id: params[:user][:group])
+      end
+      redirect_to teacher_students_url(@user), notice: "Student successfully updated."
+    rescue StandardError
+      render :edit, status: :unprocessable_entity
+    end
+
+    def destroy
+      @student.destroy
+      redirect_to teacher_students_url(@user), notice: "Student successfully destroyed."
+    end
 
     private
 
@@ -16,8 +50,24 @@ module Teachers
     end
 
     def set_user
-      user_id = current_user.id || params[:teacher_id]
-      @user = User.find(user_id)
+      @user = User.find(params[:teacher_id])
+    end
+
+    def redirect_to_index
+      redirect_to teacher_students_path(@user), notice: "Student created with password #{new_user_temp_password}."
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :password, :name, :role, :birth_date, :belt)
+    end
+
+    def student_information_params
+      params.require(:user).permit(student_information: [:ocupation, :civil_status, :tutor_name, :cellphone,
+                                                         :health_insurance])[:student_information]
+    end
+
+    def new_user_temp_password
+      Date.parse(user_params[:birth_date]).strftime('%d%m%y')
     end
   end
 end

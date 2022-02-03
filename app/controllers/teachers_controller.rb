@@ -12,38 +12,30 @@ class TeachersController < ApplicationController
   end
 
   def new
-    @new_user = User.new
+    @teacher = User.new
   end
 
   def edit; end
 
   def create
-    ActiveRecord::Base.transaction do
-      @new_user = User.create(user_params.merge(password: new_user_temp_password))
-      if @new_user.student?
-        StudentInformation.create(student_information_params.merge(user: @user))
-        GroupMember.create(user: @new_user, group_id: params[:user][:group])
-      end
-    end
+    @teacher = User.new(user_params.merge(password: new_temp_password, role: "teacher"))
 
-    return redirect_to_teacher if @new_user.save
+    if @teacher.save
+      return redirect_to teacher_path(@user), notice: "Teacher created with password #{new_temp_password}."
+    end
 
     render :new, status: :unprocessable_entity
   end
 
   def update
-    if @user.update(user_params)
-      redirect_url = teacher_url(@user)
-      redirect_url = teacher_students_url(current_user.id) if @user.student?
+    return redirect_to teacher_url(@user), notice: "Profile was successfully updated." if @user.update(user_params)
 
-      return redirect_to redirect_url, notice: "#{@user.role.capitalize} was successfully updated."
-    end
     render :edit, status: :unprocessable_entity
   end
 
   def destroy
     @user.destroy
-    redirect_to teachers_url, notice: "#{@user.role.capitalize} was successfully destroyed."
+    redirect_to teachers_url, notice: "Teacher was successfully destroyed."
   end
 
   private
@@ -54,20 +46,10 @@ class TeachersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :name, :role, :birth_date, :belt)
+    params.require(:user).permit(:email, :password, :name, :birth_date, :belt)
   end
 
-  def student_information_params
-    params.require(:user).permit(student_information: [:ocupation, :civil_status, :tutor_name, :cellphone,
-                                                       :health_insurance])[:student_information]
-  end
-
-  def new_user_temp_password
+  def new_temp_password
     Date.parse(user_params[:birth_date]).strftime('%d%m%y')
-  end
-
-  def redirect_to_teacher
-    redirect_to teacher_path(@user),
-                notice: "#{@new_user.role.capitalize} created with password #{new_user_temp_password}."
   end
 end

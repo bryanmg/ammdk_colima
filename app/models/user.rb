@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :groups, dependent: :destroy
   has_many :group_members, through: :groups, dependent: :destroy
 
-  has_one :student_information
+  has_one :student_information, dependent: :destroy
   has_many :learning_resources, dependent: :destroy
 end
