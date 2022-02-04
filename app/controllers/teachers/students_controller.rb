@@ -16,16 +16,20 @@ module Teachers
     def edit; end
 
     def create
-      @student = User.create(user_params.merge(password: new_user_temp_password, role: "student"))
-      return redirect_to_index if @student.save
+      @student = User.new(user_params.merge(password: new_user_temp_password, role: "student"))
+      if @student.save
+        return redirect_to teacher_students_path(@user),
+                           notice: "Student created with password #{new_user_temp_password}."
+      end
 
       render :new, status: :unprocessable_entity
     end
 
     def update
-      @student.update(user_params)
-      redirect_to teacher_students_url(@user), notice: "Student successfully updated."
-    rescue StandardError
+      if @student.update(user_params)
+        return redirect_to teacher_students_url(@user), notice: "Student successfully updated."
+      end
+
       render :edit, status: :unprocessable_entity
     end
 
@@ -44,9 +48,7 @@ module Teachers
       @user = User.find(params[:teacher_id])
     end
 
-    def redirect_to_index
-      redirect_to teacher_students_path(@user), notice: "Student created with password #{new_user_temp_password}."
-    end
+    def redirect_to_index; end
 
     def user_params
       params.require(:user).permit(
@@ -54,11 +56,6 @@ module Teachers
         group_member_attributes: [:group_id],
         student_information_attributes: [:ocupation, :civil_status, :tutor_name, :cellphone, :health_insurance]
       )
-    end
-
-    def student_information_params
-      params.require(:user).permit(student_information_atributes: [:ocupation, :civil_status, :tutor_name, :cellphone,
-                                                                   :health_insurance])[:student_information]
     end
 
     def new_user_temp_password
