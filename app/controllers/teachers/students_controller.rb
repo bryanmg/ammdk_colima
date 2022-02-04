@@ -48,8 +48,6 @@ module Teachers
       @user = User.find(params[:teacher_id])
     end
 
-    def redirect_to_index; end
-
     def user_params
       params.require(:user).permit(
         :email, :password, :name, :role, :birth_date, :belt,
