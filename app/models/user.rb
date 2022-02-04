@@ -11,4 +11,7 @@ class User < ApplicationRecord
 
   has_one :student_information, dependent: :destroy
   has_many :learning_resources, dependent: :destroy
+
+  has_one :group_member, dependent: :destroy
+  accepts_nested_attributes_for :group_member, :student_information
 end

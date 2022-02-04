@@ -16,23 +16,14 @@ module Teachers
     def edit; end
 
     def create
-      ActiveRecord::Base.transaction do
-        @student = User.create(user_params.merge(password: new_user_temp_password, role: "student"))
-        StudentInformation.create(student_information_params.merge(user_id: @student.id))
-        GroupMember.create(group_id: params[:user][:group], user: @student)
-      end
-
+      @student = User.create(user_params.merge(password: new_user_temp_password, role: "student"))
       return redirect_to_index if @student.save
 
       render :new, status: :unprocessable_entity
     end
 
     def update
-      ActiveRecord::Base.transaction do
-        @student.update(user_params)
-        @student.student_information&.update(student_information_params)
-        @student.group_members.update(group_id: params[:user][:group])
-      end
+      @student.update(user_params)
       redirect_to teacher_students_url(@user), notice: "Student successfully updated."
     rescue StandardError
       render :edit, status: :unprocessable_entity
@@ -58,11 +49,15 @@ module Teachers
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :name, :role, :birth_date, :belt)
+      params.require(:user).permit(
+          :email, :password, :name, :role, :birth_date, :belt,
+          group_member_attributes: [:group_id],
+          student_information_attributes: [:ocupation, :civil_status, :tutor_name, :cellphone, :health_insurance]
+      )
     end
 
     def student_information_params
-      params.require(:user).permit(student_information: [:ocupation, :civil_status, :tutor_name, :cellphone,
+      params.require(:user).permit(student_information_atributes: [:ocupation, :civil_status, :tutor_name, :cellphone,
                                                          :health_insurance])[:student_information]
     end
 
