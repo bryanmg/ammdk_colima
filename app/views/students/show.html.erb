@@ -1,5 +1,19 @@
-<%= render "students/user", user: @user %>
+<div class="container">
+  <br>
+  <h1 class="title">Dashboard</h1>
+  
+  <%= render "students/user", user: @user %>
 
+  <article class="message is-primary">
+    <div class="message-body">
+      You have ### learning resouces assigne. <strong>See here</strong>
+    </div>
+  </article>
+
+  <div>
+    <%= link_to "Edit my profile", edit_student_path(@user), class: "button is-link is-outlined"%>
+    <%= link_to "See all available learning resources", root_path, class: "button is-link is-outlined"%>
+    <%= link_to "See my attendance record", root_path, class: "button is-link is-outlined"%>
+  </div>
+  <br>
 <div>
-  <%= link_to "Edit my profile", edit_student_path(@user) %>
-</div>

@@ -35,7 +35,8 @@
             </div>
             <div class="media-content">
               <i class="fas fa-user-clock"></i>
-              <%= link_to "Groups", teacher_groups_url(@user), class: "has-text-grey-darker" %>
+              Groups
+              <%# <%= link_to "Groups", teacher_groups_url(@user), class: "has-text-grey-darker" %>
             </div>
           </div>
         </div>
@@ -45,11 +46,11 @@
         <div class="box content is-medium">
           <div class="media">
             <div class="media-left">
-              <span class="title">##</span>
+              <span class="title"><%= @user.learning_resources.all.count %></span>
             </div>
             <div class="media-content">
               <i class="fas fa-chalkboard-teacher"></i>
-              Learning resources
+              <%= link_to "Learning Resources", teacher_learning_resources_url(@user), class: "has-text-grey-darker" %>
             </div>
             <div class="media-content">
             </div>
@@ -68,7 +69,10 @@
           <%= link_to "Register student", new_teacher_student_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "View students", teacher_students_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Register teacher", new_teacher_url, user: @user, class: "button is-info is-outlined" %>
+          <%= link_to "My learning resources", teacher_learning_resources_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Edit my profile", edit_teacher_url(@user), class: "button is-info is-outlined" %>
+          <%= link_to "Assign learning resource", new_teacher_students_learning_resource_url(@user), class: "button is-info is-outlined" %>
+          <%= link_to "Create learning resource", teacher_learning_resources_url(@user), class: "button is-info is-outlined" %>
         </div>
       </div>
     </div>
