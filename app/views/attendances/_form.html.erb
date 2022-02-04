@@ -1,0 +1,42 @@
+<%= form_with(model: [@user, @group, attendance], url: teacher_group_attendances_url(@user, @group)) do |form| %>
+  <% if attendance.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+      <ul>
+        <% attendance.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <strong>
+    Name | is present?
+  </strong>
+
+  <% if @group.users.count > 0 %>
+    <div>
+      <%= form.hidden_field :group_id, value: @group.id %>
+      <% @group.users.each do |student| %>
+
+          <%= form.label student.name %>
+          <%= form.fields_for :attendances do |att| %>
+            <%= att.fields_for student.id.to_s do |att| %>
+              <%= att.hidden_field :user_id, value: student.id %>
+              <%= att.check_box :present %>
+            <% end %>
+          <% end %>
+
+        <br>
+      <% end %>
+    </div>
+    
+    <div>
+      <%= form.submit %>
+    </div>
+  <% else %>
+    <br>
+    <span>There is not students registered yet</span>
+  <% end %>
+
+<% end %>

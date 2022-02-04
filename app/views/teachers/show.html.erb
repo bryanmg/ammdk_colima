@@ -5,7 +5,7 @@
     <div class="content">
       <div class="notification is-info">
         <button class="delete"></button>
-        <%= link_to "#{@in_progress_group.name} group on clases, take attendance!", root_path %>
+        <%= link_to "#{@in_progress_group.name} group on clases, take attendance!", new_teacher_group_attendance_url(@user, @in_progress_group) %>
       </div>
     </div>
   <% end %>

@@ -9,8 +9,10 @@ Rails.application.routes.draw do
       resources :learning_resources
     end
     resources :groups
-    resources :attendances
     resources :documents
+    resources :groups do
+      resources :attendances, except: [:edit, :update, :destroy]
+    end
     resources :students_learning_resources, only: [:new, :create]
   end
 

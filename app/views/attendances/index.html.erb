@@ -1,0 +1,17 @@
+
+<h1 class="subtitle">Attendances of the group <%= @group.name%> for date <%= params[:date]%></h1>
+
+<div id="attendances">
+  <p>
+    <strong>Student name:</strong>
+  </p>
+  <br />
+  <% @attendances.each do |attendance| %>
+    <%= render attendance %>
+  <% end %>
+</div>
+
+<br />
+<%= link_to "Back", teacher_group_url(@user, @group) %>
+
+

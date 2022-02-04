@@ -1,0 +1,10 @@
+<h1 class="subtitle">Editing attendance</h1>
+
+<%= render "form", user: @user, group: @group, attendance: @attendance %>
+
+<br>
+
+<div>
+  <%= link_to "Show this attendance", user_group_attendance_url(@user, @group, @attendance) %> |
+  <%= link_to "Back to attendances", user_group_attendances_url(@user, @group) %>
+</div>

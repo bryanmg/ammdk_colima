@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 2022_02_03_010025) do
     t.index %w[blob_id variation_digest], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.date "date", null: false
+    t.boolean "present", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_attendances_on_group_id"
+    t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
   create_table "group_members", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "user_id"
@@ -115,6 +126,8 @@ ActiveRecord::Schema.define(version: 2022_02_03_010025) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attendances", "groups"
+  add_foreign_key "attendances", "users"
   add_foreign_key "groups", "users"
   add_foreign_key "learning_resources", "users"
   add_foreign_key "student_informations", "users"
