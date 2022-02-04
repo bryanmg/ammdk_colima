@@ -13,34 +13,30 @@ class TeachersController < ApplicationController
   end
 
   def new
-    @new_user = User.new
+    @teacher = User.new
   end
 
   def edit; end
 
   def create
-    @new_user = User.new(user_params.merge(password: new_user_temp_password))
-    # TODO: Add support to create students user
+    @teacher = User.new(user_params.merge(password: new_temp_password, role: "teacher"))
 
-    if @new_user.save
-      redirect_to teacher_path(@user),
-                  notice: "#{@new_user.role.capitalize} was created with password #{new_user_temp_password}."
-    else
-      render :new, status: :unprocessable_entity
+    if @teacher.save
+      return redirect_to teacher_path(@user), notice: "Teacher created with password #{new_temp_password}."
     end
+
+    render :new, status: :unprocessable_entity
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to teacher_url(@user), notice: "#{@user.role.capitalize} was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    return redirect_to teacher_url(@user), notice: "Profile was successfully updated." if @user.update(user_params)
+
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy
     @user.destroy
-    redirect_to teachers_url, notice: "#{@user.role.capitalize} was successfully destroyed."
+    redirect_to teachers_url, notice: "Teacher was successfully destroyed."
   end
 
   private
@@ -51,10 +47,10 @@ class TeachersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :name, :role, :birth_date, :belt)
+    params.require(:user).permit(:email, :password, :name, :birth_date, :belt)
   end
 
-  def new_user_temp_password
+  def new_temp_password
     Date.parse(user_params[:birth_date]).strftime('%d%m%y')
   end
 end

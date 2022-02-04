@@ -1,0 +1,76 @@
+<%= form_with(model: student, url: url, method: method) do |form| %>
+
+  <% if student.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, value: student.name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.email_field :email, value: student.email, required: true%>
+  </div>
+
+  <div>
+    <%= form.label :belt, style: "display: block" %>
+    <%= form.select :belt, BELTS.keys, value: student.belt, required: true%>
+  </div>
+
+  <div>
+    <%= form.label :birth_date, style: "display: block" %>
+    <%= form.date_field :birth_date, value: student.birth_date, required: true %>
+  </div>
+
+  <%= form.fields_for :group_member_attributes do |field| %>
+    <div>
+      <%= field.label :group_id, style: "display: block" %>
+      <%= field.select :group_id, current_user.groups.all.pluck(:name, :id), selected: student.group_member&.group&.id, required: true %>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :student_information_attributes do |field| %>
+    <div>
+      <%= field.label :ocupation, style: "display: block" %>
+      <%= field.text_field :ocupation, value: student.student_information&.ocupation, required: true%>
+    </div>
+
+    <div>
+      <%= field.label :civil_status, style: "display: block" %>
+      <%= field.text_field :civil_status, value: student.student_information&.civil_status, required: true %>
+    </div>
+
+    <span class="subtitle">Tutor information</span>
+
+    <div>
+      <%= field.label :tutor_name, style: "display: block" %>
+      <%= field.text_field :tutor_name, value: student.student_information&.tutor_name %>
+    </div>
+
+    <div>
+      <%= field.label :cellphone, style: "display: block" %>
+      <%= field.text_field :cellphone, value: student.student_information&.cellphone, required: true %>
+    </div>
+
+    <div>
+      <%= field.label :health_insurance, style: "display: block" %>
+      <%= field.text_field :health_insurance, value: student.student_information&.health_insurance, required: true %>
+    </div>
+  <% end %>
+  <br/>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
