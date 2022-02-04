@@ -50,15 +50,15 @@ module Teachers
 
     def user_params
       params.require(:user).permit(
-          :email, :password, :name, :role, :birth_date, :belt,
-          group_member_attributes: [:group_id],
-          student_information_attributes: [:ocupation, :civil_status, :tutor_name, :cellphone, :health_insurance]
+        :email, :password, :name, :role, :birth_date, :belt,
+        group_member_attributes: [:group_id],
+        student_information_attributes: [:ocupation, :civil_status, :tutor_name, :cellphone, :health_insurance]
       )
     end
 
     def student_information_params
       params.require(:user).permit(student_information_atributes: [:ocupation, :civil_status, :tutor_name, :cellphone,
-                                                         :health_insurance])[:student_information]
+                                                                   :health_insurance])[:student_information]
     end
 
     def new_user_temp_password
