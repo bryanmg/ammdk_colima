@@ -4,4 +4,5 @@ class LearningResource < ApplicationRecord
   validates :name, presence: true
 
   has_many :students_learning_resources, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 end
