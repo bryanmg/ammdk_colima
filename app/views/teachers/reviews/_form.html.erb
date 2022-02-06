@@ -1,0 +1,34 @@
+<%= form_with(model: review, url: url, method: method) do |form| %>
+  <% if review.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this teachers_review from being saved:</h2>
+
+      <ul>
+        <% review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :student_id, style: "display: block" %>
+    <%= form.select :student_id, @user.group_members.all.map(&:user).pluck(:name, :id)
+ %>
+  </div>
+
+  <div>
+    <%= form.label :review, style: "display: block" %>
+    <%= form.text_area :review %>
+  </div>
+
+  <div>
+    <%= form.label :learning_resource_id, style: "display: block" %>
+    <%= form.select :learning_resource_id, @user.learning_resources&.pluck(:name, :id).prepend(["", ""]), selected: review.learning_resource_id || ["", ""] %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

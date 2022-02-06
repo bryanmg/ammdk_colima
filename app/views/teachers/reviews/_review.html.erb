@@ -1,0 +1,28 @@
+<div id="<%= dom_id review %>">
+  <p>
+    <strong>User:</strong>
+    <%= review.student.name %>
+  </p>
+
+  <p>
+    <strong>Review:</strong>
+    <%= review.review %>
+  </p>
+
+  <% if review.learning_resource.present? %>
+    <p>
+      <strong>Learning resource:</strong>
+      <%= review.learning_resource&.name %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= review.learning_resource&.description %>
+    </p>
+  <% else %>
+    <p>
+      <span>Not learning resource assigned</span>
+    </p>
+  <% end %>
+
+</div>

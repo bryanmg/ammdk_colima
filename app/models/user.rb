@@ -15,6 +15,6 @@ class User < ApplicationRecord
   has_many :students_learning_resources, dependent: :destroy
   has_many :reviewed, class_name: "Review", foreign_key: "teacher_id", dependent: :destroy
   has_many :reviews, class_name: "Review", foreign_key: "student_id", dependent: :destroy
-  
+
   accepts_nested_attributes_for :attendances, :group_member, :student_information
 end
