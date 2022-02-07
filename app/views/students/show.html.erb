@@ -13,14 +13,6 @@
     <% end %>
   </div>
 
-  <% if @assigned_learning_resouces.present? %>
-    <article class="message is-primary">
-      <div class="message-body">
-        You have <%= @assigned_learning_resouces.count %> learning resouces assigne. <strong>See here</strong>
-      </div>
-    </article>
-  <% end %>
-
   <h2 class="subtitle">Your assigned learning resources</h2>
   <div id="students_learning_resources">
     <% @assigned_learning_resouces&.each do |resource| %>
