@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     scope module: :teachers do
       resources :students
       resources :learning_resources
+      resources :reviews, except: [:index]
     end
     resources :groups
     resources :documents

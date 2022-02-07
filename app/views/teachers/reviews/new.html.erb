@@ -1,0 +1,9 @@
+<h1>Review student</h1>
+
+<%= render "form", review: @review, url: teacher_reviews_path(@user), method: :post %>
+
+<br>
+
+<div>
+  <%= link_to "Back to dashboard", teacher_path(@user) %>
+</div>

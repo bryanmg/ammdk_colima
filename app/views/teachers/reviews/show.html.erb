@@ -1,0 +1,9 @@
+
+<%= render @review %>
+
+<div>
+  <%= link_to "Edit this review", edit_teacher_review_path(@user, @review) %>
+  <%= link_to "Back to dashboard", teacher_path(@user) %>
+
+  <%= button_to "Destroy this review", url: teacher_review_path(@user, @review), method: :delete %>
+</div>

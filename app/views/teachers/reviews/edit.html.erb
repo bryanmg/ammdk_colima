@@ -1,0 +1,10 @@
+<h1>Edit review of student</h1>
+
+<%= render "form", review: @review, url: teacher_review_path(@user, @review), method: :patch%>
+
+<br>
+
+<div>
+  <%= link_to "Show this review", teacher_review_path(@user, @review) %>
+  <%= link_to "Back to dashboard", teacher_path(@user) %>
+</div>
