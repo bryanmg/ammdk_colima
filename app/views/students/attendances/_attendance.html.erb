@@ -1,0 +1,12 @@
+<div id="<%= dom_id attendance %>">
+  
+  <p>
+    <%= attendance.date.strftime('%A, %d-%m-%y') %>
+    <% if attendance.present %>
+      <strong>present</strong>
+    <% else %>
+      <strong>absent</strong>
+    <% end %>
+  </p>
+
+</div>

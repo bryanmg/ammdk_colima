@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :students, except: [:index, :create, :destroy] do
     scope module: :students do
       resources :learning_reasources, only: [:index]
+      resources :attendances, only: [:index]
     end
   end
 end

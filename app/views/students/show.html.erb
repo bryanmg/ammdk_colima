@@ -32,7 +32,7 @@
   <div>
     <%= link_to "Edit my profile", edit_student_path(@user), class: "button is-link is-outlined"%>
     <%= link_to "See all available learning resources", student_learning_reasources_path(@user), class: "button is-link is-outlined"%>
-    <%= link_to "See my attendance record", root_path, class: "button is-link is-outlined"%>
+    <%= link_to "See my attendance record", student_attendances_path(@user), class: "button is-link is-outlined"%>
   </div>
   <br>
 <div>
