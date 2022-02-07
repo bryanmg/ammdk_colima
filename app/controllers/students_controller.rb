@@ -1,7 +1,10 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!, :set_user
 
-  def show; end
+  def show
+    @reviews = Review.where(student_id: @user.id)
+    @assigned_learning_resouces = StudentsLearningResource.where(user_id: @user.id)
+  end
 
   def edit; end
 

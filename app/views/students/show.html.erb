@@ -3,16 +3,35 @@
   <h1 class="title">Dashboard</h1>
   
   <%= render "students/user", user: @user %>
+  <br>
 
-  <article class="message is-primary">
-    <div class="message-body">
-      You have ### learning resouces assigne. <strong>See here</strong>
-    </div>
-  </article>
+  <h2 class="subtitle">Your reviews</h2>
+  <div id="students_reviews">
+    <% @reviews.each do |review| %>
+      <%= render "students/reviews", review: review %>
+      <br>
+    <% end %>
+  </div>
+
+  <% if @assigned_learning_resouces.present? %>
+    <article class="message is-primary">
+      <div class="message-body">
+        You have <%= @assigned_learning_resouces.count %> learning resouces assigne. <strong>See here</strong>
+      </div>
+    </article>
+  <% end %>
+
+  <h2 class="subtitle">Your assigned learning resources</h2>
+  <div id="students_learning_resources">
+    <% @assigned_learning_resouces&.each do |resource| %>
+      <%= render "students/resources", resource: resource %>
+      <br>
+    <% end %>
+  </div>
 
   <div>
     <%= link_to "Edit my profile", edit_student_path(@user), class: "button is-link is-outlined"%>
-    <%= link_to "See all available learning resources", root_path, class: "button is-link is-outlined"%>
+    <%= link_to "See all available learning resources", student_learning_reasources_path(@user), class: "button is-link is-outlined"%>
     <%= link_to "See my attendance record", root_path, class: "button is-link is-outlined"%>
   </div>
   <br>

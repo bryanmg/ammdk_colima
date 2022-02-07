@@ -1,0 +1,20 @@
+<div id="<%= dom_id resource %>">
+
+  <p>
+    <strong>Name:</strong>
+    <%= resource.learning_resource&.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= resource.learning_resource&.description %>
+  </p>
+
+  <% if resource.learning_resource&.resource&.attached? %>
+    <p>
+      <strong>File:</strong>
+      <%= link_to resource.learning_resource&.resource&.filename, resource.learning_resource&.resource %>
+    </p>
+  <% end %>
+
+</div>
