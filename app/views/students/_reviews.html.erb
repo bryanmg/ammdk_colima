@@ -5,7 +5,7 @@
     <%= review.review %>
   </p>
 
-  <% if review.learning_resource&.resource&.attached? %>
+  <% if review.learning_resource&.resource %>
     <p>
       <strong>Resource:</strong>
       <%= review.learning_resource&.name %>

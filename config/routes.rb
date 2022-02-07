@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :learning_resources
       resources :reviews, except: [:index]
     end
-    resources :groups
+    resources :groups # TODO: this line seems like is not required
     resources :documents
     resources :groups do
       resources :attendances, except: [:edit, :update, :destroy]
@@ -17,5 +17,9 @@ Rails.application.routes.draw do
     resources :students_learning_resources, only: [:new, :create]
   end
 
-  resources :students, except: [:index, :create, :destroy]
+  resources :students, except: [:index, :create, :destroy] do
+    scope module: :students do
+      resources :learning_reasources, only: [:index]
+    end
+  end
 end

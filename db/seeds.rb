@@ -136,16 +136,32 @@ LearningResource.create([
                         ])
 
 Attendance.create([
-                    students.map { |student| { user: student, group: group, date: Date.new, present: false } }
+                    students.map { |student| { user: student, group: group, date: Date.yesterday, present: false } }
+                  ])
+Attendance.create([
+                    students.map do |student|
+                      { user: student, group: group, date: Date.today, present: true }
+                    end
                   ])
 
-3.times do
-  Attendance.create([
-                      students.map do |student|
-                        { user: student, group: group, date: Date.new, present: true }
-                      end
-                    ])
-end
+StudentsLearningResource.create([
+                                  students.map do |student|
+                                    { user_id: student.id, learning_resource_id: LearningResource.first.id }
+                                  end
+                                ])
+
+Review.create([
+                students.map do |student|
+                  { review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    learning_resource_id: LearningResource.first.id, teacher_id: User.first.id, student_id: student.id }
+                end
+              ])
+Review.create([
+                students.map do |student|
+                  { review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", teacher_id: User.first.id,
+                    student_id: student.id }
+                end
+              ])
 
 p "Seed... Created #{User.count} users"
 p "Seed... Created #{Group.count} groups"
@@ -153,3 +169,5 @@ p "Seed... Created #{GroupMember.count} member lists"
 p "Seed... Created #{StudentInformation.count} student information"
 p "Seed... Created #{LearningResource.count} learning resources"
 p "Seed... Created #{Attendance.count} attendances"
+p "Seed... Created #{StudentsLearningResource.count} Students learning resources"
+p "Seed... Created #{Review.count} Reviews"
