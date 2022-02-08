@@ -134,10 +134,12 @@ LearningResource.create([
                           { name: "Balzek", description: "I don't know what does that mean", belt: 11,
                             user_id: user.id }
                         ])
-one = LearningResource.first
-two = LearningResource.last
-one.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_one.png')), filename: 'file_one.png')
-two.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_two.png')), filename: 'file_two.png')
+first_learning_resource = LearningResource.first
+second_learning_resource = LearningResource.last
+first_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_one.png')),
+                                        filename: 'file_one.png')
+second_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_two.png')),
+                                         filename: 'file_two.png')
 
 Attendance.create([
                     students.map { |student| { user: student, group: group, date: Date.yesterday, present: false } }
