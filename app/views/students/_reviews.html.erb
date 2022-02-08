@@ -5,21 +5,20 @@
     <%= review.review %>
   </p>
 
-  <% if review.learning_resource&.resource %>
+  <% if review.learning_resource %>
     <p>
       <strong>Resource:</strong>
-      <%= review.learning_resource&.name %>
+      <%= review.learning_resource.name %>
       <br>
-      <%= review.learning_resource&.description %>
+      <%= review.learning_resource.description %>
     </p>
-  <% end %>
 
-
-  <% if review.learning_resource&.resource&.attached? %>
-    <p>
-      <strong>File:</strong>
-      <%= link_to review.learning_resource&.resource&.filename, review.learning_resource&.resource %>
-    </p>
+    <% if review.learning_resource.resource.attached? %>
+      <p>
+        <strong>File:</strong>
+        <%= link_to review.learning_resource.resource.filename, review.learning_resource.resource %>
+      </p>
+    <% end %>
   <% end %>
 
 </div>
