@@ -1,5 +1,5 @@
 module Students
-  class LearningReasourcesController < ApplicationController
+  class LearningResourcesController < ApplicationController
     before_action :authenticate_user!, :set_user
 
     def index
