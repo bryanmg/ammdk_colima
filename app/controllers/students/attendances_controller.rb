@@ -3,7 +3,7 @@ module Students
     before_action :authenticate_user!, :set_user
 
     def index
-      @attendances = @user.attendances.where("date >= ?", from_date).where("date <= ?", to_date)
+      @attendances = @user.attendances.where(date: from_date..to_date)
       @attendance_record = @attendances.group(:present).count
     end
 
@@ -14,7 +14,7 @@ module Students
     end
 
     def from_date
-      params[:from_date] || Date.today.prev_month
+      params[:from_date] || 1.month.ago
     end
 
     def to_date
