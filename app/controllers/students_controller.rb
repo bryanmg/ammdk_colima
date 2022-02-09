@@ -3,6 +3,7 @@ class StudentsController < ApplicationController
 
   def show
     @reviews = Review.where(student_id: @user.id).last(5)
+    # TODO: is expected 'StudentsLearningResource' be linked to a 'student', not a 'user'
     @assigned_learning_resouces = StudentsLearningResource.where(user_id: @user.id).last(5)
   end
 
@@ -11,6 +12,7 @@ class StudentsController < ApplicationController
   def update
     updated = false
     ActiveRecord::Base.transaction do
+      # TODO: could be better if we apply 'accepts_nested_attributes_for' at this point
       @user.student_information.update(student_information)
       updated = @user.update(user_params)
     end

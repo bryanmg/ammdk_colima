@@ -8,6 +8,7 @@ module Students
 
     private
 
+    # TODO: lets give more sense to this function, could be "set_student" and vaiable "@student"
     def set_user
       @user = User.find(params[:student_id])
     end
