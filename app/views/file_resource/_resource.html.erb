@@ -1,0 +1,16 @@
+<span id="<%= dom_id file_resource %>">
+
+  <% if file_resource.resource.attached? %>
+    <%= link_to file_resource.resource.filename, file_resource.resource %>
+    <br>
+
+    <% if file_resource.resource.representable? %>
+      <%= image_tag file_resource.resource.representation(resize_to_limit: [200, 200]) %>
+    <% else %>
+      <%= link_to rails_blob_path(file_resource.resource, disposition: "attachment") do %>
+        <%= image_tag "placeholder.png", alt: "Download file" %>
+      <% end %>
+    <% end %>
+  <% end %>
+  
+</span>

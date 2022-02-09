@@ -16,7 +16,7 @@
 
   <p>
     <strong>Resource:</strong>
-    <%= link_to learning_resource.resource.filename, learning_resource.resource if learning_resource.resource.attached? %>
+    <%= render "file_resource/resource", file_resource: learning_resource %>
   </p>
 
 </div>

@@ -16,7 +16,7 @@
     <% if review.learning_resource.resource.attached? %>
       <p>
         <strong>File:</strong>
-        <%= link_to review.learning_resource.resource.filename, review.learning_resource.resource %>
+        <%= render "file_resource/resource", file_resource: review.learning_resource %>
       </p>
     <% end %>
   <% end %>
