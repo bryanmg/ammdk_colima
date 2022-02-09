@@ -1,0 +1,29 @@
+<div id="<%= dom_id resource %>">
+
+
+  <p>
+    <strong>Name:</strong>
+    <%= resource.learning_resource.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= resource.learning_resource.description %>
+  </p>
+
+  <% if resource.learning_resource.resource.attached? %>
+    <p>
+      <strong>View file:</strong>
+      <%= link_to resource.learning_resource.resource.filename, resource.learning_resource.resource %>
+    </p>
+    
+    <% if resource.learning_resource.resource.representable? %>
+      <%= image_tag resource.learning_resource.resource.representation(resize_to_limit: [200, 200]) %>
+    <% else %>
+      <%= link_to rails_blob_path(resource.learning_resource.resource, disposition: "attachment") do %>
+        <%= image_tag "placeholder.png", alt: "Download file" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+</div>

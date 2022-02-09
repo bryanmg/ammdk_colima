@@ -15,6 +15,7 @@
   </div>
 
   <h2 class="subtitle">Your assigned learning resources</h2>
+  <span>Showing last 5 fields</span>
   <div id="students_learning_resources">
     <% @assigned_learning_resouces&.each do |resource| %>
       <%= render "students/resources", resource: resource %>
@@ -27,6 +28,7 @@
     <%= link_to "See all available learning resources", student_learning_resources_path(@user), class: "button is-link is-outlined"%>
     <%= link_to "See my attendance record", student_attendances_path(@user), class: "button is-link is-outlined"%>
     <%= link_to "See all my reviews", student_reviews_path(@user), class: "button is-link is-outlined"%>
+    <%= link_to "See all assigned learning resources", student_students_learning_resources_path(@user), class: "button is-link is-outlined"%>
   </div>
   <br>
 <div>

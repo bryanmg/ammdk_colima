@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :learning_resources, only: [:index]
       resources :attendances, only: [:index]
       resources :reviews, only: [:index]
+      resources :students_learning_resources, only: [:index]
     end
   end
 end

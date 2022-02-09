@@ -1,0 +1,12 @@
+
+<h1>Your learning resources</h1>
+
+<div id="students_learning_resources">
+  <% @student_learning_resources.each do |students_learning_resource| %>
+    <%= render "students/students_learning_resources/students_learning_resource", resource: students_learning_resource %>
+  <% end %>
+</div>
+
+<br>
+<%= link_to "Back to dashboard", student_path(@user) %>
+<%# TODO: this view require pagination %>
