@@ -25,7 +25,7 @@
 
   <div>
     <%= form.label :belt, style: "display: block" %>
-    <%= form.select :belt, BELTS.keys, value: student.belt, required: true%>
+    <%= form.select :belt, BELTS_TEXT.invert, value: student.belt, required: true%>
   </div>
 
   <div>

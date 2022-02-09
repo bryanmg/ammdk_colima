@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :belt, style: "display: block" %>
-    <%= form.select :belt, BELTS.keys, value: teacher.belt%>
+    <%= form.select :belt, BELTS_TEXT.invert, value: teacher.belt%>
   </div>
 
   <div>
