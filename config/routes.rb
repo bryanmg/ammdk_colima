@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     scope module: :students do
       resources :learning_resources, only: [:index]
       resources :attendances, only: [:index]
+      resources :reviews, only: [:index]
     end
   end
 end
