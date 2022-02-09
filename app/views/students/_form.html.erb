@@ -23,7 +23,7 @@
 
   <p>
     <strong>Belt:</strong>
-    <%= user.belt %>
+    <%= BELTS_TEXT[user.belt.to_sym] %>
   </p>
     
   <% if user.student_information %>
