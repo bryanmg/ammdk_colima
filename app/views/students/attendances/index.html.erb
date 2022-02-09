@@ -1,0 +1,62 @@
+<% if @attendances.empty? %>
+  <div class="notification is-danger" style="margin-bottom: 0rem">
+    <button class="delete"></button>
+    <p>Not attendances found for this dates.</p>
+  </div>
+<% end %>
+
+<br>
+<h1 class="title">Your attendances</h1>
+
+<div class="container">
+  <nav class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Present</p>
+        <p class="title"><%= @attendance_record[true] %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">Absent</p>
+        <p class="title"><%= @attendance_record[false]%></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">% of attendance</p>
+        <p class="title"><%= (@attendance_record[true].to_f / @attendance_record.values.sum) * 100 %></p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <p class="heading">% of absence</p>
+        <%# TODO: Fix NaN value when there is no attendances fields %>
+        <p class="title"><%= (@attendance_record[false].to_f / @attendance_record.values.sum) * 100 %></p>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<br>
+<div id="attendances">
+  <% @attendances.each do |attendance| %>
+    <%= render "students/attendances/attendance", attendance: attendance %>
+  <% end %>
+</div>
+<br>
+
+<%= form_with(method: :get, url: student_attendances_path(@user)) do |form| %>
+  <div>
+    <%= form.label "from", style: "display: block" %>
+    <%= form.date_field :from_date, required: true%>
+  </div>
+  <div>
+    <%= form.label "to", style: "display: block" %>
+    <%= form.date_field :to_date, required: true%>
+  </div>
+  <%= form.submit "View attendance record"%>
+<% end %>
+
+<br>
+<%= link_to "Back to dashboard", student_path(@user) %>

@@ -1,0 +1,11 @@
+
+<h1 class="subtitle" >Learning resources</h1>
+
+<div id="students_learning_resources">
+  <% @learning_resources.each do |learning_resource| %>
+    <%= render "teachers/learning_resources/learning_resource", learning_resource: learning_resource%>
+    <br><br>
+  <% end %>
+</div>
+
+<%= link_to "Back to dashboard", student_path(@user) %>

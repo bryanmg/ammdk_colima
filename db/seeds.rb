@@ -134,18 +134,40 @@ LearningResource.create([
                           { name: "Balzek", description: "I don't know what does that mean", belt: 11,
                             user_id: user.id }
                         ])
+first_learning_resource = LearningResource.first
+second_learning_resource = LearningResource.last
+first_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_one.png')),
+                                        filename: 'file_one.png')
+second_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_two.png')),
+                                         filename: 'file_two.png')
 
 Attendance.create([
-                    students.map { |student| { user: student, group: group, date: Date.new, present: false } }
+                    students.map { |student| { user: student, group: group, date: Date.yesterday, present: false } }
+                  ])
+Attendance.create([
+                    students.map do |student|
+                      { user: student, group: group, date: Date.today, present: true }
+                    end
                   ])
 
-3.times do
-  Attendance.create([
-                      students.map do |student|
-                        { user: student, group: group, date: Date.new, present: true }
-                      end
-                    ])
-end
+StudentsLearningResource.create([
+                                  students.map do |student|
+                                    { user_id: student.id, learning_resource_id: LearningResource.first.id }
+                                  end
+                                ])
+
+Review.create([
+                students.map do |student|
+                  { review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    learning_resource_id: LearningResource.first.id, teacher_id: User.first.id, student_id: student.id }
+                end
+              ])
+Review.create([
+                students.map do |student|
+                  { review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", teacher_id: User.first.id,
+                    student_id: student.id }
+                end
+              ])
 
 p "Seed... Created #{User.count} users"
 p "Seed... Created #{Group.count} groups"
@@ -153,3 +175,5 @@ p "Seed... Created #{GroupMember.count} member lists"
 p "Seed... Created #{StudentInformation.count} student information"
 p "Seed... Created #{LearningResource.count} learning resources"
 p "Seed... Created #{Attendance.count} attendances"
+p "Seed... Created #{StudentsLearningResource.count} Students learning resources"
+p "Seed... Created #{Review.count} Reviews"

@@ -1,0 +1,12 @@
+<h1 class="subtitle">Your reviews</h1>
+
+<div id="reviews">
+  <br />
+  <% @reviews.each do |review| %>
+    <%= render "students/reviews/review", review: review %>
+    <br>
+  <% end %>
+</div>
+
+<br />
+<%= link_to "Back", student_url(@user) %>
