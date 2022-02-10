@@ -13,20 +13,20 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Present</p>
-        <p class="title"><%= @attendance_record[true] ? @attendance_record[true] : 0 %></p>
+        <p class="title"><%= @attendance_record[true] || 0 %></p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Absent</p>
-        <p class="title"><%= @attendance_record[false] ? @attendance_record[false] : 0 %></p>
+        <p class="title"><%= @attendance_record[false] || 0 %></p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">% of attendance</p>
         <p class="title">
-          <%= (@attendance_record[true].to_f / @attendance_record.values.sum * 100).nan? ? 0 : (@attendance_record[true].to_f / @attendance_record.values.sum * 100) %> %
+          <%= attendance_percent_for(@attendance_record, present: true) %> %
         </p>
       </div>
     </div>
@@ -34,7 +34,7 @@
       <div>
         <p class="heading">% of absence</p>
         <p class="title">
-          <%= (@attendance_record[false].to_f / @attendance_record.values.sum * 100).nan? ? 0 : (@attendance_record[false].to_f / @attendance_record.values.sum * 100) %> %
+          <%= attendance_percent_for(@attendance_record, present: false) %> %
         </p>
       </div>
     </div>

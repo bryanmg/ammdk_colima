@@ -30,13 +30,13 @@
     <%= form.label :days_of_the_week, style: "display: block" %>
     
     <%= form.fields_for :days_of_the_week do |field| %>
-      sunday: <%= field.check_box :sunday, { checked: group[:days_of_the_week][:sunday] == "1" ? true : false } %>
-      monday: <%= field.check_box :monday, { checked: group[:days_of_the_week][:monday] == "1" ? true : false } %>
-      tuesday: <%= field.check_box :tuesday, { checked: group[:days_of_the_week][:tuesday] == "1" ? true : false } %>
-      wednesday: <%= field.check_box :wednesday, { checked: group[:days_of_the_week][:wednesday] == "1" ? true : false } %>
-      thursday: <%= field.check_box :thursday, { checked: group[:days_of_the_week][:thursday] == "1" ? true : false } %>
-      friday: <%= field.check_box :friday, { checked: group[:days_of_the_week][:friday] == "1" ? true : false } %>
-      saturday: <%= field.check_box :saturday, { checked: group[:days_of_the_week][:saturday] == "1" ? true : false } %>
+      sunday: <%= field.check_box :sunday, { checked: !group[:days_of_the_week][:sunday].to_i.zero? } %>
+      monday: <%= field.check_box :monday, { checked: !group[:days_of_the_week][:monday].to_i.zero? } %>
+      tuesday: <%= field.check_box :tuesday, { checked: !group[:days_of_the_week][:tuesday].to_i.zero? } %>
+      wednesday: <%= field.check_box :wednesday, { checked: !group[:days_of_the_week][:wednesday].to_i.zero? } %>
+      thursday: <%= field.check_box :thursday, { checked: !group[:days_of_the_week][:thursday].to_i.zero? } %>
+      friday: <%= field.check_box :friday, { checked: !group[:days_of_the_week][:friday].to_i.zero? } %>
+      saturday: <%= field.check_box :saturday, { checked: !group[:days_of_the_week][:saturday].to_i.zero? } %>
     <% end %>
   </div>
 
