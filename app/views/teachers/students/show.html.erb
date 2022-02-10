@@ -2,4 +2,5 @@
     <%= render "teachers/students/student", student: @student %>
 
     <%= link_to "Back", teacher_students_url(@user) %>
+    <%= button_to "Delete this student", teacher_student_url(@user, @student), method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
