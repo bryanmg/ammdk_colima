@@ -15,3 +15,5 @@ BELTS_TEXT = {
   dan1: "1° Dan", dan2: "2° Dan", dan3: "3° Dan", dan4: "4° Dan", dan5: "5° Dan",
   dan6: "6° Dan", dan7: "7° Dan", dan8: "8° Dan", dan9: "9° Dan"
 }.freeze
+
+PER_PAGE = 4
