@@ -1,23 +1,23 @@
-<div id="students" class="container">
+<div id="students" class="container pt-5">
 
-<table class="table is-striped is-hoverable is-fullwidth">
-  <thead>
-    <tr>
-      <th>Student name</th>
-      <th>Belt</th>
-      <th>Group</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |student| %>
+  <h2 class="title">Enrolled students<h2>
+
+  <table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
       <tr>
-        <%# TODO: Add SHOW entire history of this user %>
-        <%= render "teachers/students/student", student: student, teacher: @user %>
+        <th>Student name</th>
+        <th>Belt</th>
+        <th>Group</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <%= render "teachers/students/student", student: student, teacher: @user %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <%= will_paginate @students, renderer: RemoteLinkPagination::LinkRenderer, :class=>"is-flex is-justify-content-space-around" %>
 

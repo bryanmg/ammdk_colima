@@ -1,10 +1,17 @@
-<h1 class="subtitle">Editing attendance</h1>
+<div class="container">
+  <h1 class="title">Editing attendance</h1>
 
-<%= render "form", user: @user, group: @group, attendance: @attendance %>
+  <%= render "form", user: @user, group: @group, attendance: @attendance %>
+  <br>
 
-<br>
-
+  <div class="is-flex is-justify-content-flex-end">
+    <%= link_to(user_group_attendance_url(@user, @group, @attendance), class: "button is-info is-outlined mr-3") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Show this attendance</span>
+    <% end%>
+    <%= link_to(user_group_attendances_url(@user, @group), class: "button is-info is-outlined mr-3") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back to group</span>
+    <% end%>
+  </div>
 <div>
-  <%= link_to "Show this attendance", user_group_attendance_url(@user, @group, @attendance) %> |
-  <%= link_to "Back to attendances", user_group_attendances_url(@user, @group) %>
-</div>

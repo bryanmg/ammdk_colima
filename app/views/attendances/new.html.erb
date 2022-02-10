@@ -1,8 +1,22 @@
-<h1 class="subtitle">New attendance</h1>
+<div class="container pt-5">
+  <h1 class="title">New attendance</h1>
 
-<%= render "form", attendance: @attendance %>
-<br>
+  <% if @group.users.count > 0 %>
+    <div class="is-flex is-justify-content-center mb-6">
+      <%= render "form", attendance: @attendance %>
+    <div>
+  <% else %>
+    <article class="message is-info">
+      <div class="message-body">
+        There is not students enrolled yet!
+      </div>
+    </article>
+    <div class="is-flex is-justify-content-flex-end">
+      <%= link_to(teacher_group_url(@user, @group), class: "button is-info is-outlined mr-3") do %>
+        <i class="fas fa-undo"></i>
+        <span class="ml-2">Back</span>
+      <% end%>
+    </div>
+  <% end %>
 
 <div>
-  <%= link_to "Back to group", teacher_group_url(@user, @group) %>
-</div>

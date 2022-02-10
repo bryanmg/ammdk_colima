@@ -9,34 +9,41 @@
       </ul>
     </div>
   <% end %>
-
-  <strong>
-    Name | is present?
-  </strong>
-
-  <% if @group.users.count > 0 %>
-    <div>
-      <%= form.hidden_field :group_id, value: @group.id %>
-      <% @group.users.each do |student| %>
-
-          <%= form.label student.name %>
-          <%= form.fields_for :attendances do |att| %>
-            <%= att.fields_for student.id.to_s do |att| %>
-              <%= att.hidden_field :user_id, value: student.id %>
-              <%= att.check_box :present %>
-            <% end %>
-          <% end %>
-
-        <br>
-      <% end %>
-    </div>
     
-    <div>
-      <%= form.submit %>
-    </div>
-  <% else %>
-    <br>
-    <span>There is not students registered yet</span>
-  <% end %>
+  <%= form.hidden_field :group_id, value: @group.id %>
+
+  <table class="table is-striped is-hoverable  is-bordered">
+    <thead>
+      <tr>
+        <th>Student name</th>
+        <th>Is present?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @group.users.each do |student| %>
+        <%= form.fields_for :attendances do |att| %>
+          <tr>
+            <%= att.fields_for student.id.to_s do |att| %>
+              <td>
+              <label class="checkbox"> <%= student.name %> </label>
+              </td>
+              <td>
+              <%= att.check_box :present, class: "ml-5" %>
+              </td>
+              <%= att.hidden_field :user_id, value: student.id %>
+            <% end %>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="is-flex is-justify-content-flex-end">
+    <%= link_to(teacher_group_url(@user, @group), class: "button is-info is-outlined mr-3") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back</span>
+    <% end%>
+    <%= form.submit class: "button is-success is-outlined" %>
+  </div>
 
 <% end %>

@@ -1,11 +1,12 @@
 <div id="<%= dom_id attendance %>">
-  <p>
+  <td>
     <%= attendance.user.name %>
-    <% if attendance.present %>
+  </td>
+  <td>
+    <% if attendance.present? %>
       <strong>present</strong>
     <% else %>
       <strong>absent</strong>
     <% end %>
-  </p>
-
+  </td>
 </div>
