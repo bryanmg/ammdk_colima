@@ -1,12 +1,12 @@
 <div id="days of the week" class="">
   <% days_of_the_week.map do |day, value| %>
     <% if value == "1" %>
-      <span class="tag is-info">
+      <span class="tag is-info is-medium">
         <%= day %>
         <i class="fas fa-check ml-2"></i> 
       </span>
     <% else %>
-      <span class="tag is-ligth"><%= day %></span>
+      <span class="tag is-ligth is-medium"><%= day %></span>
     <% end %>
   <% end %>
 </div>
