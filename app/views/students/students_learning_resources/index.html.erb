@@ -7,6 +7,6 @@
   <% end %>
 </div>
 
+<%= will_paginate @student_learning_resources, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
 <br>
 <%= link_to "Back to dashboard", student_path(@user) %>
-<%# TODO: this view require pagination %>

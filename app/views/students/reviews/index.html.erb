@@ -8,5 +8,6 @@
   <% end %>
 </div>
 
+<%= will_paginate @reviews, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
 <br />
 <%= link_to "Back", student_url(@user) %>

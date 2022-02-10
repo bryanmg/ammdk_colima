@@ -4,7 +4,8 @@ module Teachers
     before_action :set_student, only: [:show, :edit, :update, :destroy]
 
     def index
-      @students = User.find(@user.group_members.map(&:user_id))
+      @students = User.my_students(@user.group_members.map(&:user_id)).paginate(page: params[:page],
+                                                                                per_page: PER_PAGE)
     end
 
     def show; end
