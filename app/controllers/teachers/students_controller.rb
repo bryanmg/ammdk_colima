@@ -7,7 +7,10 @@ module Teachers
       @students = User.where(id: my_students_ids).paginate(page: params[:page], per_page: PER_PAGE)
     end
 
-    def show; end
+    def show
+      @attendances = @student.attendances.where(date: from_date..to_date)
+      @attendance_stats = @attendances.group(:present).count
+    end
 
     def new
       @student = User.new
@@ -62,6 +65,14 @@ module Teachers
 
     def my_students_ids
       @user.group_members.map(&:user_id)
+    end
+    
+    def from_date
+      params[:from_date] || 1.month.ago
+    end
+
+    def to_date
+      params[:to_date] || Date.today
     end
   end
 end
