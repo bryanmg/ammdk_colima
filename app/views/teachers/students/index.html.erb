@@ -1,17 +1,30 @@
-<div id="students">
+<div id="students" class="container">
 
-  <% @students.each do |student| %>
-    <%= render "teachers/students/student", student: student %>
-    <p>
-      <%# TODO: SHOW entire history of this user %>
-      <%= link_to "Show this student", teacher_student_url(@user, student) %>
-      <br/>
-      <%= link_to "Edit this student", edit_teacher_student_url(@user, student) %>
-    </p>
-    <br />
-  <% end %>
+<table class="table is-striped is-hoverable is-fullwidth">
+  <thead>
+    <tr>
+      <th>Student name</th>
+      <th>Belt</th>
+      <th>Group</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <%# TODO: Add SHOW entire history of this user %>
+        <%= render "teachers/students/student", student: student, teacher: @user %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <%= will_paginate @students, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
-  <%= link_to "Back to dashboard", teacher_url(@user) %>
 
+  <%= will_paginate @students, renderer: RemoteLinkPagination::LinkRenderer, :class=>"is-flex is-justify-content-space-around" %>
+
+  <div class="is-flex is-justify-content-flex-end">
+    <%= link_to(teacher_url(@user), class: "button is-info is-outlined") do %>
+      <span class="mr-2">Back to dashboard</span>
+      <i class="fas fa-undo"></i>
+    <% end%>
+  </div>
 </div>

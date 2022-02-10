@@ -1,6 +1,7 @@
 <div id="students">
     <%= render "teachers/students/student", student: @student %>
 
+    <%= link_to "Edit student", edit_teacher_student_url(@user, @student) %>
     <%= link_to "Back", teacher_students_url(@user) %>
 
     <%= button_to "Promote belt", teacher_student_path(@user, @student), method: :patch, params: {user: {belt: promote_belt(@student[:belt]) }}, data: { confirm: 'Are you sure to want to promote belt for this student?' } %>

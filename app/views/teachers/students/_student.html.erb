@@ -1,22 +1,12 @@
 <div id="<%= dom_id student %>">
+  <td>
+    <%= link_to(teacher_student_path(@user, student)) do %>
+      <%= student.name %> <i class="fas fa-external-link-alt"></i>
+    <% end %>
+  </td>
 
-  <p>
-    <strong>Name:</strong>
-    <%= student.name %>
-  </p>
+  <td><%= BELTS_TEXT[student.belt.to_sym] %></td>
 
-  <p>
-    <strong>Belt:</strong>
-    <%= BELTS_TEXT[student.belt.to_sym] %>
-  </p>
+  <td><%= student.group_member.group.name %></td>
 
-  <p>
-    <strong>Birth date:</strong>
-    <%= student.birth_date %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= student.email %>
-  </p>
 </div>
