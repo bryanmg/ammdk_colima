@@ -3,74 +3,159 @@
   <% if student.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(student.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
         <% student.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
-
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, value: student.name, required: true %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :name, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :name, value: student.name, required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, value: student.email, required: true%>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :email, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.email_field :email, value: student.email, required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :belt, style: "display: block" %>
-    <%= form.select :belt, BELTS_TEXT.invert, value: student.belt, required: true%>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :belt, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="select">
+        <%= form.select :belt, BELTS_TEXT.invert, value: student.belt, required: true, class: "input"%>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :birth_date, style: "display: block" %>
-    <%= form.date_field :birth_date, value: student.birth_date, required: true %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :birth_date, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.date_field :birth_date, value: student.birth_date, required: true, class:"input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
   <%= form.fields_for :group_member_attributes do |field| %>
-    <div>
-      <%= field.label :group_id, style: "display: block" %>
-      <%= field.select :group_id, current_user.groups.all.pluck(:name, :id), selected: student.group_member&.group&.id, required: true %>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label :group_id, class: "label" %>
+      </div>
+
+      <div class="field-body">
+        <div class="select">
+          <%= field.select :group_id, current_user.groups.all.pluck(:name, :id), selected: student.group_member&.group&.id, required: true %>
+        </div>
+      </div>
     </div>
   <% end %>
 
   <%= form.fields_for :student_information_attributes do |field| %>
-    <div>
-      <%= field.label :ocupation, style: "display: block" %>
-      <%= field.text_field :ocupation, value: student.student_information&.ocupation, required: true%>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label :ocupation, class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= field.text_field :ocupation, value: student.student_information&.ocupation, required: true, class: "input" %>
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <%= field.label :civil_status, style: "display: block" %>
-      <%= field.text_field :civil_status, value: student.student_information&.civil_status, required: true %>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label :civil_status, class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= field.text_field :civil_status, value: student.student_information&.civil_status, required: true, class: "input" %>
+          </p>
+        </div>
+      </div>
     </div>
 
-    <span class="subtitle">Tutor information</span>
-
-    <div>
-      <%= field.label :tutor_name, style: "display: block" %>
-      <%= field.text_field :tutor_name, value: student.student_information&.tutor_name %>
+    <div class="mt-5 mb-5 is-flex is-justify-content-center">
+      <span class="subtitle">
+        <strong>Tutor information</strong>
+      </span>
     </div>
 
-    <div>
-      <%= field.label :cellphone, style: "display: block" %>
-      <%= field.text_field :cellphone, value: student.student_information&.cellphone, required: true %>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label :tutor_name, class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= field.text_field :tutor_name, value: student.student_information&.tutor_name, class: "input" %>
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <%= field.label :health_insurance, style: "display: block" %>
-      <%= field.text_field :health_insurance, value: student.student_information&.health_insurance, required: true %>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label :cellphone, class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= field.text_field :cellphone, value: student.student_information&.cellphone, required: true, class: "input" %>
+          </p>
+        </div>
+      </div>
     </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label :health_insurance, class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= field.text_field :health_insurance, value: student.student_information&.health_insurance, required: true, class: "input" %>
+          </p>
+        </div>
+      </div>
+    </div>
+
   <% end %>
   <br/>
 
-  <div>
-    <%= form.submit %>
+  <div class="is-flex is-justify-content-flex-end">
+    <%= form.submit class: "button is-success is-outlined" %>
+    <%= link_to(teacher_students_url(@user), class: "button is-info is-outlined ml-5") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back</span>
+    <% end %>
   </div>
+
 <% end %>

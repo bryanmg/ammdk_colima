@@ -1,8 +1,6 @@
-<div class="container">
-  <h1 class="subtitle" >Register new student</h1>
+<div class="container pt-5">
+  <h1 class="title" >Register new student</h1>
 
   <%= render 'form', user: @user, student: @student, url: teacher_students_url(@user), method: :post %>
   <br>
-
-  <%= link_to "Cancel", teacher_students_url(@user) %>
 </div>
