@@ -11,28 +11,65 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, value: teacher.name, required: true %>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :name, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :name, value: teacher.name, required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, value: teacher.email %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :email, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.email_field :email, value: teacher.email, required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :belt, style: "display: block" %>
-    <%= form.select :belt, BELTS_TEXT.invert, value: teacher.belt%>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :belt, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="select">
+        <%= form.select :belt, BELTS_TEXT.invert, value: teacher.belt, required: true, class: "input"%>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :birth_date, style: "display: block" %>
-    <%= form.date_field :birth_date, value: teacher.birth_date %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :birth_date, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.date_field :birth_date, value: teacher.birth_date, required: true, class:"input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <br/>
-  <div>
-    <%= form.submit %>
+
+  <br>
+  <div class="is-flex is-justify-content-flex-end">
+    <%= form.submit class: "button is-success is-outlined" %>
+    <%= link_to(teacher_path(@user), class: "button is-info is-outlined ml-5") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back to dashboard</span>
+    <% end %>
   </div>
+
 <% end %>

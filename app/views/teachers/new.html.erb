@@ -1,8 +1,5 @@
-<h1 class="title" >New teacher</h1>
-
-<%= render 'form', teacher: @teacher, user: @user, url: teachers_url(@user), method: :post %>
-<br>
-
-<div>
-  <%= link_to "Back to dashboard", teacher_path(@user) %>
+<div class="container pt-5">
+  <h1 class="title" >Register new teacher</h1>
+  <%= render 'form', teacher: @teacher, user: @user, url: teachers_url(@user), method: :post %>
+  <br>
 </div>
