@@ -1,4 +1,4 @@
-<div id="<%= dom_id review %>">
+<div id="<%= dom_id review %>" class="box">
   <p>
     <strong>User:</strong>
     <%= review.student.name %>
@@ -21,7 +21,7 @@
     </p>
   <% else %>
     <p>
-      <span>Not learning resource assigned</span>
+      <span class="tag is-info is-medium is-light">Not learning resource assigned</span>
     </p>
   <% end %>
 

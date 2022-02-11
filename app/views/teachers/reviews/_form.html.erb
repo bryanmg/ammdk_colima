@@ -2,7 +2,6 @@
   <% if review.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this teachers_review from being saved:</h2>
-
       <ul>
         <% review.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,23 +11,51 @@
   <% end %>
 
   <div>
-    <%= form.label :student_id, style: "display: block" %>
-    <%= form.select :student_id, @user.group_members.all.map(&:user).pluck(:name, :id)
- %>
+  </div>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :student_id, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="select">
+          <%= form.select :student_id, my_students.pluck(:name, :id), required: true, class: "input" %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :review, style: "display: block" %>
-    <%= form.text_area :review %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :review, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_area :review, required: true, class:"input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :learning_resource_id, style: "display: block" %>
-    <%= form.select :learning_resource_id, @user.learning_resources&.pluck(:name, :id).prepend(["", ""]), selected: review.learning_resource_id || ["", ""] %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :learning_resource_id, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="select">
+          <%= form.select :learning_resource_id, @user.learning_resources&.pluck(:name, :id).prepend(["None", ""]), selected: review.learning_resource_id || ["None", ""] , class: "input"%>
+        </div>
+      </div>
+    </div>
   </div>
 
-
-  <div>
-    <%= form.submit %>
+  <div class="is-flex is-justify-content-flex-end mt-5">
+    <%= link_to(teacher_path(@user), class: "button is-info is-outlined mr-5") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back</span>
+    <% end %>
+    <%= form.submit class: "button is-success is-outlined" %>
   </div>
 <% end %>
