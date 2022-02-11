@@ -1,9 +1,5 @@
-<h1>Editing learning resource</h1>
+<div class="container pt-5">
+  <h1 class="title">Editing learning resource</h1>
 
-<%= render "form", learning_resource: @teachers_learning_resource, url: teacher_learning_resource_path(@user, @teachers_learning_resource) %>
-
-<br>
-
-<div>
-  <%= link_to "Back to learning resources", teacher_learning_resources_path(@user) %>
+  <%= render "form", learning_resource: @teachers_learning_resource, url: teacher_learning_resource_path(@user, @teachers_learning_resource) %>
 </div>
