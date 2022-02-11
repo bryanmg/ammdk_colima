@@ -52,7 +52,7 @@ module Teachers
         delete teacher_review_url(@user, @teachers_review)
       end
 
-      assert_redirected_to teacher_reviews_url(@user)
+      assert_redirected_to teacher_path(@user)
     end
   end
 end

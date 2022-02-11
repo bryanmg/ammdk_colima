@@ -66,7 +66,7 @@ module Teachers
     def my_students_ids
       @user.group_members.map(&:user_id)
     end
-    
+
     def from_date
       params[:from_date] || 1.month.ago
     end

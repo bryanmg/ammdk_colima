@@ -2,12 +2,12 @@ module Teachers
   class ReviewsController < ApplicationController
     before_action :authenticate_user!, :set_user
     before_action :set_teachers_review, only: [:show, :edit, :update, :destroy]
+    before_action :set_teacher_students, only: [:new, :edit]
 
     def show; end
 
     def new
       @review = Review.new
-      @my_students = User.where(id: my_students_ids).select(:name, :id)
     end
 
     def edit; end
@@ -49,6 +49,10 @@ module Teachers
 
     def my_students_ids
       @user.group_members.map(&:user_id)
+    end
+
+    def set_teacher_students
+      @my_students = User.where(id: my_students_ids).select(:name, :id)
     end
   end
 end
