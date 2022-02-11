@@ -7,6 +7,7 @@ module Teachers
 
     def new
       @review = Review.new
+      @my_students = User.where(id: my_students_ids).select(:name, :id)
     end
 
     def edit; end
@@ -29,7 +30,7 @@ module Teachers
 
     def destroy
       @review.destroy
-      redirect_to teacher_reviews_url(@user), notice: "Review was successfully destroyed."
+      redirect_to teacher_path(@user), notice: "Review was successfully destroyed."
     end
 
     private
@@ -44,6 +45,10 @@ module Teachers
 
     def teachers_review_params
       params.require(:review).permit(:review, :learning_resource_id, :student_id)
+    end
+
+    def my_students_ids
+      @user.group_members.map(&:user_id)
     end
   end
 end
