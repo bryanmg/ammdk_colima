@@ -17,6 +17,4 @@ class User < ApplicationRecord
   has_many :reviews, class_name: "Review", foreign_key: "student_id", dependent: :destroy
 
   accepts_nested_attributes_for :attendances, :group_member, :student_information
-
-  scope :my_students, ->(students_ids) { where("id IN (?)", students_ids) }
 end

@@ -4,8 +4,7 @@ module Teachers
     before_action :set_student, only: [:show, :edit, :update, :destroy]
 
     def index
-      @students = User.my_students(@user.group_members.map(&:user_id)).paginate(page: params[:page],
-                                                                                per_page: PER_PAGE)
+      @students = User.where(id: my_students_ids).paginate(page: params[:page], per_page: PER_PAGE)
     end
 
     def show; end
@@ -59,6 +58,10 @@ module Teachers
 
     def new_user_temp_password
       Date.parse(user_params[:birth_date]).strftime('%d%m%y')
+    end
+
+    def my_students_ids
+      @user.group_members.map(&:user_id)
     end
   end
 end
