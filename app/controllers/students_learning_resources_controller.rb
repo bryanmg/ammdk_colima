@@ -3,7 +3,7 @@ class StudentsLearningResourcesController < ApplicationController
 
   def new
     @learning_resource = @user.learning_resources.all
-    @members = @user.group_members.all.map(&:user)
+    @members = User.where(id: my_students_ids)
   end
 
   def create
@@ -24,5 +24,9 @@ class StudentsLearningResourcesController < ApplicationController
 
   def assignee_params
     params.permit(:user_id, :learning_resource_id)
+  end
+
+  def my_students_ids
+    @user.group_members.map(&:user_id)
   end
 end
