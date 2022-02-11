@@ -2,5 +2,10 @@
     <%= render "teachers/students/student", student: @student %>
 
     <%= link_to "Back", teacher_students_url(@user) %>
-    <%= button_to "Delete this student", teacher_student_url(@user, @student), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <%= button_to "Promote belt", teacher_student_path(@user, @student), method: :patch, params: {user: {belt: promote_belt(@student[:belt]) }}, data: { confirm: 'Are you sure to want to promote belt for this student?' } %>
+
+    <%= button_to "Delete this student", teacher_student_path(@user, @student), method: :delete, data: { confirm: 'This action will delete the student and all his information. Are you sure?' } %>
+    
+    <%= button_to "Reset password", teacher_student_path(@user, @student), method: :patch, params: {user: {password: @student[:birth_date].strftime('%d%m%y')}}, data: { confirm: 'Are you sure to want to reset password?' } %>
 </div>
