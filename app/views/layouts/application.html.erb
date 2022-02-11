@@ -15,14 +15,14 @@
     <%= render "layouts/nav" %>
 
     <% if notice %>
-      <div class="notification is-primary" style="margin-bottom: 0rem">
-        <button class="delete"></button>
+      <div id="notice-alert-div" class="notification is-primary" style="margin-bottom: 0rem">
+        <button id="delete-alert-notice" class="delete"></button>
         <p><%= notice %></p>
       </div>
     <% end %>
     <% if alert %>
-      <div class="notification is-danger" style="margin-bottom: 0rem">
-        <button class="delete"></button>
+      <div id="alert-alert-div" class="notification is-danger" style="margin-bottom: 0rem">
+        <button id="delete-alert-alert" class="delete"></button>
         <p><%= alert %></p>
       </div>
     <% end %>
