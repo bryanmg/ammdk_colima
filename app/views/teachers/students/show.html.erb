@@ -44,7 +44,19 @@
   <%= render "students/attendances/attendance_records_form", url: teacher_student_path(@user, @student) %>
 
   <%# Action bottom buttons %>
-  <div class="is-flex is-justify-content-flex-end">
+  <div class="is-flex is-justify-content-flex-end mt-5">
+    <%= button_to(teacher_student_path(@user, @student), class: "button is-danger is-outlined mr-5", method: :delete, data: { confirm: 'This action will delete the student and all his information. Are you sure?' } ) do %>
+      <i class="far fa-trash-alt"></i>
+      <span class="ml-2">Delete student</span>
+    <% end %>
+    <%= button_to(teacher_student_path(@user, @student), class: "button is-warning is-outlined mr-5", method: :patch, params: {user: {password: @student[:birth_date].strftime('%d%m%y')}}, data: { confirm: 'Are you sure to want to reset password?' }) do %>
+      <i class="fas fa-unlock-alt"></i>
+      <span class="ml-2">Reset password</span>
+    <% end %>
+    <%= button_to(teacher_student_path(@user, @student), class: "button is-primary is-outlined mr-5", method: :patch, params: {user: {belt: promote_belt(@student[:belt]) }}, data: { confirm: 'Are you sure to want to promote belt for this student?' }) do %>
+      <i class="far fa-caret-square-up"></i>
+      <span class="ml-2">Promote belt</span>
+    <% end %>
     <%= link_to(edit_teacher_student_url(@user, @student), class: "button is-primary is-outlined mr-5") do %>
       <i class="fas fa-user-edit"></i>
       <span class="ml-2">Edit student</span>
@@ -56,9 +68,4 @@
   </div>
   <br>
 
-    <%= button_to "Promote belt", teacher_student_path(@user, @student), method: :patch, params: {user: {belt: promote_belt(@student[:belt]) }}, data: { confirm: 'Are you sure to want to promote belt for this student?' } %>
-
-    <%= button_to "Delete this student", teacher_student_path(@user, @student), method: :delete, data: { confirm: 'This action will delete the student and all his information. Are you sure?' } %>
-    
-    <%= button_to "Reset password", teacher_student_path(@user, @student), method: :patch, params: {user: {password: @student[:birth_date].strftime('%d%m%y')}}, data: { confirm: 'Are you sure to want to reset password?' } %>
 </div>
