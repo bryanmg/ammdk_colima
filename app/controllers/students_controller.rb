@@ -13,8 +13,8 @@ class StudentsController < ApplicationController
     updated = false
     ActiveRecord::Base.transaction do
       # TODO: could be better if we apply 'accepts_nested_attributes_for' at this point
-      @user.student_information.update(student_information)
       updated = @user.update(user_params)
+      @user.student_information.update(student_information)
     end
     if updated
       redirect_to student_url(@user), notice: "Profile was successfully updated."
@@ -30,14 +30,14 @@ class StudentsController < ApplicationController
   end
 
   def user_params
-    validate_input.except(:student_information)
+    validate_input.except(:student_information_attributes)
   end
 
   def student_information
-    validate_input[:student_information]
+    validate_input[:student_information_attributes]
   end
 
   def validate_input
-    params.require(:user).permit(:email, :password, student_information: [:tutor_name, :cellphone])
+    params.require(:user).permit(:email, :password, student_information_attributes: [:tutor_name, :cellphone])
   end
 end
