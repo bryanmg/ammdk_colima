@@ -1,10 +1,12 @@
-<h1 class="subtitle">Editing group</h1>
+<div class="container pt-5">
+  <h1 class="title">Edit group</h1>
 
-<%= render "teachers/groups/form", group: @group, method: :patch, url: teacher_group_url(@user, @group) %>
+  <%= render "teachers/groups/form", group: @group, method: :patch, url: teacher_group_url(@user, @group) %>
 
-<br>
-
-<div>
-  <%= link_to "Show this group", teacher_group_url(@user, @group) %> |
-  <%= link_to "Back to groups", teacher_url(@user) %>
+  <div class="is-flex is-justify-content-flex-end">
+    <%= link_to(teacher_group_path(@user, @group), class: "button is-info is-outlined mr-3") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back to group</span>
+    <% end%>
+  </div>
 </div>

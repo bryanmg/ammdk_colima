@@ -12,13 +12,14 @@
   </p>
 
   <p>
-    <strong>Days of the week</strong>
-    <%= render "teachers/groups/days_of_the_week", days_of_the_week: group.days_of_the_week %>
+    <strong>Enrolled students</strong>
+    <%= group.group_members.count  %>
   </p>
 
   <p>
-    <strong>Total of students</strong>
-    <%= group.group_members.count  %>
+    <strong>Training days</strong>
+    <%= render "teachers/groups/days_of_the_week", days_of_the_week: group.days_of_the_week %>
   </p>
+
 
 </div>

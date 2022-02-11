@@ -1,0 +1,39 @@
+<%= form_with(method: :get, url: url) do |form| %>
+  <div class="columns">
+    <div class="column">
+      <div class="is-flex is-flex-direction-column">
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label mr-2">From:</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <%= form.date_field :from_date, required: true, class: "input" %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label mr-2">To:</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <%= form.date_field :to_date, required: true, class: "input" %>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <%= form.submit "View attendance record", class: "button is-primary is-outlined"%>
+      </div>
+    </div>
+
+    <div class="column">
+    </div>
+  </div>
+<% end %>

@@ -1,17 +1,30 @@
+<div class="container pt-5">
+  <h1 class="title">Attendances of the group <%= @group.name%> for <%= params[:date]%></h1>
 
-<h1 class="subtitle">Attendances of the group <%= @group.name%> for date <%= params[:date]%></h1>
+  <div class="mb-5">
+    <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
+      <thead>
+        <tr class="has-background-primary-light">
+          <th>Student</th>
+          <th>Was</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @attendances.each do |attendance| %>
+          <tr>
+            <%= render attendance, attendance: attendance %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<div id="attendances">
-  <p>
-    <strong>Student name:</strong>
-  </p>
-  <br />
-  <% @attendances.each do |attendance| %>
-    <%= render attendance %>
-  <% end %>
-</div>
-
-<br />
-<%= link_to "Back", teacher_group_url(@user, @group) %>
+  <div class="is-flex is-justify-content-flex-end">
+    <%= link_to(teacher_group_url(@user, @group), class: "button is-info is-outlined") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back</span>
+    <% end%>
+  </div>
+<div>
 
 

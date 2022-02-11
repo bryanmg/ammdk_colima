@@ -2,7 +2,6 @@
   <% if learning_resource.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(learning_resource.errors.count, "error") %> prohibited this teachers_learning_resource from being saved:</h2>
-
       <ul>
         <% learning_resource.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,27 +10,63 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :name, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :name, value: learning_resource.name, required: true, class:"input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :description, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_area :description, value: learning_resource.description, required: true, class:"input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :belt, style: "display: block" %>
-    <%= form.select :belt, BELTS %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :belt, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <div class="select">
+          <%= form.select :belt, BELTS_TEXT.invert, value: learning_resource.belt, class: "input"%>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :resource, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.file_field :resource, class:"input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :resource, style: "display: block" %>
-    <%= form.file_field :resource %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="is-flex is-justify-content-flex-end mt-5">
+    <%= form.submit class: "button is-success is-outlined" %>
+    <%= link_to(teacher_learning_resources_path(@user), class: "button is-info is-outlined ml-5") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back</span>
+    <% end %>
   </div>
 <% end %>

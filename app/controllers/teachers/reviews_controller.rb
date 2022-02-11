@@ -2,6 +2,7 @@ module Teachers
   class ReviewsController < ApplicationController
     before_action :authenticate_user!, :set_user
     before_action :set_teachers_review, only: [:show, :edit, :update, :destroy]
+    before_action :set_teacher_students, only: [:new, :edit]
 
     def show; end
 
@@ -29,7 +30,7 @@ module Teachers
 
     def destroy
       @review.destroy
-      redirect_to teacher_reviews_url(@user), notice: "Review was successfully destroyed."
+      redirect_to teacher_path(@user), notice: "Review was successfully destroyed."
     end
 
     private
@@ -44,6 +45,15 @@ module Teachers
 
     def teachers_review_params
       params.require(:review).permit(:review, :learning_resource_id, :student_id)
+    end
+
+    def my_students_ids
+      # TODO: nicer approach would be having a instance method responsible of getting that records. (@teacher.students)
+      @user.group_members.pluck(:user_id)
+    end
+
+    def set_teacher_students
+      @my_students = User.where(id: my_students_ids).select(:name, :id)
     end
   end
 end

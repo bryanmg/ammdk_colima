@@ -1,28 +1,59 @@
-<div class="container">
+<div class="container pt-5">
   <h2 class="title"><%= @group.name %></h2>
   
-  <%= render "teachers/groups/group", group:@group %>
+  <div class="box">
+    <%= render "teachers/groups/group", group:@group %>
+  </div>
 
   <div>
-    <%= link_to "Take attendance", new_teacher_group_attendance_url(@user, @group) %>
-    <br><br>
+    <span class="sibtitle">
+      <strong>Check attendances for</strong>
+    </span>
 
     <%= form_with(method: :get, url: teacher_group_attendances_url(@user, @group)) do |form| %>
-      <div>
-        <%= form.label "Select date", style: "display: block" %>
-        <%= form.date_field :date, required: true%>
+      <div class="columns">
+        <div class="column">
+
+          <div class="is-flex is-flex-direction-column">
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label mr-2">Date:</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <%= form.date_field :date, required: true, class: "input" %>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <%= form.submit "View attendance record", class: "button is-primary is-outlined"%>
+          </div>
+
+        </div>
+        <div class="column">
+        </div>
       </div>
-      <%= form.submit "View attendance record"%>
     <% end %>
-
-    <%= link_to "Edit this group", edit_teacher_group_path(@user, @group) %>
     <br>
-    <%= link_to "Back to groups", teacher_url(@user) %>
 
-    <div>
-      <%= link_to "Edit this group", edit_teacher_group_path(@user, @group) %>
-      <%= link_to "Back", teacher_url(@user) %>
-      <%= button_to "Destroy", teacher_group_url(@user, @group), method: :delete %>
+    <div class="is-flex is-justify-content-flex-end">
+      <%= link_to(teacher_path(@user), class: "button is-info is-outlined mr-5") do %>
+        <i class="fas fa-undo"></i>
+        <span class="ml-2">Back to dashboard</span>
+      <% end %>
+      <%= link_to(new_teacher_group_attendance_url(@user, @group), class: "button is-link is-outlined mr-5") do %>
+        <i class="far fa-check-square"></i>
+        <span class="ml-2">Take attendance</span>
+      <% end %>
+      <%= link_to(edit_teacher_group_path(@user, @group), class: "button is-primary is-outlined mr-5") do %>
+        <i class="fas fa-edit"></i>
+        <span class="ml-2">Edit group</span>
+      <% end %>
+      <%= link_to(teacher_group_url(@user, @group), method: :delete, class: "button is-danger is-outlined") do %>
+        <i class="fas fa-trash-alt"></i>
+        <span class="ml-2">Delete group</span>
+      <% end %>
     </div>
   </div>
 </div>

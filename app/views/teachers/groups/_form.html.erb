@@ -11,37 +11,67 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, value: group.name %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :name, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :name, value: group.name, required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :from_time, style: "display: block" %>
-    <%= form.time_field :from_time, value: group.from_time&.strftime('%T') %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :from_time, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.time_field :from_time, value: group.from_time&.strftime('%T'), required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :to_time, style: "display: block" %>
-    <%= form.time_field :to_time, value: group.to_time&.strftime('%T') %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :to_time, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.time_field :to_time, value: group.to_time&.strftime('%T'), required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :days_of_the_week, style: "display: block" %>
-    
-    <%= form.fields_for :days_of_the_week do |field| %>
-      sunday: <%= field.check_box :sunday, { checked: !group[:days_of_the_week][:sunday].to_i.zero? } %>
-      monday: <%= field.check_box :monday, { checked: !group[:days_of_the_week][:monday].to_i.zero? } %>
-      tuesday: <%= field.check_box :tuesday, { checked: !group[:days_of_the_week][:tuesday].to_i.zero? } %>
-      wednesday: <%= field.check_box :wednesday, { checked: !group[:days_of_the_week][:wednesday].to_i.zero? } %>
-      thursday: <%= field.check_box :thursday, { checked: !group[:days_of_the_week][:thursday].to_i.zero? } %>
-      friday: <%= field.check_box :friday, { checked: !group[:days_of_the_week][:friday].to_i.zero? } %>
-      saturday: <%= field.check_box :saturday, { checked: !group[:days_of_the_week][:saturday].to_i.zero? } %>
-    <% end %>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :days_of_the_week, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field pt-2">
+        <%= form.fields_for :days_of_the_week do |field| %>
+        
+          <% [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday].each do |day| %>
+            <label class="checkbox mr-3">
+              <%= day.to_s.capitalize %>
+              <%= field.check_box day, { checked: !group[:days_of_the_week][day].to_i.zero? } %>
+            </label>
+          <% end %>
+
+        <% end %>
+      </div>
+    </div>
   </div>
 
-
-  <div>
-    <%= form.submit %>
+  <div class="is-flex is-justify-content-flex-end mb-4 mr-3">
+    <%= form.submit class: "button is-success is-outlined" %>
   </div>
+  
 <% end %>

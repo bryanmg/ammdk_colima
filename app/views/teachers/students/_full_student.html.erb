@@ -1,0 +1,51 @@
+<div id="<%= dom_id student %>">
+
+  <div class="columns">
+    <div class="column">
+      <div class="box">
+        <h2 class="subtitle">Personal data</h2>
+        <p>
+          <strong>Name:</strong>
+          <%= student.name %>
+        </p>
+
+        <p>
+          <strong>Belt:</strong>
+          <%= BELTS_TEXT[student.belt.to_sym] %>
+        </p>
+
+        <p>
+          <strong>Group:</strong>
+          <%= student.group_member&.group&.name %></td>
+        </p>
+
+        <p>
+          <strong>Ocupation:</strong>
+          <%= student.student_information&.ocupation %>
+        </p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box">
+        <h2 class="subtitle">Data of the responsible legal</h2>
+        <p>
+          <strong>Tutor:</strong>
+          <%= student.student_information&.tutor_name %>
+        </p>
+
+        <p>
+          <strong>Call to:</strong>
+          <%= student.student_information&.cellphone %>
+        </p>
+
+        <p>
+          <strong>Social security number:</strong>
+          <%= student.student_information&.health_insurance %>
+        </p>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+</div>
