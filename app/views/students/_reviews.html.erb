@@ -1,24 +1,31 @@
-<div id="<%= dom_id review %>">
-
-  <p>
-    <strong>Review:</strong>
-    <%= review.review %>
-  </p>
-
-  <% if review.learning_resource %>
-    <p>
-      <strong>Resource:</strong>
-      <%= review.learning_resource.name %>
-      <br>
-      <%= review.learning_resource.description %>
-    </p>
-
-    <% if review.learning_resource.resource.attached? %>
+<div id="<%= dom_id review %>" class="box">
+  <div class="columns">
+    <div class="column">
       <p>
-        <strong>File:</strong>
-        <%= render "file_resource/resource", file_resource: review.learning_resource %>
+        <strong>Review:</strong>
+        <%= review.review %>
       </p>
-    <% end %>
-  <% end %>
-
+      <% if review.learning_resource %>
+        <p>
+          <strong>Resource:</strong>
+          <%= review.learning_resource.name %>
+          <br>
+          <%= review.learning_resource.description %>
+        </p>
+      <% end %>
+    </div>
+      
+    <div class="column">
+      <% if review.learning_resource&.resource&.attached? %>
+        <p>
+          <strong>File:</strong>
+          <%= render "file_resource/resource", file_resource: review.learning_resource %>
+        </p>
+      <% else %>
+        <p>
+          <span class="tag is-info is-medium is-light">Not learning resource assigned</span>
+        </p>
+      <% end %>
+    </div>
+  </div>
 </div>

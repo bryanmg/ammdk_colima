@@ -6,60 +6,87 @@
 <% end %>
 
 <br>
-<h1 class="title">Your attendances</h1>
-
 <div class="container">
-  <nav class="level">
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Present</p>
-        <p class="title"><%= @attendance_record[true] || 0 %></p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">Absent</p>
-        <p class="title"><%= @attendance_record[false] || 0 %></p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">% of attendance</p>
-        <p class="title">
-          <%= attendance_percent_for(@attendance_record, present: true) %> %
-        </p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <p class="heading">% of absence</p>
-        <p class="title">
-          <%= attendance_percent_for(@attendance_record, present: false) %> %
-        </p>
-      </div>
-    </div>
-  </nav>
-</div>
+  <h1 class="title">Your attendances</h1>
 
-<br>
-<div id="attendances">
-  <% @attendances.each do |attendance| %>
-    <%= render "students/attendances/attendance", attendance: attendance %>
+  <div class="container">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Present</p>
+          <p class="title"><%= @attendance_record[true] || 0 %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Absent</p>
+          <p class="title"><%= @attendance_record[false] || 0 %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">% of attendance</p>
+          <p class="title">
+            <%= attendance_percent_for(@attendance_record, present: true) %> %
+          </p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">% of absence</p>
+          <p class="title">
+            <%= attendance_percent_for(@attendance_record, present: false) %> %
+          </p>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <br>
+  <div id="attendances">
+    <% @attendances.each do |attendance| %>
+      <%= render "students/attendances/attendance", attendance: attendance %>
+    <% end %>
+  </div>
+  <br>
+
+  <%= form_with(method: :get, url: student_attendances_path(@user)) do |form| %>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label "From", class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= form.date_field :from_date, required: true, class:"input"%>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label "To", class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= form.date_field :to_date, required: true, class:"input" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <%= form.submit "View attendance record", class: "button is-info is-success is-outlined"%>
   <% end %>
+
+  <%# <%= render "students/attendances/attendance_records_form", url: teacher_student_path(@user, @student) %>
+
+  <br>
+  
+  <div class="is-flex is-justify-content-flex-end mb-5">
+    <%= link_to(student_path(@user), class: "button is-info is-outlined ml-5") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back to dashboard</span>
+    <% end %>
+  </div>
 </div>
-<br>
-
-<%= form_with(method: :get, url: student_attendances_path(@user)) do |form| %>
-  <div>
-    <%= form.label "from", style: "display: block" %>
-    <%= form.date_field :from_date, required: true%>
-  </div>
-  <div>
-    <%= form.label "to", style: "display: block" %>
-    <%= form.date_field :to_date, required: true%>
-  </div>
-  <%= form.submit "View attendance record"%>
-<% end %>
-
-<br>
-<%= link_to "Back to dashboard", student_path(@user) %>

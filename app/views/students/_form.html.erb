@@ -2,7 +2,6 @@
   <% if user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,54 +10,81 @@
     </div>
   <% end %>
 
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email, value: user.email %>
-  </div>
-
-  <p>
-    <strong>Belt:</strong>
-    <%= BELTS_TEXT[user.belt.to_sym] %>
-  </p>
+  <div class="box">
+    <p>
+      <strong>Name:</strong>
+      <%= user.name %>
+    </p>
+    <p>
+      <strong>Belt:</strong>
+      <%= BELTS_TEXT[user.belt.to_sym] %>
+    </p>
+      
+    <% if user.student_information %>
+      <%= form.fields_for :student_information_attributes do |row| %>
+        <p>
+          <strong>Ocupation:</strong>
+          <%= user.student_information&.ocupation %>
+        </p>
+        <p>
+          <strong>Civil status:</strong>
+          <%= user.student_information&.civil_status %>
+        </p>
+        <p>
+          <strong>Social security number:</strong>
+          <%= user.student_information&.health_insurance %>
+        </p>
     
-  <% if user.student_information %>
-    
-    <%= form.fields_for :student_information_attributes do |row| %>
+    </div><%# End card box %>
 
-      <p>
-        <strong>Ocupation:</strong>
-        <%= user.student_information&.ocupation %>
-      </p>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <%= row.label :tutor_name, class: "label" %>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <%= row.text_field :tutor_name, value: user.student_information.tutor_name, class: "input" %>
+              </p>
+            </div>
+          </div>
+        </div>
 
-      <p>
-        <strong>Civil status:</strong>
-        <%= user.student_information&.civil_status %>
-      </p>
-
-      <div>
-        <%= row.label :tutor_name, style: "display: block" %>
-        <%= row.text_field :tutor_name, value: user.student_information.tutor_name %>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <%= row.label :cellphone, class: "label" %>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <%= row.text_field :cellphone, value: user.student_information.cellphone, class: "input" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
       </div>
-
-      <div>
-        <%= row.label :cellphone, style: "display: block" %>
-        <%= row.text_field :cellphone, value: user.student_information.cellphone %>
-      </div>
-
-      <p>
-        <strong>Social security number:</strong>
-        <%= user.student_information&.health_insurance %>
-      </p>
     <% end %>
 
-  <% end %>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label :email, class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= form.text_field :email, value: user.email, class: "input" %>
+          </p>
+        </div>
+      </div>
+    </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="is-flex is-justify-content-flex-end">
+    <%= form.submit class: "button is-success is-outlined" %>
+    <%= link_to(student_path(@user), class: "button is-info is-outlined ml-5") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back to dashboard</span>
+    <% end %>
   </div>
 <% end %>

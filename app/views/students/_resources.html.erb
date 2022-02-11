@@ -1,20 +1,31 @@
-<div id="<%= dom_id resource %>">
-
-  <p>
-    <strong>Name:</strong>
-    <%= resource.learning_resource.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= resource.learning_resource.description %>
-  </p>
-
-  <% if resource.learning_resource.resource.attached? %>
-    <p>
-      <strong>View file:</strong>
-      <%= render "file_resource/resource", file_resource: resource.learning_resource %>
-    </p>
-  <% end %>
-
+<div id="<%= dom_id resource %>" class="box">
+  <div class="columns">
+    <div class="column">
+      <p>
+        <strong>
+        Name: <%= resource.learning_resource.name %>
+        </strong>
+      </p>
+      <p>
+        <strong>Description:</strong>
+        <%= resource.learning_resource.description %>
+      </p>
+      <p>
+        <strong>Belt required:</strong>
+        <%= BELTS_TEXT[BELTS.key(resource.learning_resource.belt)] %>
+      </p>
+    </div>
+    <div class="column">
+      <% if resource.learning_resource.resource.attached? %>
+        <p>
+          <strong>Resource:</strong>
+          <%= render "file_resource/resource", file_resource: resource.learning_resource %>
+        </p>
+      <% else %>
+          <p>
+            <span class="tag is-info is-medium is-light">This learning resource has not file attached.</span>
+          </p>
+      <% end %>
+    </div>
+  </div>
 </div>

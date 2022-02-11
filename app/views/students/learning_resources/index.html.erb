@@ -1,13 +1,18 @@
 
-<h1 class="subtitle" >Learning resources</h1>
+<div class="container pt-5">
+  <h1 class="title" >Learning resources</h1>
 
-<div id="students_learning_resources">
   <% @learning_resources.each do |learning_resource| %>
     <%= render "teachers/learning_resources/learning_resource", learning_resource: learning_resource%>
-    <br><br>
+    <br>
   <% end %>
+
+  <%= will_paginate @learning_resources, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
+
+  <div class="is-flex is-justify-content-flex-end mb-5">
+    <%= link_to(student_path(@user), class: "button is-info is-outlined ml-5") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back to dashboard</span>
+    <% end %>
+  </div>
 </div>
-
-<%= will_paginate @learning_resources, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
-
-<%= link_to "Back to dashboard", student_path(@user) %>
