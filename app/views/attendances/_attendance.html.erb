@@ -3,10 +3,8 @@
     <%= attendance.user.name %>
   </td>
   <td>
-    <% if attendance.present? %>
-      <strong>present</strong>
-    <% else %>
-      <strong>absent</strong>
-    <% end %>
+    <strong>
+      <%= attendance.present? ? "present" : "absent" %>
+    </strong>
   </td>
 </div>

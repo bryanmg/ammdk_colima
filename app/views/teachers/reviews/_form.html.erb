@@ -45,7 +45,7 @@
     <div class="field-body">
       <div class="field">
         <div class="select">
-          <%= form.select :learning_resource_id, @user.learning_resources&.pluck(:name, :id).prepend(["None", ""]), selected: review.learning_resource_id || ["None", ""] , class: "input"%>
+          <%= form.select :learning_resource_id, @user.learning_resources&.pluck(:name, :id),  {include_blank: 'None'}, selected: review.learning_resource_id , class: "input"%>
         </div>
       </div>
     </div>
