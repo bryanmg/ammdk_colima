@@ -11,6 +11,8 @@
   <% end %>
 </div>
 
+<%= will_paginate @teacher_learning_resources, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
+
 <%= link_to "Assign learning resource", new_teacher_students_learning_resource_url(@user) %>
 <br>
 <%= link_to "New learning resource", new_teacher_learning_resource_path(@user) %>

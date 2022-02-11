@@ -4,7 +4,8 @@ module Students
 
     def index
       # TODO: could be better y we have something like '@student.student_learning_resources' at this point
-      @student_learning_resources = @user.students_learning_resources
+      @student_learning_resources = @user.students_learning_resources.paginate(page: params[:page],
+                                                                               per_page: PER_PAGE)
     end
 
     private

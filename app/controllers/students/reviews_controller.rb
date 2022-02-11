@@ -3,7 +3,7 @@ module Students
     before_action :authenticate_user!, :set_user
 
     def index
-      @reviews = Review.where(student_id: @user.id)
+      @reviews = Review.where(student_id: @user.id).paginate(page: params[:page], per_page: PER_PAGE)
     end
 
     private

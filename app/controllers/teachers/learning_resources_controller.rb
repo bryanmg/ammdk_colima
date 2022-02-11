@@ -4,7 +4,7 @@ module Teachers
     before_action :set_teachers_learning_resource, only: [:show, :edit, :update, :destroy]
 
     def index
-      @teacher_learning_resources = @user.learning_resources
+      @teacher_learning_resources = @user.learning_resources.paginate(page: params[:page], per_page: PER_PAGE)
     end
 
     def show; end
