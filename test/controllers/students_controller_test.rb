@@ -30,7 +30,10 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update student" do
     patch student_url(@user), params: {
-      user: { email: users(:two).email, student_information: { tutor_name: "Duck Duck go", cellphone: "1234567890" } }
+      user: {
+        email: users(:two).email,
+        student_information_attributes: { tutor_name: "Duck Duck go", cellphone: "1234567890" }
+      }
     }
 
     assert_redirected_to student_url(@user)
