@@ -57,7 +57,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
     }
     patch teacher_group_url(@user, @group), params: params
 
-    assert_redirected_to teacher_groups_url(@user, @group)
+    assert_redirected_to teacher_group_url(@user, @group)
   end
 
   test "should destroy group" do

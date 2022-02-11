@@ -82,14 +82,5 @@
   <h2 class="subtitle">My groups</h2>
   <%= render 'groups', groups: @groups %>
 
-  <h2 class="subtitle">Learning Resources</h2>
-  <% if @total_of_learning_resources %>
-    <span><%= @total_of_learning_resources %> Created resources</span>
-    <br />
-    <%= link_to "See all resources", teacher_learning_resources_url(@user) %>
-  <% else %>
-    <span>You dont have learning resources yet...</span>
-  <% end %>
-
   <br />
 </div>

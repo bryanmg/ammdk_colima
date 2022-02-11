@@ -4,7 +4,7 @@ module Students
 
     def index
       # TODO: fix this 'where' clausule to use @user.belt directly
-      @learning_resources = LearningResource.where("belt >= ?", BELTS[@user.belt.to_sym])
+      @learning_resources = LearningResource.where("belt <= ?", BELTS[@user.belt.to_sym])
     end
 
     private

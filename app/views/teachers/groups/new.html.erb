@@ -1,6 +1,6 @@
 <h1 class="subtitle">New group</h1>
 
-<%= render "teachers/groups/form", teacher: @user, group: @group %>
+<%= render "teachers/groups/form", group: @group, method: :post, url: teacher_groups_url(@user, @group) %>
 
 <br>
 

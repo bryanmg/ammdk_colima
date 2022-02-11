@@ -23,19 +23,17 @@ class GroupsController < ApplicationController
   def create
     @group = @user.groups.new(group_params)
 
-    if @group.save
-      redirect_to teacher_url(@user), notice: "Group was successfully created."
-    else
-      render :new, status: :unprocessable_entity
-    end
+    return redirect_to teacher_url(@user), notice: "Group was successfully created." if @group.save
+
+    render :new, status: :unprocessable_entity
   end
 
   def update
     if @group.update(group_params)
-      redirect_to teacher_groups_url(@user, @group), notice: "Group was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
+      return redirect_to teacher_group_url(@user, @group), notice: "Group was successfully updated."
     end
+
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy

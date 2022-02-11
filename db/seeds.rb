@@ -14,7 +14,7 @@ User.insert_all([
                     encrypted_password: User.new.send(:password_digest, '123456'),
                     name: "Student 1",
                     role: "student",
-                    belt: :kup10,
+                    belt: :dan1,
                     birth_date: "12/12/2000",
                     created_at: DateTime.new,
                     updated_at: DateTime.new
@@ -24,7 +24,7 @@ User.insert_all([
                     encrypted_password: User.new.send(:password_digest, '123456'),
                     name: "Student 2",
                     role: "student",
-                    belt: :kup8,
+                    belt: :kupy,
                     birth_date: "12/12/2010",
                     created_at: DateTime.new,
                     updated_at: DateTime.new
@@ -34,7 +34,7 @@ User.insert_all([
                     encrypted_password: User.new.send(:password_digest, '123456'),
                     name: "Student number three",
                     role: "student",
-                    belt: :kup8,
+                    belt: :kup7,
                     birth_date: "12/12/2010",
                     created_at: DateTime.new,
                     updated_at: DateTime.new
@@ -44,7 +44,7 @@ User.insert_all([
                     encrypted_password: User.new.send(:password_digest, '123456'),
                     name: "Student number four",
                     role: "student",
-                    belt: :kup8,
+                    belt: :kup6,
                     birth_date: "12/12/2010",
                     created_at: DateTime.new,
                     updated_at: DateTime.new
@@ -54,7 +54,7 @@ User.insert_all([
                     encrypted_password: User.new.send(:password_digest, '123456'),
                     name: "Student number_five",
                     role: "student",
-                    belt: :kup8,
+                    belt: :kup10,
                     birth_date: "12/12/2010",
                     created_at: DateTime.new,
                     updated_at: DateTime.new
@@ -69,8 +69,8 @@ Group.insert_all([
                      name: "Principiate",
                      from_time: "16:00",
                      to_time: "17:00",
-                     days_of_the_week: { sunday?: false, monday?: true, tuesday?: true, wednesday?: true,
-                                         thursday?: true, friday?: true, saturday?: false },
+                     days_of_the_week: { sunday: "0", monday: "1", tuesday: "1", wednesday: "1",
+                                         thursday: "1", friday: "1", saturday: "0" },
                      created_at: DateTime.new,
                      updated_at: DateTime.new
                    },
@@ -79,8 +79,8 @@ Group.insert_all([
                      name: "Intermediate",
                      from_time: "17:00",
                      to_time: "18:00",
-                     days_of_the_week: { sunday?: false, monday?: false, tuesday?: true, wednesday?: true,
-                                         thursday?: true, friday?: true, saturday?: false },
+                     days_of_the_week: { sunday: "0", monday: "0", tuesday: "1", wednesday: "1",
+                                         thursday: "1", friday: "1", saturday: "0" },
                      created_at: DateTime.new,
                      updated_at: DateTime.new
                    },
@@ -89,8 +89,8 @@ Group.insert_all([
                      name: "Advanced",
                      from_time: "18:00",
                      to_time: "20:00",
-                     days_of_the_week: { sunday?: false, monday?: true, tuesday?: false, wednesday?: true,
-                                         thursday?: false, friday?: true, saturday?: false },
+                     days_of_the_week: { sunday: "0", monday: "1", tuesday: "0", wednesday: "1",
+                                         thursday: "0", friday: "1", saturday: "0" },
                      created_at: DateTime.new,
                      updated_at: DateTime.new
                    },
@@ -99,8 +99,8 @@ Group.insert_all([
                      name: "Testing",
                      from_time: "09:00",
                      to_time: "15:00",
-                     days_of_the_week: { sunday?: true, monday?: true, tuesday?: true, wednesday?: true,
-                                         thursday?: true, friday?: true, saturday?: true },
+                     days_of_the_week: { sunday: "1", monday: "1", tuesday: "0", wednesday: "0",
+                                         thursday: "1", friday: "0", saturday: "0" },
                      created_at: DateTime.new,
                      updated_at: DateTime.new
                    }
@@ -111,6 +111,9 @@ students = User.where(role: ["student"]).select(:id)
 
 GroupMember.create([
                      students.map { |student| { user_id: student.id, group_id: group.id } }
+                   ])
+GroupMember.create([
+                     students.map { |student| { user_id: student.id, group_id: Group.last.id } }
                    ])
 
 StudentInformation.create([
@@ -127,19 +130,26 @@ StudentInformation.create([
                           ])
 
 LearningResource.create([
-                          { name: "Kicho Palya", description: "Sibolize 'the seed' of the student", belt: 10,
+                          { name: "Kicho Palya", description: "Sibolize 'the seed' of the student", belt: 1,
                             user_id: user.id },
-                          { name: "Palgue Sayan", description: "I don't know what simbolize", belt: 7,
+                          { name: "Palgue Sayan", description: "I don't know what simbolize", belt: 3,
                             user_id: user.id },
-                          { name: "Balzek", description: "I don't know what does that mean", belt: 11,
+                          { name: "Balzek", description: "I don't know what does that mean", belt: 6,
+                            user_id: user.id },
+                          { name: "Balzek 2", description: "Lorem impsum dolor si ament", belt: 10,
+                            user_id: user.id },
+                          { name: "Up Saagui", description: "Lorem impsum dolor si ament", belt: 11,
                             user_id: user.id }
                         ])
 first_learning_resource = LearningResource.first
 second_learning_resource = LearningResource.last
+third_learning_resource = LearningResource.last(2)[0]
 first_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_one.png')),
                                         filename: 'file_one.png')
 second_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_two.png')),
                                          filename: 'file_two.png')
+third_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_two.png')),
+                                        filename: 'file_three.txt')
 
 Attendance.create([
                     students.map { |student| { user: student, group: group, date: Date.yesterday, present: false } }
