@@ -20,9 +20,7 @@
     <% if resource.learning_resource.resource.representable? %>
       <%= image_tag resource.learning_resource.resource.representation(resize_to_limit: [200, 200]) %>
     <% else %>
-      <%= link_to rails_blob_path(resource.learning_resource.resource, disposition: "attachment") do %>
-        <%= image_tag "placeholder.png", alt: "Download file" %>
-      <% end %>
+      <span>Cannot display preview</span>
     <% end %>
   <% end %>
 
