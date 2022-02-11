@@ -3,20 +3,20 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Present</p>
-        <p class="title"><%= attendance_stats[true] ? attendance_stats[true] : 0 %></p>
+        <p class="title"><%= attendance_stats[true] || 0 %></p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Absent</p>
-        <p class="title"><%= attendance_stats[false] ? attendance_stats[false] : 0 %></p>
+        <p class="title"><%= attendance_stats[false] || 0 %></p>
       </div>
     </div>
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">% of attendance</p>
         <p class="title">
-          <%= (attendance_stats[true].to_f / attendance_stats.values.sum * 100).nan? ? 0 : (attendance_stats[true].to_f / attendance_stats.values.sum * 100) %> %
+          <%= attendance_percent_for(attendance_stats, present: true) %> %
         </p>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div>
         <p class="heading">% of absence</p>
         <p class="title">
-          <%= (attendance_stats[false].to_f / attendance_stats.values.sum * 100).nan? ? 0 : (attendance_stats[false].to_f / attendance_stats.values.sum * 100) %> %
+          <%= attendance_percent_for(attendance_stats, present: false) %> %
         </p>
       </div>
     </div>

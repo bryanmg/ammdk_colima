@@ -48,7 +48,8 @@ module Teachers
     end
 
     def my_students_ids
-      @user.group_members.map(&:user_id)
+      # TODO: nicer approach would be having a instance method responsible of getting that records. (@teacher.students)
+      @user.group_members.pluck(:user_id)
     end
 
     def set_teacher_students
