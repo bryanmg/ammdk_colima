@@ -141,15 +141,6 @@ LearningResource.create([
                           { name: "Up Saagui", description: "Lorem impsum dolor si ament", belt: 11,
                             user_id: user.id }
                         ])
-first_learning_resource = LearningResource.first
-second_learning_resource = LearningResource.last
-third_learning_resource = LearningResource.last(2)[0]
-first_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_one.png')),
-                                        filename: 'file_one.png')
-second_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_two.png')),
-                                         filename: 'file_two.png')
-third_learning_resource.resource.attach(io: File.open(Rails.root.join('test/fixtures/files/file_two.png')),
-                                        filename: 'file_three.txt')
 
 Attendance.create([
                     students.map { |student| { user: student, group: group, date: Date.yesterday, present: false } }
