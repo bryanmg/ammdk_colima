@@ -44,9 +44,22 @@
 
   <br>
   <div id="attendances">
-    <% @attendances.each do |attendance| %>
-      <%= render "students/attendances/attendance", attendance: attendance %>
-    <% end %>
+    <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
+      <thead>
+        <tr class="has-background-primary-light">
+          <th>Date</th>
+          <th>Was</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @attendances.each do |attendance| %>
+          <tr>
+            
+            <%= render "students/attendances/attendance", attendance: attendance %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
   <br>
 
@@ -76,10 +89,11 @@
         </div>
       </div>
     </div>
-    <%= form.submit "View attendance record", class: "button is-info is-success is-outlined"%>
+    
+    <div class="is-flex is-justify-content-flex-end mb-5">
+      <%= form.submit "View attendance record", class: "button is-info is-success is-outlined"%>
+    </div>
   <% end %>
-
-  <%# <%= render "students/attendances/attendance_records_form", url: teacher_student_path(@user, @student) %>
 
   <br>
   

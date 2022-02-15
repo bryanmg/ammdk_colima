@@ -2,6 +2,14 @@
   <br>
   <h1 class="title">Dashboard</h1>
   <%= render "students/user", user: @user %>
+
+  <div class="is-flex">
+    <%= link_to "Edit my profile", edit_student_path(@user), class: "button is-link is-outlined mr-3"%>
+    <%= link_to "See all available learning resources", student_learning_resources_path(@user), class: "button is-link is-outlined mr-3"%>
+    <%= link_to "See my attendance record", student_attendances_path(@user), class: "button is-link is-outlined mr-3"%>
+    <%= link_to "See all my reviews", student_reviews_path(@user), class: "button is-link is-outlined mr-3"%>
+    <%= link_to "See all assigned learning resources", student_students_learning_resources_path(@user), class: "button is-link is-outlined mr-3"%>
+  </div>
   <br>
 
   <h2 class="subtitle">
@@ -16,8 +24,6 @@
     <% end %>
   </div>
 
-
-  
   <h2 class="subtitle">
     <strong>Your assigned learning resources</strong>
     <span class="tag is-info ml-4">Showing only the last 5 fields</span>
@@ -30,12 +36,5 @@
     <% end %>
   </div>
 
-  <div class="is-flex">
-    <%= link_to "Edit my profile", edit_student_path(@user), class: "button is-link is-outlined mr-3"%>
-    <%= link_to "See all available learning resources", student_learning_resources_path(@user), class: "button is-link is-outlined mr-3"%>
-    <%= link_to "See my attendance record", student_attendances_path(@user), class: "button is-link is-outlined mr-3"%>
-    <%= link_to "See all my reviews", student_reviews_path(@user), class: "button is-link is-outlined mr-3"%>
-    <%= link_to "See all assigned learning resources", student_students_learning_resources_path(@user), class: "button is-link is-outlined mr-3"%>
-  </div>
   <br>
 <div>
