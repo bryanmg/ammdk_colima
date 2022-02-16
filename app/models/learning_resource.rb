@@ -3,6 +3,6 @@ class LearningResource < ApplicationRecord
   has_one_attached :resource
   validates :name, presence: true
 
-  has_many :students_learning_resources, dependent: :destroy
+  has_many :student_learning_resources, dependent: :destroy
   has_many :reviews, dependent: :destroy
 end
