@@ -21,4 +21,11 @@ class StudentLearningResourceTest < ActiveSupport::TestCase
     assert assignation.valid?
     assert assignation.save
   end
+
+  test "is not valid if user and learning resource was taken" do
+    assignation = StudentLearningResource.new(user: users(:one), learning_resource: learning_resources(:one))
+
+    refute assignation.valid?
+    assert_includes assignation.errors.messages[:user], "has already been taken"
+  end
 end
