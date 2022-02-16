@@ -1,7 +1,7 @@
 require "test_helper"
 
 module Students
-  class StudentsLearningResourcesControllerTest < ActionDispatch::IntegrationTest
+  class StudentLearningResourcesControllerTest < ActionDispatch::IntegrationTest
     include Devise::Test::IntegrationHelpers
 
     setup do
@@ -10,7 +10,7 @@ module Students
     end
 
     test "should get index" do
-      get student_students_learning_resources_url(@user)
+      get student_student_learning_resources_url(@user)
 
       assert_response :success
     end
