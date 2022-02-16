@@ -71,7 +71,7 @@
           <%= link_to "Register teacher", new_teacher_url, user: @user, class: "button is-info is-outlined" %>
           <%= link_to "My learning resources", teacher_learning_resources_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Edit my profile", edit_teacher_url(@user), class: "button is-info is-outlined" %>
-          <%= link_to "Assign learning resource", new_teacher_students_learning_resource_url(@user), class: "button is-info is-outlined" %>
+          <%= link_to "Assign learning resource", new_teacher_student_learning_resource_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Create learning resource", new_teacher_learning_resource_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Review student", new_teacher_review_url(@user), class: "button is-info is-outlined" %>
         </div>

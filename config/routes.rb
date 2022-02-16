@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :groups do
       resources :attendances, except: [:edit, :update, :destroy]
     end
-    resources :students_learning_resources, only: [:new, :create]
+    resources :student_learning_resources, only: [:new, :create]
   end
 
   resources :students, except: [:index, :create, :destroy] do
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       resources :learning_resources, only: [:index]
       resources :attendances, only: [:index]
       resources :reviews, only: [:index]
-      resources :students_learning_resources, only: [:index]
+      resources :student_learning_resources, only: [:index]
     end
   end
 end
