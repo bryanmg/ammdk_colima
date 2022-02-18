@@ -1,4 +1,4 @@
-class StudentsLearningResourcesController < ApplicationController
+class StudentLearningResourcesController < ApplicationController
   before_action :authenticate_user!, :set_user
 
   def new
@@ -7,12 +7,13 @@ class StudentsLearningResourcesController < ApplicationController
   end
 
   def create
-    @asignation = StudentsLearningResource.new(assignee_params)
+    @asignation = StudentLearningResource.new(assignee_params)
 
     if @asignation.save
       redirect_to teacher_learning_resources_url(@user), notice: "Learning resource was successfully assign."
     else
-      render :new, status: :unprocessable_entity
+      redirect_to new_teacher_student_learning_resource_url(@user),
+                  alert: "You already asigned this resource to the student"
     end
   end
 

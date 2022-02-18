@@ -8,7 +8,7 @@
     <%= link_to "See all available learning resources", student_learning_resources_path(@user), class: "button is-link is-outlined mr-3"%>
     <%= link_to "See my attendance record", student_attendances_path(@user), class: "button is-link is-outlined mr-3"%>
     <%= link_to "See all my reviews", student_reviews_path(@user), class: "button is-link is-outlined mr-3"%>
-    <%= link_to "See all assigned learning resources", student_students_learning_resources_path(@user), class: "button is-link is-outlined mr-3"%>
+    <%= link_to "See all assigned learning resources", student_student_learning_resources_path(@user), class: "button is-link is-outlined mr-3"%>
   </div>
   <br>
 
@@ -29,7 +29,7 @@
     <span class="tag is-info ml-4">Showing only the last 5 fields</span>
   </h2>
   </span>
-  <div id="students_learning_resources">
+  <div id="student_learning_resources">
     <% @assigned_learning_resouces&.each do |resource| %>
       <%= render "students/resources", resource: resource %>
       <br>

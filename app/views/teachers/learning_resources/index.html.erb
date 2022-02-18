@@ -10,7 +10,7 @@
   <%= will_paginate @teacher_learning_resources, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
 
   <div class="is-flex is-justify-content-flex-end">
-    <%= link_to(new_teacher_students_learning_resource_url(@user), class: "button is-primary is-outlined ml-5") do %>
+    <%= link_to(new_teacher_student_learning_resource_url(@user), class: "button is-primary is-outlined ml-5") do %>
       <i class="fas fa-user-plus"></i>
       <span class="ml-2">Assign to student</span>
     <% end %>

@@ -151,11 +151,11 @@ Attendance.create([
                     end
                   ])
 
-StudentsLearningResource.create([
-                                  students.map do |student|
-                                    { user_id: student.id, learning_resource_id: LearningResource.first.id }
-                                  end
-                                ])
+StudentLearningResource.create([
+                                 students.map do |student|
+                                   { user_id: student.id, learning_resource_id: LearningResource.first.id }
+                                 end
+                               ])
 
 Review.create([
                 students.map do |student|
@@ -176,5 +176,5 @@ p "Seed... Created #{GroupMember.count} member lists"
 p "Seed... Created #{StudentInformation.count} student information"
 p "Seed... Created #{LearningResource.count} learning resources"
 p "Seed... Created #{Attendance.count} attendances"
-p "Seed... Created #{StudentsLearningResource.count} Students learning resources"
+p "Seed... Created #{StudentLearningResource.count} Students learning resources"
 p "Seed... Created #{Review.count} Reviews"

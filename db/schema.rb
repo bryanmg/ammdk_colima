@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_192445) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,13 +108,14 @@ ActiveRecord::Schema.define(version: 2022_02_04_192445) do
     t.index ["user_id"], name: "index_student_informations_on_user_id"
   end
 
-  create_table "students_learning_resources", force: :cascade do |t|
+  create_table "student_learning_resources", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "learning_resource_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["learning_resource_id"], name: "index_students_learning_resources_on_learning_resource_id"
-    t.index ["user_id"], name: "index_students_learning_resources_on_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learning_resource_id"], name: "index_student_learning_resources_on_learning_resource_id"
+    t.index %w[user_id learning_resource_id], name: "index_on_user_and_learning_resource", unique: true
+    t.index ["user_id"], name: "index_student_learning_resources_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -146,6 +146,6 @@ ActiveRecord::Schema.define(version: 2022_02_04_192445) do
   add_foreign_key "reviews", "users", column: "student_id"
   add_foreign_key "reviews", "users", column: "teacher_id"
   add_foreign_key "student_informations", "users"
-  add_foreign_key "students_learning_resources", "learning_resources"
-  add_foreign_key "students_learning_resources", "users"
+  add_foreign_key "student_learning_resources", "learning_resources"
+  add_foreign_key "student_learning_resources", "users"
 end

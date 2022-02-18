@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :group_members, through: :groups, dependent: :destroy
   has_many :learning_resources, dependent: :destroy
   has_many :attendances, dependent: :destroy
-  has_many :students_learning_resources, dependent: :destroy
+  has_many :student_learning_resources, dependent: :destroy
   has_many :reviewed, class_name: "Review", foreign_key: "teacher_id", dependent: :destroy
   has_many :reviews, class_name: "Review", foreign_key: "student_id", dependent: :destroy
 
