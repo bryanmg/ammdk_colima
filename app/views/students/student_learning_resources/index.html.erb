@@ -2,7 +2,7 @@
   <h1 class="title">Your learning resources</h1>
 
   <% @student_learning_resources.each do |student_learning_resource| %>
-    <%= render "students/student_learning_resources/student_learning_resource", learning_resource: student_learning_resource.learning_resource%>
+    <%= render "teachers/learning_resources/learning_resource", learning_resource: student_learning_resource.learning_resource%>
   <% end %>
 
   <%= will_paginate @student_learning_resources, renderer: RemoteLinkPagination::LinkRenderer, class: "" %>
