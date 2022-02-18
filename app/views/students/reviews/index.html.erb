@@ -1,13 +1,18 @@
-<h1 class="subtitle">Your reviews</h1>
-
-<div id="reviews">
+<div class="container pt-5">
+  <h1 class="title">Your reviews</h1>
   <br />
+  
   <% @reviews.each do |review| %>
     <%= render "students/reviews/review", review: review %>
     <br>
   <% end %>
-</div>
 
-<%= will_paginate @reviews, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
-<br />
-<%= link_to "Back", student_url(@user) %>
+  <%= will_paginate @reviews, renderer: RemoteLinkPagination::LinkRenderer, :class=>"" %>
+  
+  <div class="is-flex is-justify-content-flex-end">
+    <%= link_to(student_url(@user), class: "button is-info is-outlined mr-5") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back</span>
+    <% end %>
+  </div>
+</div>
