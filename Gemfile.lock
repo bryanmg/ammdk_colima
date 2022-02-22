@@ -90,7 +90,7 @@ GEM
     bootsnap (1.10.3)
       msgpack (~> 1.2)
     builder (3.2.4)
-    bulma-rails (0.9.2)
+    bulma-rails (0.9.3)
       sassc (~> 2.0)
     capybara (3.36.0)
       addressable
@@ -277,7 +277,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-s3
   bootsnap
-  bulma-rails (~> 0.9.2)
+  bulma-rails (~> 0.9.3)
   capybara
   debug
   devise

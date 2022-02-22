@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.0"
 
 gem "bootsnap", require: false
-gem "bulma-rails", "~> 0.9.2"
+gem "bulma-rails", "~> 0.9.3"
 gem "devise"
 gem "image_processing"
 gem "importmap-rails"
