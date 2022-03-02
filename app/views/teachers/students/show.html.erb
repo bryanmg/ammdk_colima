@@ -35,6 +35,54 @@
       </tbody>
     </table>
   </div>
+
+  <%# Student record of learning resources %>
+  <h2 class="subtitle is-flex is-justify-content-center">
+    <strong>Asigned learning resources</strong>
+  </h2>
+  <div class="container mb-5">
+    <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
+      <thead>
+        <tr class="has-background-primary-light">
+          <th>Learnign resource name</th>
+          <th>Asigned on</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @student.student_learning_resources.each do |resource| %>
+          <tr>
+            <td><%= resource.learning_resource.name %></td>
+            <td><%= resource.learning_resource.created_at.strftime('%Y-%m-%d %T') %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%# Student reviews made %>
+  <h2 class="subtitle is-flex is-justify-content-center">
+    <strong>Reviews to the student</strong>
+  </h2>
+  <div class="container mb-5">
+    <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
+      <thead>
+        <tr class="has-background-primary-light">
+          <th>Review</th>
+          <th>Reviewed at</th>
+          <th>Learning resource</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @student.reviews.each do |review| %>
+          <tr>
+            <td><%= review.review %></td>
+            <td><%= review.created_at.strftime('%Y-%m-%d %T') %></td>
+            <td><%= review.learning_resource&.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   
   <%# Searcher of student attendances %>
   <span class="subtitle mb-5">
