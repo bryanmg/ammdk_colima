@@ -30,7 +30,7 @@ module Teachers
 
     def destroy
       @review.destroy
-      redirect_to teacher_path(@user), notice: "Review was successfully destroyed."
+      redirect_to teacher_student_path(@user, @review.student_id), notice: "Review was successfully destroyed."
     end
 
     private

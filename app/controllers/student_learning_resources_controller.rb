@@ -17,6 +17,13 @@ class StudentLearningResourcesController < ApplicationController
     end
   end
 
+  def destroy
+    student_learning_resource = StudentLearningResource.find(params[:id])
+    student_learning_resource.destroy
+    redirect_to teacher_student_path(@user, student_learning_resource.user_id),
+                notice: "Resource successfully unasigned."
+  end
+
   private
 
   def set_user
