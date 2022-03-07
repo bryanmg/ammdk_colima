@@ -38,14 +38,14 @@
 
   <%# Student record of learning resources %>
   <h2 class="subtitle is-flex is-justify-content-center">
-    <strong>Asigned learning resources</strong>
+    <strong>Assigned learning resources</strong>
   </h2>
   <div class="container mb-5">
     <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
       <thead>
         <tr class="has-background-primary-light">
           <th>Learnign resource name</th>
-          <th>Asigned on</th>
+          <th>Assigned to</th>
           <th></th>
         </tr>
       </thead>
@@ -57,7 +57,7 @@
             <td class="is-flex is-justify-content-center">
               <%= button_to(teacher_student_learning_resource_path(@user, resource), class: "button is-info is-outlined is-small ", method: :delete, data: { confirm: 'Are you sure to want to unasigne this resource?' }) do %>
                 <i class="far fa-trash-alt"></i>
-                <span class="ml-2">Unasigne</span>
+                <span class="ml-2">Unassign</span>
               <% end %>
             </td>
           </tr>
@@ -68,7 +68,7 @@
 
   <%# Student reviews made %>
   <h2 class="subtitle is-flex is-justify-content-center">
-    <strong>Reviews to the student</strong>
+    <strong>Student's review</strong>
   </h2>
   <div class="container mb-5">
     <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
