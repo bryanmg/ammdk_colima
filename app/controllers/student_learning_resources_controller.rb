@@ -1,6 +1,5 @@
 class StudentLearningResourcesController < ApplicationController
   before_action :authenticate_user!, :set_user
-  before_action :set_student_learning_resource, only: [:destroy]
 
   def new
     @learning_resource = @user.learning_resources.all
@@ -19,16 +18,13 @@ class StudentLearningResourcesController < ApplicationController
   end
 
   def destroy
-    student_id = @student_learning_resource[:user_id]
-    @student_learning_resource.destroy
-    redirect_to teacher_student_path(@user, student_id), notice: "Resource successfully unasigned."
+    student_learning_resource = StudentLearningResource.find(params[:id])
+    student_learning_resource.destroy
+    redirect_to teacher_student_path(@user, student_learning_resource.user_id),
+                notice: "Resource successfully unasigned."
   end
 
   private
-
-  def set_student_learning_resource
-    @student_learning_resource = StudentLearningResource.find(params[:id])
-  end
 
   def set_user
     @user = User.find(current_user.id)
