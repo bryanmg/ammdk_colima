@@ -1,0 +1,6 @@
+one:
+  amount: 500
+  concept: Examen
+  description: MyString
+  teacher: three
+  student: four
