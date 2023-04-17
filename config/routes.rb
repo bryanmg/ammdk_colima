@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :teachers, except: [:index] do
     scope module: :teachers do
+      resources :debts
       resources :students
       resources :learning_resources
       resources :reviews, except: [:index]

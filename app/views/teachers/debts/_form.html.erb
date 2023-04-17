@@ -1,0 +1,63 @@
+<%= form_with(model: debt, url: teacher_debts_path(@user)) do |form| %>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :amount, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.number_field :amount, value: debt.amount, required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :concept, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :concept, value: debt.concept, required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :description, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= form.text_field :description, value: debt.description, required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+<%= @my_students.all%>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <%= form.label :student_id, class: "label" %>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="select">
+        <%= form.select :student_id, @my_students&.pluck(:name, :id), required: true, class: "input" %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="is-flex is-justify-content-flex-end">
+    <%= link_to(teacher_debts_url(@user), class: "button is-info is-outlined mr-4") do %>
+      <i class="fas fa-undo"></i>
+      <span class="ml-2">Back</span>
+    <% end%>
+    <%= form.submit class: "button is-success is-outlined" %>
+  </div>
+<% end %>

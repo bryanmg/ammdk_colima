@@ -170,6 +170,12 @@ Review.create([
                 end
               ])
 
+Debt.create([
+                students.map do |student|
+                  { amount: 300, concept: "Lorem ipsum", teacher_id: User.first.id, student_id: student.id }
+                end
+              ])
+
 p "Seed... Created #{User.count} users"
 p "Seed... Created #{Group.count} groups"
 p "Seed... Created #{GroupMember.count} member lists"
@@ -178,3 +184,4 @@ p "Seed... Created #{LearningResource.count} learning resources"
 p "Seed... Created #{Attendance.count} attendances"
 p "Seed... Created #{StudentLearningResource.count} Students learning resources"
 p "Seed... Created #{Review.count} Reviews"
+p "Seed... Created #{Debt.count} Debts"
