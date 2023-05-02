@@ -32,7 +32,7 @@ module Teachers
     def destroy
       @debt.destroy
   
-      redirect_to debts_url, notice: "Debt was successfully destroyed."
+      redirect_to teacher_debts_url(@user), notice: "Debt was successfully destroyed."
     end
   
     private
