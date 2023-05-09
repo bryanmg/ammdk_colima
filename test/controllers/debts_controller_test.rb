@@ -20,6 +20,12 @@ class DebtsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get show" do
+    get teacher_debts_url(@user)
+
+    assert_response :success
+  end
+
   test "should create debt" do
     student = users(:two)
     assert_difference("Debt.count") do

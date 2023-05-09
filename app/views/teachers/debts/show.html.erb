@@ -1,1 +1,85 @@
-exampleee
+
+<div class="container pt-5" id="<%= dom_id @debt %>">
+  <h1 class="title">Details</h1>
+
+  <div class="box">
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <strong>Amount:</strong>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= @debt.amount %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <strong>Cencept:</strong>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= @debt.concept %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <strong>Description:</strong>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= @debt.description || "N/A" %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <strong>Date:</strong>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= @debt.created_at %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <strong>Student:</strong>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <td><%= @debt.student.name %></td>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="is-flex is-justify-content-flex-end">
+      <%= link_to(teacher_debts_url(@user), class: "button is-info is-outlined mr-4") do %>
+        <i class="fas fa-undo"></i>
+        <span class="ml-2">Back</span>
+      <% end%>
+      
+      <%= button_to(teacher_debt_path(@user, @debt), method: :delete, class: "button is-danger is-outlined", data: { confirm: 'Delete debt. Are you sure?' }) do %>
+        <i class="fas fa-trash-alt"></i>
+        <span class="ml-2">Delete debt</span>
+      <% end %>
+    </div>
+  
+  <div>
+</div>
+

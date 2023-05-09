@@ -1,13 +1,15 @@
 module Teachers
   class DebtsController < ApplicationController
     before_action :authenticate_user!, :set_user
-    before_action :set_debt, only: [:edit, :update, :destroy]
+    before_action :set_debt, only: [:edit, :update, :destroy, :show]
     before_action :set_teacher_students
   
     def index
       # TODO: Add status to debt to know if is already payment
       @debts = @user.my_debts.paginate(page: params[:page], per_page: PER_PAGE)
     end
+
+    def show; end
 
     def new
       @debt = @user.my_debts.new
