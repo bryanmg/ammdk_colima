@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_13_232227) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_09_182438) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,6 +96,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_13_232227) do
     t.index ["user_id"], name: "index_learning_resources_on_user_id"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.money "amount", scale: 2
+    t.bigint "debt_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["debt_id"], name: "index_payments_on_debt_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "review", null: false
     t.bigint "learning_resource_id"
@@ -156,6 +164,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_13_232227) do
   add_foreign_key "debts", "users", column: "teacher_id"
   add_foreign_key "groups", "users"
   add_foreign_key "learning_resources", "users"
+  add_foreign_key "payments", "debts"
   add_foreign_key "reviews", "learning_resources"
   add_foreign_key "reviews", "users", column: "student_id"
   add_foreign_key "reviews", "users", column: "teacher_id"

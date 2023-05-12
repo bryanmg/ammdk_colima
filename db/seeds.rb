@@ -171,10 +171,12 @@ Review.create([
               ])
 
 Debt.create([
-                students.map do |student|
-                  { amount: 300, concept: "Lorem ipsum", teacher_id: User.first.id, student_id: student.id }
-                end
-              ])
+              students.map do |student|
+                { amount: 300, concept: "Lorem ipsum", teacher_id: User.first.id, student_id: student.id }
+              end
+            ])
+
+Debt.all.each { |debt| Payment.create([{ amount: 10.0, debt: debt }]) }
 
 p "Seed... Created #{User.count} users"
 p "Seed... Created #{Group.count} groups"
@@ -185,3 +187,4 @@ p "Seed... Created #{Attendance.count} attendances"
 p "Seed... Created #{StudentLearningResource.count} Students learning resources"
 p "Seed... Created #{Review.count} Reviews"
 p "Seed... Created #{Debt.count} Debts"
+p "Seed... Created #{Payment.count} Payments"

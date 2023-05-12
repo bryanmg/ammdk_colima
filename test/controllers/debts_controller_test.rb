@@ -29,7 +29,8 @@ class DebtsControllerTest < ActionDispatch::IntegrationTest
   test "should create debt" do
     student = users(:two)
     assert_difference("Debt.count") do
-      post teacher_debts_url(@user), params: { debt: { amount: 300.0, concept: "test", teacher_id: @user.id, student_id: student.id } }
+      post teacher_debts_url(@user),
+           params: { debt: { amount: 300.0, concept: "test", teacher_id: @user.id, student_id: student.id } }
     end
 
     assert_redirected_to teacher_debts_url(@user)
