@@ -1,0 +1,43 @@
+<div>
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <strong>Payments:</strong>
+    </div>
+      <div class="field-body">
+        <div class="field">
+          <% @debt.payment.each do |payment| %>
+            <p class="control">
+              $ <%= payment.amount %> || <%= payment.created_at %> <br/>
+            </p>
+          <% end %>
+        </div>
+      </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <strong>Total debt payments:</strong>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= @debt.total_debt_payments %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field is-horizontal">
+    <div class="field-label is-normal">
+      <strong>Pending:</strong>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <%= @debt.debt_pending %>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>

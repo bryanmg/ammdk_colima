@@ -62,16 +62,25 @@
       <div class="field-body">
         <div class="field">
           <p class="control">
-            <td><%= @debt.student.name %></td>
+            <%= @debt.student.name %>
           </p>
         </div>
       </div>
     </div>
 
+    <% if @debt.payment.any? %>
+      <%= render "teachers/debts/payments/payment" %>
+    <% end %>
+
     <div class="is-flex is-justify-content-flex-end">
       <%= link_to(teacher_debts_url(@user), class: "button is-info is-outlined mr-4") do %>
         <i class="fas fa-undo"></i>
         <span class="ml-2">Back</span>
+      <% end%>
+
+      <%= link_to(new_teacher_debt_payment_path(@user, @debt), class: "button is-success is-outlined mr-4") do %>
+        <i class="fas fa-plus"></i>
+        <span class="ml-2">Add payment</span>
       <% end%>
       
       <%= button_to(teacher_debt_path(@user, @debt), method: :delete, class: "button is-danger is-outlined", data: { confirm: 'Delete debt. Are you sure?' }) do %>

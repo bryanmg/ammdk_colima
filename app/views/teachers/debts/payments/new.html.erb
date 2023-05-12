@@ -1,0 +1,5 @@
+<div class="container pt-5">
+  <h1 class="title">Add payment</h1>
+
+  <%= render "form", payment: @payment, method: :post, url: teacher_debt_payments_url(@user, @debt) %>
+<div>
