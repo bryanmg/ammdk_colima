@@ -116,7 +116,7 @@ Layout/LineLength:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Gemspec/DateAssignment:
+Gemspec/OrderedDependencies:
   Enabled: true
 
 Gemspec/RequireMFA:

@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_12_225608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "debt_status", %w[pending paid]
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index %w[record_type record_id name blob_id], name: "index_active_storage_attachments_uniqueness",
                                                     unique: true
@@ -33,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -48,17 +52,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
     t.bigint "group_id", null: false
     t.date "date", null: false
     t.boolean "present", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_attendances_on_group_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "debts", force: :cascade do |t|
+    t.money "amount", scale: 2, null: false
+    t.string "concept", null: false
+    t.string "description"
+    t.bigint "teacher_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
+    t.index ["student_id"], name: "index_debts_on_student_id"
+    t.index ["teacher_id"], name: "index_debts_on_teacher_id"
   end
 
   create_table "group_members", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_group_members_on_group_id"
     t.index ["user_id"], name: "index_group_members_on_user_id"
   end
@@ -68,8 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
     t.time "from_time", null: false
     t.time "to_time", null: false
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text "days_of_the_week"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
@@ -79,9 +96,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
     t.text "description"
     t.integer "belt"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_learning_resources_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.money "amount", scale: 2
+    t.bigint "debt_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["debt_id"], name: "index_payments_on_debt_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -89,8 +114,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
     t.bigint "learning_resource_id"
     t.bigint "teacher_id", null: false
     t.bigint "student_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["learning_resource_id"], name: "index_reviews_on_learning_resource_id"
     t.index ["student_id"], name: "index_reviews_on_student_id"
     t.index ["teacher_id"], name: "index_reviews_on_teacher_id"
@@ -103,8 +128,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
     t.string "cellphone", null: false
     t.string "health_insurance", null: false
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_student_informations_on_user_id"
   end
 
@@ -122,10 +147,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: 6
-    t.datetime "remember_created_at", precision: 6
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.string "role"
     t.integer "belt"
@@ -140,8 +165,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_185319) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "attendances", "groups"
   add_foreign_key "attendances", "users"
+  add_foreign_key "debts", "users", column: "student_id"
+  add_foreign_key "debts", "users", column: "teacher_id"
   add_foreign_key "groups", "users"
   add_foreign_key "learning_resources", "users"
+  add_foreign_key "payments", "debts"
   add_foreign_key "reviews", "learning_resources"
   add_foreign_key "reviews", "users", column: "student_id"
   add_foreign_key "reviews", "users", column: "teacher_id"

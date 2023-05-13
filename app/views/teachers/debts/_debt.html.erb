@@ -1,0 +1,19 @@
+<div id="<%= dom_id debt %>">
+  <td> <%= debt.concept %></td>
+
+  <td> <%= debt.amount %></td>
+  
+  <td> <%= debt.status %></td>
+  
+  <td> <%= debt.debt_pending %></td>
+
+  <td><%= debt.description || "N/A" %></td>
+
+  <td><%= debt.student.name %></td>
+
+  <td>
+    <%= link_to(teacher_debt_path(@user, debt)) do %>
+      Detail <i class="fas fa-external-link-alt"></i>
+    <% end %>
+  </td>
+</div>

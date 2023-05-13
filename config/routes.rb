@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   devise_for :users
 
@@ -5,6 +6,11 @@ Rails.application.routes.draw do
 
   resources :teachers, except: [:index] do
     scope module: :teachers do
+      resources :debts, except: [:edit] do
+        scope module: :debts do
+          resources :payments
+        end
+      end
       resources :students
       resources :learning_resources
       resources :reviews, except: [:index]
@@ -26,3 +32,4 @@ Rails.application.routes.draw do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
