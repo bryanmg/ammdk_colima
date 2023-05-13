@@ -116,7 +116,7 @@ Layout/LineLength:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Gemspec/DeprecatedAttributeAssignment:
+Gemspec/OrderedDependencies:
   Enabled: true
 
 Gemspec/RequireMFA:
