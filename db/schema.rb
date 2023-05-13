@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_182438) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_12_225608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "debt_status", %w[pending paid]
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_182438) do
     t.bigint "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
     t.index ["student_id"], name: "index_debts_on_student_id"
     t.index ["teacher_id"], name: "index_debts_on_teacher_id"
   end

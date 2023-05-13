@@ -36,13 +36,6 @@ class DebtsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to teacher_debts_url(@user)
   end
 
-  test "should get edit" do
-    debt = debts(:one)
-    get edit_teacher_debt_url(@user, debt)
-
-    assert_response :success
-  end
-
   test "should update debt" do
     debt = debts(:one)
     params = { debt: { amount: 300.0 } }

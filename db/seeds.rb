@@ -172,7 +172,8 @@ Review.create([
 
 Debt.create([
               students.map do |student|
-                { amount: 300, concept: "Lorem ipsum", teacher_id: User.first.id, student_id: student.id }
+                { amount: 300, concept: "Lorem ipsum", teacher_id: User.first.id, student_id: student.id,
+                  status: "pending" }
               end
             ])
 

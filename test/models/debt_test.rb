@@ -20,9 +20,23 @@ class DebtTest < ActiveSupport::TestCase
   end
 
   test "is valid with amount concept teacher and student" do
-    debt = Debt.new(amount: 20, concept: "test", teacher: users(:one), student: users(:two))
+    debt = Debt.new(amount: 20, concept: "test", status: "paid", teacher: users(:one), student: users(:two))
 
     assert debt.valid?
     assert debt.save
+  end
+
+  test "is valid wit valid status" do
+    debt = Debt.new({ amount: 10, concept: "test", teacher: users(:one), student: users(:two), status: "pending" })
+    debt2 = Debt.new({ amount: 10, concept: "test", teacher: users(:one), student: users(:two), status: "paid" })
+
+    assert debt.valid?
+    assert debt2.valid?
+  end
+
+  test "is not valid without valid status" do
+    assert_raises(ArgumentError) do
+      Debt.new({ amount: 10, concept: "test", teacher: users(:one), student: users(:two), status: "test" })
+    end
   end
 end
