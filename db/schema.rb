@@ -14,10 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_12_225608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  # Custom types defined in this database.
-  # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "debt_status", %w[pending paid]
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false

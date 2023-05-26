@@ -3,7 +3,9 @@ class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show]
 
   def index
-    @attendances = @group.attendances.where(date: params[:date])
+    # @total_attendances = attendances_by_user&.first&.last&.count
+    @attendances = make_attencances_record
+
     return redirect_to_group alert: "Not attendances for this day." if @attendances.count.zero?
   end
 
@@ -14,22 +16,15 @@ class AttendancesController < ApplicationController
   end
 
   def create
-    return redirect_to_group(alert: "Attendance was taked for this group.") if attendance_already_taked
-
     attendances = []
-    attendance_params[:attendances].each { |_key, item| attendances << make_attendance_field(item) }
+    attendance_params[:attendances].each { |_k, item| attendances << make_attendance_field(item) }
 
-    return redirect_to_group(notice: "Attendance was successfully created.") if Attendance.create!(attendances)
+    return redirect_to_group(notice: "Attendance was successfully created.") if Attendance.upsert!(attendances)
 
     render :new, status: :unprocessable_entity
   end
 
   private
-
-  def attendance_already_taked
-    attendance_data = { group: @group, date: Date.today }
-    Attendance.where(attendance_data).present?
-  end
 
   def redirect_to_group(params)
     redirect_to teacher_group_url(@user, @group), params
@@ -54,5 +49,19 @@ class AttendancesController < ApplicationController
 
   def attendance_params
     params.require(:attendance).permit(:group_id, attendances: {})
+  end
+
+  def attendances_by_user
+    @attendances_by_user ||= @group.attendances.where(date: [params[:from_date]..params[:to_date]]).group_by(&:user_id)
+  end
+
+  def total_attendances
+    @total_attendances ||= attendances_by_user&.first&.last&.count
+  end
+
+  def make_attencances_record
+    attendances_by_user&.map do |_key, val|
+      { user_id: val.first.user_id, username: val.first.user.name, times: val.map(&:present).count { |x| x == true } }
+    end
   end
 end

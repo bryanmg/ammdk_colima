@@ -17,12 +17,25 @@
           <div class="is-flex is-flex-direction-column">
             <div class="field is-horizontal">
               <div class="field-label is-normal">
-                <label class="label mr-2">Date:</label>
+                <label class="label mr-2">From:</label>
               </div>
               <div class="field-body">
                 <div class="field">
                   <p class="control">
-                    <%= form.date_field :date, required: true, class: "input" %>
+                    <%= form.date_field :from_date, value: Date.today, required: true, class: "input" %>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label mr-2">To:</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <%= form.date_field :to_date, value: Date.today, required: true, class: "input" %>
                   </p>
                 </div>
               </div>
