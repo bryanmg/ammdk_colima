@@ -1,18 +1,20 @@
 <div class="container pt-5">
-  <h1 class="title">Attendances of the group <%= @group.name%> for <%= params[:date]%></h1>
+  <h1 class="title">Attendances of the group <%= @group.name%> between <%= params[:from_date]%> and <%= params[:to_date]%></h1>
+  <strong>Total of attendances <%= @total_attendances%> </strong>
 
+  <div class="mb-3"></div>
   <div class="mb-5">
     <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
       <thead>
         <tr class="has-background-primary-light">
           <th>Student</th>
-          <th>Was</th>
+          <th>Record %</th>
         </tr>
       </thead>
       <tbody>
         <% @attendances.each do |attendance| %>
           <tr>
-            <%= render attendance, attendance: attendance %>
+            <%= render "attendance", attendance: attendance %>
           </tr>
         <% end %>
       </tbody>

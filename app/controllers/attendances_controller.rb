@@ -3,7 +3,11 @@ class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show]
 
   def index
-    @attendances = @group.attendances.where(date: params[:date])
+    @total_attendances = attendances_by_user&.first&.last&.count
+    @attendances = attendances_by_user&.map do |_key, val|
+      { user_id: val.first.user_id, username: val.first.user.name, times: val.map(&:present).count { |x| x == true } }
+    end
+
     return redirect_to_group alert: "Not attendances for this day." if @attendances.count.zero?
   end
 
@@ -54,5 +58,9 @@ class AttendancesController < ApplicationController
 
   def attendance_params
     params.require(:attendance).permit(:group_id, attendances: {})
+  end
+
+  def attendances_by_user
+    @attendances_by_user ||= @group.attendances.where(date: [params[:from_date]..params[:to_date]]).group_by(&:user_id)
   end
 end

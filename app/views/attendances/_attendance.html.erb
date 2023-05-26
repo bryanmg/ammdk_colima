@@ -1,10 +1,10 @@
-<div id="<%= dom_id attendance %>">
+<div>
   <td>
-    <%= attendance.user.name %>
+    <%= attendance[:username] %>
   </td>
   <td>
     <strong>
-      <%= attendance.present? ? "present" : "absent" %>
+      <%= (attendance[:times].to_f / @total_attendances * 100).round(1) %>
     </strong>
   </td>
 </div>
