@@ -3,7 +3,6 @@ class AttendancesController < ApplicationController
   before_action :set_attendance, only: [:show]
 
   def index
-    # @total_attendances = attendances_by_user&.first&.last&.count
     @attendances = make_attencances_record
 
     return redirect_to_group alert: "Not attendances for this day." if @attendances.count.zero?

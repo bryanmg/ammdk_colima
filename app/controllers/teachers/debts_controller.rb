@@ -44,7 +44,7 @@ module Teachers
     end
 
     def debt_params
-      params.require(:debt).permit(:amount, :concept, :teacher, :student, :description, :student_id)
+      params.require(:debt).permit(:amount, :concept, :teacher, :description, :student_id, :status)
     end
 
     def set_user

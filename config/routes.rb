@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         end
       end
       resources :students
+      resources :montly_payments, only: [:create]
       resources :learning_resources
       resources :reviews, except: [:index]
     end
