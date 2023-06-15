@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+
+  rescue_from OverflowPaymentException do |e|
+    session[:return_to] ||= request.referer
+    redirect_to session.delete(:return_to), alert: e.message
+  end
 end

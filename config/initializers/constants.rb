@@ -17,3 +17,9 @@ BELTS_TEXT = {
 }.freeze
 
 PER_PAGE = 4
+
+DEBTS_STATUS = { pending: "pending", paid: "paid" }.freeze
+
+module ExceptionsConstants
+  OVERFLOW_PAYMENT_EXCEPTION = 'Payment is bigger that debt'.freeze
+end

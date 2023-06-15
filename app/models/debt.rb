@@ -4,7 +4,7 @@ class Debt < ApplicationRecord
   has_many :payment, dependent: :destroy
 
   validates :amount, :concept, :teacher, :student, presence: true
-  enum :status, { pending: "pending", paid: "paid" }, default: nil
+  enum :status, DEBTS_STATUS, default: nil
 
   def total_debt_payments
     payment.sum(:amount)
