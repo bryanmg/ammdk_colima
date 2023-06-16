@@ -9,9 +9,9 @@ module Teachers
       end
 
       def create
-        @payment = Payment.new(payment_params)
+        payment = PaymentsService.new(payment_params)
 
-        return redirect_to teacher_debts_url(@user), notice: "Payment was successfully applied." if @payment.save
+        return redirect_to teacher_debts_url(@user), notice: "Payment was successfully applied." if payment.apply
 
         render :new, status: :unprocessable_entity
       end
