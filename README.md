@@ -40,12 +40,12 @@ PENDING TASKS
 - Download bulma styles and save in this project folder.
 - delete 'register techer' button (disable is not needed that functionality yet).
 - Bug on view of penmding debt.
-- Show only pendings debts in view table view.
 - Option to show all debts and history of debts.
 
 <br/><br/>
 DOING
 - Add default montly payment to each student in form view and student view.
+- Show only pendings debts in view table view.
 
 <br/><br/>
 
