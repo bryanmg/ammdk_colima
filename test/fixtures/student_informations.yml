@@ -1,0 +1,8 @@
+one: 
+  user: two
+  montly_payment: 200,
+  ocupation: "Preparatory student"
+  civil_status: "Single"
+  tutor_name: "Clark Devlin"
+  cellphone: "3121230011"
+  health_insurance: "1234567890"

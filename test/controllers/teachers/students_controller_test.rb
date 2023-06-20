@@ -6,7 +6,7 @@ module Teachers
 
     setup do
       @user = users(:one)
-      sign_in users(:one) # require devise auth
+      sign_in users(:one)
     end
 
     test "should get index" do
@@ -23,21 +23,22 @@ module Teachers
 
     test "should create student" do
       assert_difference("User.count") do
-        params = {
-          user: {
-            email: "test_#{@user.email}", password: "123456", name: @user.name,
-            role: @user.role, birth_date: @user.birth_date,
-            student_information: {
-              ocupation: "Secundary student", civil_status: "Married", tutor_name: "Clark Rosmary",
-              cellphone: "3121230011", health_insurance: "1234567890", user: @user
-            },
-            group_id: groups(:one).id
-          }
-        }
-        post teacher_students_url(@user), params: params
+        post teacher_students_url(@user), params: student_body
       end
 
       assert_redirected_to teacher_students_url(@user)
+    end
+
+    test "should create student with montly payment" do
+      params = student_body
+      params[:user][:student_information_attributes][:montly_payment] = 200
+      assert_difference("User.count") do
+        post teacher_students_url(@user), params: params
+      end
+      student = User.find_by(email: "test_#{@user.email}")
+
+      assert_redirected_to teacher_students_url(@user)
+      assert student.student_information.montly_payment, 200
     end
 
     test "should get new" do
@@ -53,16 +54,7 @@ module Teachers
     end
 
     test "should update student" do
-      params = {
-        email: "test_#{@user.email}", password: "123456", name: @user.name,
-        role: @user.role, birth_date: @user.birth_date,
-        student_information: {
-          ocupation: "Secundary student", civil_status: "Married", tutor_name: "Clark Rosmary",
-          cellphone: "3121230011", health_insurance: "1234567890", user: @user
-        },
-        group_id: groups(:one).id
-      }
-      patch teacher_student_url(@user, users(:two)), params: { user: params }
+      patch teacher_student_url(@user, users(:two)), params: student_body
 
       assert_redirected_to teacher_students_url(@user)
     end
@@ -73,6 +65,20 @@ module Teachers
       end
 
       assert_redirected_to teacher_students_url(@user)
+    end
+
+    private
+
+    def student_body
+      { user: {
+        email: "test_#{@user.email}", password: "123456", name: @user.name,
+        role: @user.role, birth_date: @user.birth_date,
+        student_information_attributes: {
+          ocupation: "Secundary student", civil_status: "Married", tutor_name: "Clark Rosmary",
+          cellphone: "3121230011", health_insurance: "1234567890", user: @user
+        },
+        group_id: groups(:one).id
+      } }
     end
   end
 end

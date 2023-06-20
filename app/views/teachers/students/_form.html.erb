@@ -102,6 +102,19 @@
       </div>
     </div>
 
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <%= form.label :montly_payment, class: "label" %>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <%= field.number_field :montly_payment, value: student.student_information&.montly_payment, required: true, class: "input" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    
     <div class="mt-5 mb-5 is-flex is-justify-content-center">
       <span class="subtitle">
         <strong>Tutor information</strong>

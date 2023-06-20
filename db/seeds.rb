@@ -124,6 +124,7 @@ StudentInformation.create([
                                 tutor_name: "Clark Devlin",
                                 cellphone: "3121230011",
                                 health_insurance: "1234567890",
+                                montly_payment: 200,
                                 user_id: student.id
                               }
                             end

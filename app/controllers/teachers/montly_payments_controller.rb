@@ -3,9 +3,9 @@ module Teachers
     before_action :authenticate_user!, :set_user
 
     def create
-      my_students.map do |student|
-        student.user.debts.create!(
-          amount: student.user.montly_payment,
+      my_students.map do |member|
+        member.user.debts.create!(
+          amount: member.user.student_information.montly_payment,
           concept: "Mensualidad #{Date.today.strftime("%B")}",
           teacher: @user,
           status: "pending"

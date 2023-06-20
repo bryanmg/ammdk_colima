@@ -55,7 +55,9 @@ module Teachers
       params.require(:user).permit(
         :email, :password, :name, :role, :birth_date, :belt,
         group_member_attributes: [:group_id],
-        student_information_attributes: [:ocupation, :civil_status, :tutor_name, :cellphone, :health_insurance]
+        student_information_attributes: [
+          :ocupation, :civil_status, :tutor_name, :cellphone, :health_insurance, :montly_payment
+        ]
       )
     end
 
