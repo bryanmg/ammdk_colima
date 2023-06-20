@@ -38,11 +38,14 @@ PENDING TASKS
 - A way or button to clone or save te status of the database (because this project ath the beginning will be only local).
 - Bonification of 10% of the amount of a payment if .... (which rule will be working here?).
 - Download bulma styles and save in this project folder.
-- Add default montly payment to each student in form view and student view.
 - delete 'register techer' button (disable is not needed that functionality yet).
 - Bug on view of penmding debt.
 - Show only pendings debts in view table view.
 - Option to show all debts and history of debts.
+
+<br/><br/>
+DOING
+- Add default montly payment to each student in form view and student view.
 
 <br/><br/>
 
