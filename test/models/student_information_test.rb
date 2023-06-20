@@ -51,4 +51,16 @@ class StudentInformationTest < ActiveSupport::TestCase
 
     assert student_info.valid?
   end
+
+  test "montly_payment has default value" do
+    student_info = StudentInformation.create({
+                                               user: users(:two),
+                                               ocupation: "Work",
+                                               civil_status: "Single",
+                                               cellphone: "3121234567",
+                                               health_insurance: "1234567890"
+                                             })
+
+    assert student_info.montly_payment, 0.0
+  end
 end
