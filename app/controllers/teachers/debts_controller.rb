@@ -5,8 +5,7 @@ module Teachers
     before_action :set_teacher_students
 
     def index
-      # TODO: Add status to debt to know if is already payment
-      @debts = @user.my_debts.paginate(page: params[:page], per_page: PER_PAGE)
+      @debts = @user.my_debts.where(status: DEBTS_STATUS[:pending]).paginate(page: params[:page], per_page: PER_PAGE)
     end
 
     def show; end
