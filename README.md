@@ -41,11 +41,14 @@ PENDING TASKS
 - delete 'register techer' button (disable is not needed that functionality yet).
 - Bug on view of penmding debt.
 - Option to show all debts and history of debts.
+- disable dependan bot
+- Prevent that monthly payments is aplied many times for the same month
 
 <br/><br/>
 DOING
-- Add default montly payment to each student in form view and student view.
+- Add default monthly payment to each student in form view and student view.
 - Show only pendings debts in view table view.
+- Format dates in UTC
 
 <br/><br/>
 

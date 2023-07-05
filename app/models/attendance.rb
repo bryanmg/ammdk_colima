@@ -15,8 +15,10 @@ class Attendance < ApplicationRecord
   def self.upsert!(args)
     args.each do |att|
       is = att.delete(:present)
-
-      return where(att).update(att.merge({ present: is })) if exists?(att)
+      if exists?(att)
+        where(att).update({ present: is })
+        next
+      end
 
       create!(att.merge({ present: is }))
     end
