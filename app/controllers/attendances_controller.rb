@@ -4,6 +4,7 @@ class AttendancesController < ApplicationController
 
   def index
     @attendances = make_attencances_record
+    total_attendances
 
     return redirect_to_group alert: "Not attendances for this day." if @attendances.count.zero?
   end

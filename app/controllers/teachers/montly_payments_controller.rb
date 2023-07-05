@@ -12,7 +12,7 @@ module Teachers
         )
       end
 
-      redirect_to teacher_debts_url(@user), notice: "Review was successfully created."
+      redirect_to teacher_debts_url(@user), notice: "Montly payment successfully aplied."
     end
 
     private
