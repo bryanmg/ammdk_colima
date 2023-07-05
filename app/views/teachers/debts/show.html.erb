@@ -62,7 +62,7 @@
       <div class="field-body">
         <div class="field">
           <p class="control">
-            <%= @debt.created_at %>
+            <%= utc_to_localtime(@debt.created_at) %>
           </p>
         </div>
       </div>

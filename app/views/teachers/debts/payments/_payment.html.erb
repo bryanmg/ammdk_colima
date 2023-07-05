@@ -7,7 +7,7 @@
         <div class="field">
           <% @debt.payment.each do |payment| %>
             <p class="control">
-              $ <%= payment.amount %> || <%= payment.created_at %> <br/>
+              $ <%= payment.amount %> || <%= utc_to_localtime(payment.created_at) %> <br/>
             </p>
           <% end %>
         </div>
