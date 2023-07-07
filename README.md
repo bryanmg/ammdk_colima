@@ -35,17 +35,25 @@ This project is created to help the teacher to manage his shcools and that stude
  > Any help is welcome 🫢
 
 PENDING TASKS
-- A way or button to clone or save te status of the database (because this project ath the beginning will be only local).
 - Bonification of 10% of the amount of a payment if .... (which rule will be working here?).
 - Download bulma styles and save in this project folder.
 - delete 'register techer' button (disable is not needed that functionality yet).
-- Bug on view of penmding debt.
+- Bug on view of pending debt.
+- Move Button of new debt in dashboard.
 - Option to show all debts and history of debts.
+- disable dependan bot
+- Prevent that monthly payments is aplied many times for the same month
+- Take attendance view shoul has default value if attendance was taken for that group
 
 <br/><br/>
 DOING
-- Add default montly payment to each student in form view and student view.
+- A way or button to clone or save te status of the database (because this project ath the beginning will be only local).
+
+<br/><br/>
+COMPLETE
+- Add default monthly payment to each student in form view and student view.
 - Show only pendings debts in view table view.
+- Format dates in UTC
 
 <br/><br/>
 

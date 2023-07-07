@@ -16,10 +16,10 @@ BELTS_TEXT = {
   dan6: "6° Dan", dan7: "7° Dan", dan8: "8° Dan", dan9: "9° Dan"
 }.freeze
 
-PER_PAGE = 4
+PER_PAGE = 10
 
 DEBTS_STATUS = { pending: "pending", paid: "paid" }.freeze
 
 module ExceptionsConstants
-  OVERFLOW_PAYMENT_EXCEPTION = 'Payment is bigger that debt'.freeze
+  OVERFLOW_PAYMENT_EXCEPTION = 'Payment is bigger than debt'.freeze
 end

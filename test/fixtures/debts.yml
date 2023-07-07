@@ -4,3 +4,10 @@ one:
   description: MyString
   teacher: three
   student: four
+two:
+  amount: 500
+  concept: Examen
+  description: MyString
+  teacher: three
+  student: four
+  status: paid
