@@ -65,10 +65,10 @@
     <div class="columns is-mobile">
       <div class="column">
         <div class="buttons are-medium">
+          <%# Disabled register teacher button until news -> <%= link_to "Register teacher", new_teacher_url, user: @user, class: "button is-info is-outlined" %>
           <%= link_to "Create group", new_teacher_group_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Register student", new_teacher_student_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "View students", teacher_students_url(@user), class: "button is-info is-outlined" %>
-          <%= link_to "Register teacher", new_teacher_url, user: @user, class: "button is-info is-outlined" %>
           <%= link_to "My learning resources", teacher_learning_resources_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Edit my profile", edit_teacher_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Assign learning resource", new_teacher_student_learning_resource_url(@user), class: "button is-info is-outlined" %>

@@ -37,7 +37,6 @@ This project is created to help the teacher to manage his shcools and that stude
 PENDING TASKS
 - Bonification of 10% of the amount of a payment if .... (which rule will be working here?).
 - Download bulma styles and save in this project folder.
-- delete 'register techer' button (disable is not needed that functionality yet).
 - Bug on view of pending debt.
 - Option to show all debts and history of debts.
 - disable dependan bot
@@ -46,6 +45,7 @@ PENDING TASKS
 
 <br/><br/>
 DOING
+- delete 'register techer' button (disable is not needed that functionality yet).
 - Move Button of new debt in dashboard.
 
 <br/><br/>
