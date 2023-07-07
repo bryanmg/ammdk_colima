@@ -39,21 +39,27 @@ PENDING TASKS
 - Download bulma styles and save in this project folder.
 - delete 'register techer' button (disable is not needed that functionality yet).
 - Bug on view of pending debt.
-- Move Button of new debt in dashboard.
 - Option to show all debts and history of debts.
 - disable dependan bot
 - Prevent that monthly payments is aplied many times for the same month
-- Take attendance view shoul has default value if attendance was taken for that group
+- Take attendance view should has default value if attendance was taken for that group
 
 <br/><br/>
 DOING
-- A way or button to clone or save te status of the database (because this project ath the beginning will be only local).
+- Move Button of new debt in dashboard.
 
 <br/><br/>
 COMPLETE
 - Add default monthly payment to each student in form view and student view.
 - Show only pendings debts in view table view.
 - Format dates in UTC
+
+<br/><br/>
+
+## Important task
+- A way or button to clone or save te status of the database (because this project ath the beginning will be only local).
+> see resource:  https://www.novell.com/documentation/teamworks-18/tw-maint/data/b17mf7wd.html?view=print
+ use this command  $ pg_dump -U <elbryan>  tkd_control_development > ./exampleBackup.sql
 
 <br/><br/>
 

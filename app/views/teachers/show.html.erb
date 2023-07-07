@@ -74,8 +74,9 @@
           <%= link_to "Assign learning resource", new_teacher_student_learning_resource_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Create learning resource", new_teacher_learning_resource_url(@user), class: "button is-info is-outlined" %>
           <%= link_to "Review student", new_teacher_review_url(@user), class: "button is-info is-outlined" %>
-          <%# duedas %>
+          <%# debts %>
           <%= link_to "View debts", teacher_debts_url(@user), class: "button is-info is-outlined" %>
+          <%= link_to "Register debt", new_teacher_debt_path(@user), class: "button is-info is-outlined" %>
         </div>
       </div>
     </div>
