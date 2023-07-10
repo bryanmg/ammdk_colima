@@ -1,15 +1,4 @@
 <%= form_with(model: [@user, @group, attendance], url: teacher_group_attendances_url(@user, @group)) do |form| %>
-  <% if attendance.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
-      <ul>
-        <% attendance.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-    
   <%= form.hidden_field :group_id, value: @group.id %>
 
   <table class="table is-striped is-hoverable  is-bordered">
@@ -28,7 +17,7 @@
               <label class="checkbox"> <%= student.name %> </label>
               </td>
               <td>
-              <%= att.check_box :present, class: "ml-5" %>
+              <%= att.check_box :present, checked: attendance.exists?({user_id: student.id, present:true}), class: "ml-5" %>
               </td>
               <%= att.hidden_field :user_id, value: student.id %>
             <% end %>
@@ -42,8 +31,11 @@
     <%= link_to(teacher_group_url(@user, @group), class: "button is-info is-outlined mr-3") do %>
       <i class="fas fa-undo"></i>
       <span class="ml-2">Back</span>
-    <% end%>
-    <%= form.submit class: "button is-success is-outlined" %>
+    <% end %>
+    <%= button_to(teacher_group_attendances_url(@user, @group), method: :post, class: "button is-success is-outlined mr-3") do %>
+      <i class="fas fa-plus"></i>
+      <span class="ml-2">Save</span>
+    <% end %>
   </div>
 
 <% end %>

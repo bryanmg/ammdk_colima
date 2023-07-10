@@ -41,10 +41,10 @@ PENDING TASKS
 - Option to show all debts and history of debts.
 - disable dependan bot
 - Prevent that monthly payments is aplied many times for the same month
-- Take attendance view should has default value if attendance was taken for that group
 
 <br/><br/>
 DOING
+- Take attendance view should has default value if attendance was taken for that group
 - delete 'register techer' button (disable is not needed that functionality yet).
 - Move Button of new debt in dashboard.
 

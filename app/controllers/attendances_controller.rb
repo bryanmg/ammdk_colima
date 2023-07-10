@@ -12,7 +12,7 @@ class AttendancesController < ApplicationController
   def show; end
 
   def new
-    @attendance = Attendance.new
+    @attendance = Attendance.where(date: Date.today, group_id: @group.id)
   end
 
   def create
