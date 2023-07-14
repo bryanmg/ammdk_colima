@@ -2,7 +2,7 @@
 
   <% if teacher.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(teacher.errors.count, "error") %>  prohibir a este usuario de ser guardado:</h2>
       <ul>
         <% teacher.errors.each do |error| %>
           <li><%= error.full_message %></li>
