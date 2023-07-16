@@ -11,7 +11,7 @@
 
   <% if review.learning_resource.present? %>
     <p>
-      <strong>Learning resource:</strong>
+      <strong>Recurso de aprendizaje:</strong>
       <%= review.learning_resource&.name %>
     </p>
 
@@ -21,7 +21,7 @@
     </p>
   <% else %>
     <p>
-      <span class="tag is-info is-medium is-light">Not learning resource assigned</span>
+      <span class="tag is-info is-medium is-light">No se ha asignado el recurso de aprendizaje</span>
     </p>
   <% end %>
 
