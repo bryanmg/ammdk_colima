@@ -3,43 +3,43 @@
   <div class="columns">
     <div class="column">
       <div class="box">
-        <h2 class="subtitle">Personal data</h2>
+        <h2 class="subtitle">Datos Personales</h2>
         <p>
-          <strong>Name:</strong>
+          <strong>Nombre:</strong>
           <%= user.name %>
         </p>
 
         <p>
-          <strong>Belt:</strong>
+          <strong>Cinta:</strong>
           <%= BELTS_TEXT[user.belt.to_sym] %>
         </p>
 
         <p>
-          <strong>Group:</strong>
+          <strong>Grupo:</strong>
           <%= user.group_member&.group&.name %></td>
         </p>
 
         <p>
-          <strong>Ocupation:</strong>
+          <strong>Ocupación:</strong>
           <%= user.student_information&.ocupation %>
         </p>
       </div>
     </div>
     <div class="column">
       <div class="box">
-        <h2 class="subtitle">Data of the responsible legal</h2>
+        <h2 class="subtitle">Datos del responsable legal</h2>
         <p>
           <strong>Tutor:</strong>
           <%= user.student_information&.tutor_name %>
         </p>
 
         <p>
-          <strong>Call to:</strong>
+          <strong>Llamar a :</strong>
           <%= user.student_information&.cellphone %>
         </p>
 
         <p>
-          <strong>Social security number:</strong>
+          <strong>Número de seguro social:</strong>
           <%= user.student_information&.health_insurance %>
         </p>
         <br>

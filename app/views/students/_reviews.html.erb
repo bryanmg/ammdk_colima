@@ -2,12 +2,12 @@
   <div class="columns">
     <div class="column">
       <p>
-        <strong>Review:</strong>
+        <strong>Revisar:</strong>
         <%= review.review %>
       </p>
       <% if review.learning_resource %>
         <p>
-          <strong>Resource:</strong>
+          <strong>Recurso:</strong>
           <%= review.learning_resource.name %>
           <br>
           <%= review.learning_resource.description %>
@@ -18,12 +18,12 @@
     <div class="column">
       <% if review.learning_resource&.resource&.attached? %>
         <p>
-          <strong>File:</strong>
+          <strong>Archivo:</strong>
           <%= render "file_resource/resource", file_resource: review.learning_resource %>
         </p>
       <% else %>
         <p>
-          <span class="tag is-info is-medium is-light">Not learning resource assigned</span>
+          <span class="tag is-info is-medium is-light">No se ha asignado el recurso de aprendizaje</span>
         </p>
       <% end %>
     </div>
