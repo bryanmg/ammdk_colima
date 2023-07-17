@@ -1,0 +1,28 @@
+<div id="teacher_groups">
+
+  <% if @groups %>
+    <% @groups.each do |group| %>
+
+      <article class="message is-success is-light">
+        <div class="message-body is-light">
+          <p>
+            <span class="mr-3">
+              <i class="fas fa-link"></i>
+              <strong>
+                <%= link_to group.name, teacher_group_url(@user, group) %>
+              </strong>
+            </span>
+            <%= group.from_time.strftime('%k:%M:%S') %>
+            <strong> - </strong>
+            <%= group.to_time.strftime('%k:%M:%S') %>
+          </p>
+        </div>
+      </article>
+      
+    <% end %>
+  <% else %>
+    <span>You dont have groups yet...</span>
+  <% end %>
+
+</div>
+
