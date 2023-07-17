@@ -1,5 +1,5 @@
 <div class="container pt-5">
-  <h1 class="title">Your learning resources</h1>
+  <h1 class="title">Tus recursos de aprendizaje</h1>
 
   <% @student_learning_resources.each do |student_learning_resource| %>
     <%= render "teachers/learning_resources/learning_resource", learning_resource: student_learning_resource.learning_resource%>
@@ -10,7 +10,7 @@
   <div class="is-flex is-justify-content-flex-end">
     <%= link_to(student_path(@user), class: "button is-info is-outlined mr-5") do %>
       <i class="fas fa-undo"></i>
-      <span class="ml-2">Back</span>
+      <span class="ml-2">Regresar</span>
     <% end %>
   </div>
 </div>

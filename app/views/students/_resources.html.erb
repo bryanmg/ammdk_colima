@@ -3,27 +3,27 @@
     <div class="column">
       <p>
         <strong>
-        Name: <%= resource.learning_resource.name %>
+        Nombre: <%= resource.learning_resource.name %>
         </strong>
       </p>
       <p>
-        <strong>Description:</strong>
+        <strong>Descripcion:</strong>
         <%= resource.learning_resource.description %>
       </p>
       <p>
-        <strong>Belt required:</strong>
+        <strong>Cinta requerida:</strong>
         <%= BELTS_TEXT[BELTS.key(resource.learning_resource.belt)] %>
       </p>
     </div>
     <div class="column">
       <% if resource.learning_resource.resource.attached? %>
         <p>
-          <strong>Resource:</strong>
+          <strong>Recursos:</strong>
           <%= render "file_resource/resource", file_resource: resource.learning_resource %>
         </p>
       <% else %>
           <p>
-            <span class="tag is-info is-medium is-light">This learning resource has not file attached.</span>
+            <span class="tag is-info is-medium is-light">Este recurso de aprendizaje no tiene un archivo adjunto.</span>
           </p>
       <% end %>
     </div>
