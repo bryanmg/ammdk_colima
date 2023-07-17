@@ -8,11 +8,11 @@
         </strong>
       </p>
       <p>
-        <strong>Description:</strong>
+        <strong>Descripción:</strong>
         <%= learning_resource.description %>
       </p>
       <p>
-        <strong>Belt required:</strong>
+        <strong>Se requiere cinturón:</strong>
         <%= BELTS_TEXT[BELTS.key(learning_resource.belt)] %>
       </p>
 
@@ -20,12 +20,12 @@
         <div class="is-flex is-justify-content-flex-end mt-4 mr-3">
           <%= link_to(edit_teacher_learning_resource_path(@user, learning_resource), class: "button is-info is-outlined ml-5") do %>
             <i class="far fa-edit"></i>
-            <span class="ml-2">Edit</span>
+            <span class="ml-2">Editar</span>
           <% end %>
 
           <%= button_to(teacher_learning_resource_path(@user, learning_resource), method: :delete, class: "button is-danger is-outlined ml-5") do %>
             <i class="far fa-trash-alt"></i>
-            <span class="ml-2">Delete</span>
+            <span class="ml-2">Borrar</span>
           <% end %>
         </div>
       <% end %>
@@ -34,12 +34,12 @@
     <div class="column">
       <% if learning_resource.resource.attached? %>
         <p>
-          <strong>Resource:</strong>
+          <strong>Recurso:</strong>
           <%= render "file_resource/resource", file_resource: learning_resource %>
         </p>
       <% else %>
           <p>
-            <span class="tag is-info is-medium is-light">This learning resource has not file attached.</span>
+            <span class="tag is-info is-medium is-light">Este recurso de aprendizaje no tiene un archivo adjunto.</span>
           </p>
       <% end %>
     </div>
