@@ -1,0 +1,25 @@
+<div id="<%= dom_id group %>">
+  <p>
+    <strong>nombre:</strong>
+    <%= group.name %>
+  </p>
+
+  <p>
+    <strong> de </strong>
+    <%= group.from_time.strftime('%k:%M:%S') %>
+    <strong> a </strong>
+    <%= group.to_time.strftime('%k:%M:%S') %>
+  </p>
+
+  <p>
+    <strong>Estudiantes matriculados</strong>
+    <%= group.group_members.count  %>
+  </p>
+
+  <p>
+    <strong>Estudiantes en entrenamiento</strong>
+    <%= render "teachers/groups/days_of_the_week", days_of_the_week: group.days_of_the_week %>
+  </p>
+
+
+</div>
