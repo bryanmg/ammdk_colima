@@ -23,4 +23,9 @@ class Attendance < ApplicationRecord
       create!(att.merge({ present: is }))
     end
   end
+
+  def take_attendances_for(students)
+    # here add logic to create attendances
+  end
+  # remember this functios in just to force a git conflict
 end
