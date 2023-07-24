@@ -23,4 +23,12 @@ class Attendance < ApplicationRecord
       create!(att.merge({ present: is }))
     end
   end
+
+  def attendances_histories
+    # all record of attendance for a stundent
+  end
+
+  def deserve_exam?
+    # should have at least 80% of the attendances in a period of time
+  end
 end
