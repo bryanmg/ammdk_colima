@@ -1,7 +1,7 @@
 <% if @attendances.empty? %>
   <div class="notification is-danger" style="margin-bottom: 0rem">
     <button class="delete"></button>
-    <p>Not attendances found for this dates.</p>
+    <p>No se encontraron asistencias para estas fechas.</p>
   </div>
 <% end %>
 
@@ -14,15 +14,15 @@
 
   <%# Student record attendance %>
   <h2 class="subtitle is-flex is-justify-content-center">
-    <strong>Student attendance record</strong>
+    <strong>Asistencia de Estudiantes</strong>
   </h2>
   <%= render "students/attendances/attendance_stats", attendance_stats: @attendance_stats %>
   <div class="container mb-5">
     <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
       <thead>
         <tr class="has-background-primary-light">
-          <th>Date</th>
-          <th>Was</th>
+          <th>Fecha</th>
+          <th>Estaba</th>
         </tr>
       </thead>
       <tbody>
@@ -37,14 +37,14 @@
 
   <%# Student record of learning resources %>
   <h2 class="subtitle is-flex is-justify-content-center">
-    <strong>Assigned learning resources</strong>
+    <strong>Curso de aprendizaje asignado</strong>
   </h2>
   <div class="container mb-5">
     <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
       <thead>
         <tr class="has-background-primary-light">
-          <th>Learnign resource name</th>
-          <th>Assigned to</th>
+          <th>Nombre del curso de aprendizaje</th>
+          <th>Asignado a</th>
           <th></th>
         </tr>
       </thead>
@@ -67,15 +67,15 @@
 
   <%# Student reviews made %>
   <h2 class="subtitle is-flex is-justify-content-center">
-    <strong>Student's review</strong>
+    <strong>Resenas de estudiantes</strong>
   </h2>
   <div class="container mb-5">
     <table class="table is-bordered  is-narrow is-hoverable is-fullwidth">
       <thead>
         <tr class="has-background-primary-light">
-          <th>Review</th>
-          <th>Reviewed at</th>
-          <th>Learning resource</th>
+          <th>Resena</th>
+          <th>Revisado en</th>
+          <th>Recurso de aprendizaje</th>
           <th></th>
         </tr>
       </thead>
@@ -88,7 +88,7 @@
             <td class="is-flex is-justify-content-center">
               <%= button_to(teacher_review_path(@user, review), class: "button is-info is-outlined is-small ", method: :delete, data: { confirm: 'Are you sure to want to finish this review?' }) do %>
                 <i class="far fa-trash-alt"></i>
-                <span class="ml-2">Finish review</span>
+                <span class="ml-2">Terminar revisiones</span>
               <% end %>
             </td>
           </tr>
@@ -99,7 +99,7 @@
   
   <%# Searcher of student attendances %>
   <span class="subtitle mb-5">
-    <strong>Search student attendances</strong>
+    <strong>Buscar Asistencias de estudiantes</strong>
   </span>
   <br><br>
   <%= render "students/attendances/attendance_records_form", url: teacher_student_path(@user, @student) %>
@@ -108,23 +108,23 @@
   <div class="is-flex is-justify-content-flex-end mt-5">
     <%= button_to(teacher_student_path(@user, @student), class: "button is-danger is-outlined mr-5", method: :delete, data: { confirm: 'This action will delete the student and all his information. Are you sure?' } ) do %>
       <i class="far fa-trash-alt"></i>
-      <span class="ml-2">Delete student</span>
+      <span class="ml-2">Borrar estudiante</span>
     <% end %>
     <%= button_to(teacher_student_path(@user, @student), class: "button is-warning is-outlined mr-5", method: :patch, params: {user: {password: @student[:birth_date].strftime('%d%m%y')}}, data: { confirm: 'Are you sure to want to reset password?' }) do %>
       <i class="fas fa-unlock-alt"></i>
-      <span class="ml-2">Reset password</span>
+      <span class="ml-2">Reiniciar contrasena</span>
     <% end %>
     <%= button_to(teacher_student_path(@user, @student), class: "button is-primary is-outlined mr-5", method: :patch, params: {user: {belt: promote_belt(@student[:belt]) }}, data: { confirm: 'Are you sure to want to promote belt for this student?' }) do %>
       <i class="far fa-caret-square-up"></i>
-      <span class="ml-2">Promote belt</span>
+      <span class="ml-2">Promocion</span>
     <% end %>
     <%= link_to(edit_teacher_student_url(@user, @student), class: "button is-primary is-outlined mr-5") do %>
       <i class="fas fa-user-edit"></i>
-      <span class="ml-2">Edit student</span>
+      <span class="ml-2">Editar estudiante</span>
     <% end %>
     <%= link_to(teacher_students_url(@user), class: "button is-info is-outlined") do %>
       <i class="fas fa-undo"></i>
-      <span class="ml-2">Back</span>
+      <span class="ml-2">Regresar</span>
     <% end %>
   </div>
   <br>
