@@ -1,11 +1,11 @@
 
 <div class="container pt-5" id="<%= dom_id @debt %>">
-  <h1 class="title">Details</h1>
+  <h1 class="title">Detalles</h1>
 
   <div class="box">
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <strong>Amount:</strong>
+        <strong>Cantidad:</strong>
       </div>
       <div class="field-body">
         <div class="field">
@@ -18,7 +18,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <strong>Cencept:</strong>
+        <strong>Concepto:</strong>
       </div>
       <div class="field-body">
         <div class="field">
@@ -31,7 +31,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <strong>Status:</strong>
+        <strong>Estado:</strong>
       </div>
       <div class="field-body">
         <div class="field">
@@ -44,7 +44,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <strong>Description:</strong>
+        <strong>Descripcion:</strong>
       </div>
       <div class="field-body">
         <div class="field">
@@ -57,7 +57,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <strong>Date:</strong>
+        <strong>Fecha:</strong>
       </div>
       <div class="field-body">
         <div class="field">
@@ -70,7 +70,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <strong>Student:</strong>
+        <strong>Alumno:</strong>
       </div>
       <div class="field-body">
         <div class="field">
@@ -88,17 +88,17 @@
     <div class="is-flex is-justify-content-flex-end">
       <%= link_to(teacher_debts_url(@user), class: "button is-info is-outlined mr-4") do %>
         <i class="fas fa-undo"></i>
-        <span class="ml-2">Back</span>
+        <span class="ml-2">Volver</span>
       <% end%>
 
       <%= link_to(new_teacher_debt_payment_path(@user, @debt), class: "button is-success is-outlined mr-4") do %>
         <i class="fas fa-plus"></i>
-        <span class="ml-2">Add payment</span>
+        <span class="ml-2">Añadir Metodo de pago</span>
       <% end%>
       
       <%= button_to(teacher_debt_path(@user, @debt), method: :delete, class: "button is-danger is-outlined", data: { confirm: 'Delete debt. Are you sure?' }) do %>
         <i class="fas fa-trash-alt"></i>
-        <span class="ml-2">Delete debt</span>
+        <span class="ml-2">Eliminar Deuda</span>
       <% end %>
     </div>
   
