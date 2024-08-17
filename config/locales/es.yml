@@ -1,0 +1,23 @@
+es:
+  log_in: 
+    log_in: "Iniciar sesión"
+    to_continue: "para continuar"
+    to_dashboard: "Ir a mi inicio"
+    
+  dashboard:
+    dashboard: "Inicio"
+    title: "Panel de Control"
+    in_progress_group_link: "%{group_name} grupo en clases, ¡toma asistencia!"
+    students: "Estudiantes"
+    groups: "Grupos"
+    learning_resources: "Recursos de Aprendizaje"
+    create_group: "Crear grupo"
+    register_student: "Registrar estudiante"
+    view_students: "Ver estudiantes"
+    my_learning_resources: "Mis recursos de aprendizaje"
+    edit_profile: "Editar mi perfil"
+    assign_learning_resource: "Asignar recurso de aprendizaje"
+    create_learning_resource: "Crear recurso de aprendizaje"
+    review_student: "Revisar estudiante"
+    view_debts: "Ver deudas"
+    my_groups: "Mis grupos"

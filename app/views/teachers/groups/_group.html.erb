@@ -18,7 +18,13 @@
 
   <p>
     <strong>Training days</strong>
-    <%= render "teachers/groups/days_of_the_week", days_of_the_week: group.days_of_the_week %>
+    <%
+=begin%>
+ TODO: fix this error on showing days of the week
+     <%= render "teachers/groups/days_of_the_week", days_of_the_week: group.days_of_the_week %>
+<%
+=end%>
+    <%= render "teachers/groups/days_of_the_week", days_of_the_week:  []%>
   </p>
 
 

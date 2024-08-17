@@ -4,7 +4,7 @@
     <div class="container has-text-centered">
         <%= image_tag "index3.png", alt: "AMDK logo", size:"200x200" %>
       <h1 class="title">Asoc. Mex. M.D.K</h1>
-      <p class="subtitle">Sede Colima</p>
+      <p class="subtitle">M.D.K. Occidente</p>
 
       <span class="icon-text">
         <span class="icon">
@@ -13,13 +13,13 @@
         <span>
           <% if user_signed_in?
               if current_user.teacher?%>
-                <%= link_to "Go to my dashboard", teacher_path(current_user) %>
+                <%= link_to I18n.t('log_in.to_dashboard'), teacher_path(current_user) %>
               <% else  %>
-                <%= link_to "Go to my dashboard", student_path(current_user) %>
+                <%= link_to I18n.t('log_in.to_dashboard'), student_path(current_user) %>
               <% end  %>
           <% else  %>
-            <%= link_to "Log in", new_user_session_path %>
-            to continue.
+            <%= link_to I18n.t('log_in.log_in'), new_user_session_path %>
+            <%= I18n.t('log_in.to_continue') %>
           <% end  %>
         </span>
       </span>
