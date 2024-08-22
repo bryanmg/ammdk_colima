@@ -18,6 +18,22 @@ es:
     edit_profile: "Editar mi perfil"
     assign_learning_resource: "Asignar recurso de aprendizaje"
     create_learning_resource: "Crear recurso de aprendizaje"
-    review_student: "Revisar estudiante"
+    review_student: "Calificar estudiante"
     view_debts: "Ver deudas"
     my_groups: "Mis grupos"
+    no_groups: "Aún no tienes grupos..."
+
+
+  user:
+    name: "Nombre"
+    belt: "Cinturón"
+    birth_date: "Fecha de nacimiento"
+    email: "Correo electrónico"
+
+
+  form:
+    errors: 
+      one: "1 error impidió que este usuario se guardara"
+      other: "%{count} errores impidieron que este usuario se guardara"
+    submit: "Guardar"
+    back_to_dashboard: "Volver al inicio"
