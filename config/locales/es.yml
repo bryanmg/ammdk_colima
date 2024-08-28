@@ -33,12 +33,19 @@ es:
 
   form:
     errors: 
-      one: "1 error impidió que este usuario se guardara"
+      one: "un error impidió que este usuario se guardara"
       other: "%{count} errores impidieron que este usuario se guardara"
     submit: "Guardar"
     back_to_dashboard: "Volver al inicio"
 
   teachers:
+    reviews:
+      edit_review_student: "Editar reseña de estudiante"
+      form:
+        error: "error"
+        prohibited: "impidieron que esta reseña se guardara"
+        none: "Ninguno"
+        back: "Regresar"
     students:
       no_attendances: "No se encontraron asistencias para estas fechas."
       student_info: "Información del estudiante"
@@ -90,3 +97,15 @@ es:
     tutor: "Tutor"
     call_to: "Llamar a"
     social_security_number: "Número de seguro social"
+
+  reviews:
+    show:
+      user: "Usuario:"
+      review: "Reseña:"
+      learning_resource: "Recurso de aprendizaje:"
+      description: "Descripción:"
+      no_learning_resource: "No se asignó un recurso de aprendizaje"
+      title: "Revisión del estudiante"
+      delete: "Eliminar"
+      edit: "Editar"
+      back: "Regresar"

@@ -1,4 +1,4 @@
-<h1 class="title">Edit review of student</h1>
+<h1 class="title"><%= t('teachers.reviews.edit_review_student') %></h1>
 
 <%= render "form", review: @review, url: teacher_review_path(@user, @review), method: :patch%>
 
