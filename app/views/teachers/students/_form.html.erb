@@ -2,7 +2,7 @@
 
   <% if student.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(student.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(student.errors.count, t('students.error')) %> <%= t('students.prohibited') %>:</h2>
       <ul>
         <% student.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -64,7 +64,7 @@
   <%= form.fields_for :group_member_attributes do |field| %>
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <%= form.label :group_id, class: "label" %>
+        <%= field.label :group_id, class: "label" %>
       </div>
 
       <div class="field-body">
@@ -78,7 +78,7 @@
   <%= form.fields_for :student_information_attributes do |field| %>
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <%= form.label :ocupation, class: "label" %>
+        <%= field.label :ocupation, class: "label" %>
       </div>
       <div class="field-body">
         <div class="field">
@@ -91,7 +91,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <%= form.label :civil_status, class: "label" %>
+        <%= field.label :civil_status, class: "label" %>
       </div>
       <div class="field-body">
         <div class="field">
@@ -104,7 +104,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <%= form.label :montly_payment, class: "label" %>
+        <%= field.label :montly_payment, class: "label" %>
       </div>
       <div class="field-body">
         <div class="field">
@@ -117,13 +117,13 @@
     
     <div class="mt-5 mb-5 is-flex is-justify-content-center">
       <span class="subtitle">
-        <strong>Tutor information</strong>
+        <strong><%= t('students.tutor_information') %></strong>
       </span>
     </div>
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <%= form.label :tutor_name, class: "label" %>
+        <%= field.label :tutor_name, class: "label" %>
       </div>
       <div class="field-body">
         <div class="field">
@@ -136,7 +136,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <%= form.label :cellphone, class: "label" %>
+        <%= field.label :cellphone, class: "label" %>
       </div>
       <div class="field-body">
         <div class="field">
@@ -149,7 +149,7 @@
 
     <div class="field is-horizontal">
       <div class="field-label is-normal">
-        <%= form.label :health_insurance, class: "label" %>
+        <%= field.label :health_insurance, class: "label" %>
       </div>
       <div class="field-body">
         <div class="field">
@@ -164,10 +164,10 @@
   <br/>
 
   <div class="is-flex is-justify-content-flex-end">
-    <%= form.submit class: "button is-success is-outlined" %>
+    <%= form.submit t('students.save'), class: "button is-success is-outlined" %>
     <%= link_to(teacher_students_url(@user), class: "button is-info is-outlined ml-5") do %>
       <i class="fas fa-undo"></i>
-      <span class="ml-2">Back</span>
+      <span class="ml-2"><%= t('students.back') %></span>
     <% end %>
   </div>
 

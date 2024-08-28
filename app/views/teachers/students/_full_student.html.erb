@@ -1,50 +1,49 @@
 <div id="<%= dom_id student %>">
-
   <div class="columns">
     <div class="column">
       <div class="box">
-        <h2 class="subtitle">Personal data</h2>
+        <h2 class="subtitle"><%= t('students.personal_data') %></h2>
         <p>
-          <strong>Name:</strong>
+          <strong><%= t('students.name') %>:</strong>
           <%= student.name %>
         </p>
 
         <p>
-          <strong>Belt:</strong>
+          <strong><%= t('students.belt') %>:</strong>
           <%= BELTS_TEXT[student.belt.to_sym] %>
         </p>
 
         <p>
-          <strong>Group:</strong>
-          <%= student.group_member&.group&.name %></td>
+          <strong><%= t('students.group') %>:</strong>
+          <%= student.group_member&.group&.name %>
         </p>
 
         <p>
-          <strong>Ocupation:</strong>
+          <strong><%= t('students.ocupation') %>:</strong>
           <%= student.student_information&.ocupation %>
         </p>
 
         <p>
-          <strong>Montly payment:</strong>
+          <strong><%= t('students.monthly_payment') %>:</strong>
           <%= student.student_information&.montly_payment %>
         </p>
       </div>
     </div>
     <div class="column">
       <div class="box">
-        <h2 class="subtitle">Data of the responsible legal</h2>
+        <h2 class="subtitle"><%= t('students.responsible_legal_data') %></h2>
         <p>
-          <strong>Tutor:</strong>
+          <strong><%= t('students.tutor') %>:</strong>
           <%= student.student_information&.tutor_name %>
         </p>
 
         <p>
-          <strong>Call to:</strong>
+          <strong><%= t('students.call_to') %>:</strong>
           <%= student.student_information&.cellphone %>
         </p>
 
         <p>
-          <strong>Social security number:</strong>
+          <strong><%= t('students.social_security_number') %>:</strong>
           <%= student.student_information&.health_insurance %>
         </p>
         <br>

@@ -1,13 +1,12 @@
 <div id="students" class="container pt-5">
-
-  <h2 class="title">Enrolled students<h2>
+  <h2 class="title"><%= I18n.t('teachers.students.enrolled_students') %></h2>
 
   <table class="table is-striped is-hoverable is-fullwidth">
     <thead>
       <tr>
-        <th>Student name</th>
-        <th>Belt</th>
-        <th>Group</th>
+        <th><%= I18n.t('teachers.students.student_name') %></th>
+        <th><%= I18n.t('teachers.students.belt') %></th>
+        <th><%= I18n.t('teachers.students.group') %></th>
       </tr>
     </thead>
     <tbody>
@@ -23,8 +22,8 @@
 
   <div class="is-flex is-justify-content-flex-end">
     <%= link_to(teacher_url(@user), class: "button is-info is-outlined") do %>
-      <span class="mr-2">Back to dashboard</span>
+      <span class="mr-2"><%= I18n.t('general.back_to_dashboard') %></span>
       <i class="fas fa-undo"></i>
-    <% end%>
+    <% end %>
   </div>
 </div>
