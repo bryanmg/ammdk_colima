@@ -1,7 +1,7 @@
 <%= form_with(model: learning_resource, url: url) do |form| %>
   <% if learning_resource.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(learning_resource.errors.count, "error") %> prohibited this teachers_learning_resource from being saved:</h2>
+      <h2><%= t('learning_resources.form.errors.title', count: learning_resource.errors.count) %></h2>
       <ul>
         <% learning_resource.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,7 +12,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :name, class: "label" %>
+      <%= form.label :name, t('learning_resources.form.fields.name'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -25,7 +25,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :description, class: "label" %>
+      <%= form.label :description, t('learning_resources.form.fields.description'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -38,7 +38,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :belt, class: "label" %>
+      <%= form.label :belt, t('learning_resources.form.fields.belt'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -51,7 +51,7 @@
   
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :resource, class: "label" %>
+      <%= form.label :resource, t('learning_resources.form.fields.resource'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -63,10 +63,10 @@
   </div>
 
   <div class="is-flex is-justify-content-flex-end mt-5">
-    <%= form.submit class: "button is-success is-outlined" %>
+    <%= form.submit t('learning_resources.form.submit'), class: "button is-success is-outlined" %>
     <%= link_to(teacher_learning_resources_path(@user), class: "button is-info is-outlined ml-5") do %>
       <i class="fas fa-undo"></i>
-      <span class="ml-2">Back</span>
+      <span class="ml-2"><%= t('learning_resources.form.back') %></span>
     <% end %>
   </div>
 <% end %>

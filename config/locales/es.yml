@@ -109,3 +109,36 @@ es:
       delete: "Eliminar"
       edit: "Editar"
       back: "Regresar"
+
+  learning_resources:
+    new:
+      title: "Nuevo recurso de aprendizaje"
+    edit:
+      title: "Editar recurso de aprendizaje"
+    index:
+      title: "Recursos de aprendizaje"
+      assign_to_student: "Asignar a estudiante"
+      create_new: "Crear nuevo"
+      back: "Regresar"
+    show:
+      name: "Nombre"
+      description: "Descripción"
+      belt: "Cinturón requerido"
+      resource: "Recurso"
+      not_attached: "Este recurso de aprendizaje no tiene un archivo adjunto."
+      edit: "Editar"
+      delete: "Eliminar"
+    form:
+      errors:
+        title: "%{count} error(es) prohibieron que este recurso de aprendizaje se guardara:"
+      fields:
+        name: "Nombre"
+        description: "Descripción"
+        belt: "Cinturón"
+        resource: "Recurso"
+      submit: "Guardar"
+      back: "Regresar"
+    partial:
+      edit: "Editar este recurso de aprendizaje"
+      back: "Volver a recursos de aprendizaje"
+      destroy: "Eliminar este recurso de aprendizaje"
