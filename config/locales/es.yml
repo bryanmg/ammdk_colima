@@ -23,13 +23,11 @@ es:
     my_groups: "Mis grupos"
     no_groups: "Aún no tienes grupos..."
 
-
   user:
     name: "Nombre"
     belt: "Cinturón"
     birth_date: "Fecha de nacimiento"
     email: "Correo electrónico"
-
 
   form:
     errors: 
@@ -73,11 +71,50 @@ es:
       edit_student: "Editar estudiante"
       back: "Volver"
       register_new_student: "Registrar nuevo estudiante"
-  
       enrolled_students: "Estudiantes inscritos"
       student_name: "Nombre del estudiante"
       belt: "Cinturón"
       group: "Grupo"
+    groups:
+      index:
+        title: "Grupos"
+        create_new: "Crear nuevo"
+        back_to_dashboard: "Regresar al panel de control"
+      show:
+        title: "%{group_name}"
+        check_attendances: "Revisar asistencias"
+        view_attendance_record: "Ver registro de asistencia"
+        take_attendance: "Tomar asistencia"
+        edit_group: "Editar grupo"
+        delete_group: "Eliminar grupo"
+        delete_confirmation: "Eliminar grupo. ¿Estás seguro?"
+        from: "Desde"
+        to: "Hasta"
+        name: "Nombre"
+        enrolled_students: "Estudiantes inscritos"
+        training_days: "Días de entrenamiento"
+        back_to_group: "Regresar al grupo"
+        no_file_attached: "Este grupo no tiene archivos adjuntos."
+      form:
+        title_new: "Nuevo grupo"
+        title_edit: "Editar grupo"
+        back_to_dashboard: "Regresar al panel de control"
+        name: "Nombre"
+        from_time: "Hora de inicio"
+        to_time: "Hora de fin"
+        days_of_the_week: "Días de la semana"
+        submit: "Guardar"
+        back: "Regresar"
+        error_messages:
+          count: "%{count} errores impidieron que este grupo se guardara:"
+      days_of_the_week:
+        sunday: "Domingo"
+        monday: "Lunes"
+        tuesday: "Martes"
+        wednesday: "Miércoles"
+        thursday: "Jueves"
+        friday: "Viernes"
+        saturday: "Sábado"
   general:
     back_to_dashboard: "Volver al inicio"
 

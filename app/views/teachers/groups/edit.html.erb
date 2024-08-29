@@ -1,12 +1,12 @@
 <div class="container pt-5">
-  <h1 class="title">Edit group</h1>
-
+  <h1 class="title"><%= t('teachers.groups.form.title_edit') %></h1>
+  
   <%= render "teachers/groups/form", group: @group, method: :patch, url: teacher_group_url(@user, @group) %>
-
+  
   <div class="is-flex is-justify-content-flex-end">
     <%= link_to(teacher_group_path(@user, @group), class: "button is-info is-outlined mr-3") do %>
       <i class="fas fa-undo"></i>
-      <span class="ml-2">Back to group</span>
-    <% end%>
+      <span class="ml-2"><%= t('teachers.groups.show.back_to_group') %></span>
+    <% end %>
   </div>
 </div>
