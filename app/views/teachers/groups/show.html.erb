@@ -7,17 +7,16 @@
 
   <div>
     <span class="sibtitle">
-      <strong>Check attendances for</strong>
+      <strong><%= t('teachers.groups.show.check_attendances') %></strong>
     </span>
 
     <%= form_with(method: :get, url: teacher_group_attendances_url(@user, @group)) do |form| %>
       <div class="columns">
         <div class="column">
-
           <div class="is-flex is-flex-direction-column">
             <div class="field is-horizontal">
               <div class="field-label is-normal">
-                <label class="label mr-2">From:</label>
+                <label class="label mr-2"><%= t('teachers.groups.show.from') %>:</label>
               </div>
               <div class="field-body">
                 <div class="field">
@@ -30,7 +29,7 @@
 
             <div class="field is-horizontal">
               <div class="field-label is-normal">
-                <label class="label mr-2">To:</label>
+                <label class="label mr-2"><%= t('teachers.groups.show.to') %>:</label>
               </div>
               <div class="field-body">
                 <div class="field">
@@ -40,12 +39,10 @@
                 </div>
               </div>
             </div>
-            <%= form.submit "View attendance record", class: "button is-primary is-outlined"%>
+            <%= form.submit t('teachers.groups.show.view_attendance_record'), class: "button is-primary is-outlined"%>
           </div>
-
         </div>
-        <div class="column">
-        </div>
+        <div class="column"></div>
       </div>
     <% end %>
     <br>
@@ -53,19 +50,19 @@
     <div class="is-flex is-justify-content-flex-end">
       <%= link_to(teacher_path(@user), class: "button is-info is-outlined mr-5") do %>
         <i class="fas fa-undo"></i>
-        <span class="ml-2">Back to dashboard</span>
+        <span class="ml-2"><%= t('teachers.groups.show.back_to_dashboard') %></span>
       <% end %>
       <%= link_to(new_teacher_group_attendance_url(@user, @group), class: "button is-link is-outlined mr-5") do %>
         <i class="far fa-check-square"></i>
-        <span class="ml-2">Take attendance</span>
+        <span class="ml-2"><%= t('teachers.groups.show.take_attendance') %></span>
       <% end %>
       <%= link_to(edit_teacher_group_path(@user, @group), class: "button is-primary is-outlined mr-5") do %>
         <i class="fas fa-edit"></i>
-        <span class="ml-2">Edit group</span>
+        <span class="ml-2"><%= t('teachers.groups.show.edit_group') %></span>
       <% end %>
-      <%= button_to(teacher_group_url(@user, @group), method: :delete, class: "button is-danger is-outlined", data: { confirm: 'Delete group. Are you sure?' }) do %>
+      <%= button_to(teacher_group_url(@user, @group), method: :delete, class: "button is-danger is-outlined", data: { confirm: t('teachers.groups.show.delete_confirmation') }) do %>
         <i class="fas fa-trash-alt"></i>
-        <span class="ml-2">Delete group</span>
+        <span class="ml-2"><%= t('teachers.groups.show.delete_group') %></span>
       <% end %>
     </div>
   </div>

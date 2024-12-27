@@ -1,0 +1,181 @@
+es:
+  log_in: 
+    log_in: "Iniciar sesión"
+    to_continue: "para continuar"
+    to_dashboard: "Ir a mi inicio"
+    
+  dashboard:
+    dashboard: "Inicio"
+    title: "Panel de Control"
+    in_progress_group_link: "%{group_name} grupo en clases, ¡toma asistencia!"
+    students: "Estudiantes"
+    groups: "Grupos"
+    learning_resources: "Recursos de Aprendizaje"
+    create_group: "Crear grupo"
+    register_student: "Registrar estudiante"
+    view_students: "Ver estudiantes"
+    my_learning_resources: "Mis recursos de aprendizaje"
+    edit_profile: "Editar mi perfil"
+    assign_learning_resource: "Asignar recurso de aprendizaje"
+    create_learning_resource: "Crear recurso de aprendizaje"
+    review_student: "Calificar estudiante"
+    view_debts: "Ver deudas"
+    my_groups: "Mis grupos"
+    no_groups: "Aún no tienes grupos..."
+
+  user:
+    name: "Nombre"
+    belt: "Cinturón"
+    birth_date: "Fecha de nacimiento"
+    email: "Correo electrónico"
+
+  form:
+    errors: 
+      one: "un error impidió que este usuario se guardara"
+      other: "%{count} errores impidieron que este usuario se guardara"
+    submit: "Guardar"
+    back_to_dashboard: "Volver al inicio"
+
+  teachers:
+    reviews:
+      edit_review_student: "Editar reseña de estudiante"
+      form:
+        error: "error"
+        prohibited: "impidieron que esta reseña se guardara"
+        none: "Ninguno"
+        back: "Regresar"
+    students:
+      no_attendances: "No se encontraron asistencias para estas fechas."
+      student_info: "Información del estudiante"
+      attendance_record: "Registro de asistencia del estudiante"
+      attendance_date: "Fecha"
+      attendance_status: "Asistencia"
+      assigned_learning_resources: "Recursos de aprendizaje asignados"
+      learning_resource_name: "Nombre del recurso de aprendizaje"
+      assigned_to: "Asignado el"
+      unassign: "Desasignar"
+      unassign_resource_confirmation: "¿Estás seguro de que deseas desasignar este recurso?"
+      student_review: "Revisión del estudiante"
+      review: "Revisión"
+      reviewed_at: "Revisado el"
+      learning_resource: "Recurso de aprendizaje"
+      finish_review: "Finalizar revisión"
+      finish_review_confirmation: "¿Estás seguro de que deseas finalizar esta revisión?"
+      search_attendance: "Buscar asistencias del estudiante"
+      delete_student: "Eliminar estudiante"
+      delete_student_confirmation: "Esta acción eliminará al estudiante y toda su información. ¿Estás seguro?"
+      reset_password: "Restablecer contraseña"
+      reset_password_confirmation: "¿Estás seguro de que deseas restablecer la contraseña?"
+      promote_belt: "Promover cinturón"
+      promote_belt_confirmation: "¿Estás seguro de que deseas promover el cinturón de este estudiante?"
+      edit_student: "Editar estudiante"
+      back: "Volver"
+      register_new_student: "Registrar nuevo estudiante"
+      enrolled_students: "Estudiantes inscritos"
+      student_name: "Nombre del estudiante"
+      belt: "Cinturón"
+      group: "Grupo"
+    groups:
+      index:
+        title: "Grupos"
+        create_new: "Crear nuevo"
+        back_to_dashboard: "Regresar al panel de control"
+      show:
+        title: "%{group_name}"
+        check_attendances: "Revisar asistencias"
+        view_attendance_record: "Ver registro de asistencia"
+        take_attendance: "Tomar asistencia"
+        edit_group: "Editar grupo"
+        delete_group: "Eliminar grupo"
+        delete_confirmation: "Eliminar grupo. ¿Estás seguro?"
+        from: "Desde"
+        to: "Hasta"
+        name: "Nombre"
+        enrolled_students: "Estudiantes inscritos"
+        training_days: "Días de entrenamiento"
+        back_to_group: "Regresar al grupo"
+        no_file_attached: "Este grupo no tiene archivos adjuntos."
+      form:
+        title_new: "Nuevo grupo"
+        title_edit: "Editar grupo"
+        back_to_dashboard: "Regresar al panel de control"
+        name: "Nombre"
+        from_time: "Hora de inicio"
+        to_time: "Hora de fin"
+        days_of_the_week: "Días de la semana"
+        submit: "Guardar"
+        back: "Regresar"
+        error_messages:
+          count: "%{count} errores impidieron que este grupo se guardara:"
+      days_of_the_week:
+        sunday: "Domingo"
+        monday: "Lunes"
+        tuesday: "Martes"
+        wednesday: "Miércoles"
+        thursday: "Jueves"
+        friday: "Viernes"
+        saturday: "Sábado"
+  general:
+    back_to_dashboard: "Volver al inicio"
+
+  students:
+    error: "error"
+    prohibited: "impidieron que se guardara el usuario"
+    tutor_information: "Información del tutor"
+    save: "Guardar"
+    back: "Volver"
+    personal_data: "Datos personales"
+    name: "Nombre"
+    belt: "Cinturón"
+    group: "Grupo"
+    ocupation: "Ocupación"
+    monthly_payment: "Pago mensual"
+    responsible_legal_data: "Datos del responsable legal"
+    tutor: "Tutor"
+    call_to: "Llamar a"
+    social_security_number: "Número de seguro social"
+
+  reviews:
+    show:
+      user: "Usuario:"
+      review: "Reseña:"
+      learning_resource: "Recurso de aprendizaje:"
+      description: "Descripción:"
+      no_learning_resource: "No se asignó un recurso de aprendizaje"
+      title: "Revisión del estudiante"
+      delete: "Eliminar"
+      edit: "Editar"
+      back: "Regresar"
+
+  learning_resources:
+    new:
+      title: "Nuevo recurso de aprendizaje"
+    edit:
+      title: "Editar recurso de aprendizaje"
+    index:
+      title: "Recursos de aprendizaje"
+      assign_to_student: "Asignar a estudiante"
+      create_new: "Crear nuevo"
+      back: "Regresar"
+    show:
+      name: "Nombre"
+      description: "Descripción"
+      belt: "Cinturón requerido"
+      resource: "Recurso"
+      not_attached: "Este recurso de aprendizaje no tiene un archivo adjunto."
+      edit: "Editar"
+      delete: "Eliminar"
+    form:
+      errors:
+        title: "%{count} error(es) prohibieron que este recurso de aprendizaje se guardara:"
+      fields:
+        name: "Nombre"
+        description: "Descripción"
+        belt: "Cinturón"
+        resource: "Recurso"
+      submit: "Guardar"
+      back: "Regresar"
+    partial:
+      edit: "Editar este recurso de aprendizaje"
+      back: "Volver a recursos de aprendizaje"
+      destroy: "Eliminar este recurso de aprendizaje"

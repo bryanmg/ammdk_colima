@@ -1,8 +1,7 @@
 <%= form_with(model: group, url: url, method: method) do |form| %>
   <% if group.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
+      <h2><%= pluralize(group.errors.count, t('teachers.groups.form.error_messages.count', count: group.errors.count)) %></h2>
       <ul>
         <% group.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -13,7 +12,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :name, class: "label" %>
+      <%= form.label :name, t('teachers.groups.form.name'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -26,7 +25,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :from_time, class: "label" %>
+      <%= form.label :from_time, t('teachers.groups.form.from_time'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -37,9 +36,9 @@
     </div>
   </div>
 
-  <div class="field is-horizontal">
+    <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :to_time, class: "label" %>
+      <%= form.label :to_time, t('teachers.groups.form.to_time'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -52,26 +51,24 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :days_of_the_week, class: "label" %>
+      <%= form.label :days_of_the_week, t('teachers.groups.form.days_of_the_week'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field pt-2">
         <%= form.fields_for :days_of_the_week do |field| %>
-        
           <% [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday].each do |day| %>
             <label class="checkbox mr-3">
               <%= day.to_s.capitalize %>
               <%= field.check_box day, { checked: !group[:days_of_the_week][day].to_i.zero? } %>
             </label>
           <% end %>
-
         <% end %>
       </div>
     </div>
   </div>
 
   <div class="is-flex is-justify-content-flex-end mb-4 mr-3">
-    <%= form.submit class: "button is-success is-outlined" %>
+    <%= form.submit t('teachers.groups.form.submit'), class: "button is-success is-outlined" %>
   </div>
   
 <% end %>

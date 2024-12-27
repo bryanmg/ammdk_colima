@@ -1,20 +1,19 @@
-
 <div class="container pt-5">
-  <h1 class="title"> Student review</h1>
+  <h1 class="title"><%= t('reviews.show.title') %></h1>
   <%= render @review %>
 
   <div class="is-flex is-justify-content-flex-end">
     <%= button_to(teacher_review_path(@user, @review), method: :delete, class: "button is-danger is-outlined ml-5") do %>
       <i class="far fa-trash-alt"></i>
-      <span class="ml-2">Delete</span>
+      <span class="ml-2"><%= t('reviews.show.delete') %></span>
     <% end %>
     <%= link_to(edit_teacher_review_path(@user, @review), class: "button is-success is-outlined ml-5") do %>
       <i class="far fa-edit"></i>
-      <span class="ml-2">Edit</span>
+      <span class="ml-2"><%= t('reviews.show.edit') %></span>
     <% end %>
     <%= link_to(teacher_path(@user), class: "button is-info is-outlined ml-5") do %>
       <i class="fas fa-undo"></i>
-      <span class="ml-2">Back</span>
+      <span class="ml-2"><%= t('reviews.show.back') %></span>
     <% end %>
   </div>
   <br>

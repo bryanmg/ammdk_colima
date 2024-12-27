@@ -2,7 +2,7 @@
 
   <% if teacher.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= I18n.t('form.errors', count: teacher.errors.count) %>:</h2>
       <ul>
         <% teacher.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -14,7 +14,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :name, class: "label" %>
+      <%= form.label :name, I18n.t('user.name'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -27,7 +27,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :email, class: "label" %>
+      <%= form.label :email, I18n.t('user.email'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -40,7 +40,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :belt, class: "label" %>
+      <%= form.label :belt, I18n.t('user.belt'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="select">
@@ -51,7 +51,7 @@
 
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <%= form.label :birth_date, class: "label" %>
+      <%= form.label :birth_date, I18n.t('user.birth_date'), class: "label" %>
     </div>
     <div class="field-body">
       <div class="field">
@@ -62,13 +62,12 @@
     </div>
   </div>
 
-
   <br>
   <div class="is-flex is-justify-content-flex-end">
-    <%= form.submit class: "button is-success is-outlined" %>
+    <%= form.submit I18n.t('form.submit'), class: "button is-success is-outlined" %>
     <%= link_to(teacher_path(@user), class: "button is-info is-outlined ml-5") do %>
       <i class="fas fa-undo"></i>
-      <span class="ml-2">Back to dashboard</span>
+      <span class="ml-2"><%= I18n.t('form.back_to_dashboard') %></span>
     <% end %>
   </div>
 

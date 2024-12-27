@@ -1,27 +1,27 @@
 <div id="<%= dom_id review %>" class="box">
   <p>
-    <strong>User:</strong>
+    <strong><%= t('reviews.show.user') %></strong>
     <%= review.student.name %>
   </p>
 
   <p>
-    <strong>Review:</strong>
+    <strong><%= t('reviews.show.review') %></strong>
     <%= review.review %>
   </p>
 
   <% if review.learning_resource.present? %>
     <p>
-      <strong>Learning resource:</strong>
+      <strong><%= t('reviews.show.learning_resource') %></strong>
       <%= review.learning_resource&.name %>
     </p>
 
     <p>
-      <strong>Description:</strong>
+      <strong><%= t('reviews.show.description') %></strong>
       <%= review.learning_resource&.description %>
     </p>
   <% else %>
     <p>
-      <span class="tag is-info is-medium is-light">Not learning resource assigned</span>
+      <span class="tag is-info is-medium is-light"><%= t('reviews.show.no_learning_resource') %></span>
     </p>
   <% end %>
 

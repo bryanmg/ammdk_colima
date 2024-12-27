@@ -1,12 +1,12 @@
 <div class="container pt-5">
-  <h1 class="title">New group</h1>
-
+  <h1 class="title"><%= t('teachers.groups.form.title_new') %></h1>
+  
   <%= render "teachers/groups/form", group: @group, method: :post, url: teacher_groups_url(@user, @group) %>
-
+  
   <div class="is-flex is-justify-content-flex-end">
     <%= link_to(teacher_url(@user), class: "button is-info is-outlined mr-3") do %>
       <i class="fas fa-undo"></i>
-      <span class="ml-2">Back to dashboard</span>
-    <% end%>
+      <span class="ml-2"><%= t('teachers.groups.form.back_to_dashboard') %></span>
+    <% end %>
   </div>
-<div>
+</div>
